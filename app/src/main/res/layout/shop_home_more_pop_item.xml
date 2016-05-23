@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_46">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/more_pop_iv_show"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_17" />
+
+        <TextView
+            android:id="@+id/more_pop_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_17"
+            android:singleLine="true"
+
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_15" />
+    </LinearLayout>
+
+</LinearLayout>

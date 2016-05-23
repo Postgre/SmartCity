@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_centerVertical="true"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/header_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/df"
+            fresco:placeholderImageScaleType="fitCenter"
+            fresco:progressBarImageScaleType="centerInside"
+            fresco:retryImageScaleType="centerCrop"
+            fresco:roundAsCircle="true"
+            fresco:roundedCornerRadius="180dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cir_name"
+                android:textColor="@color/black1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:textSize="14sp"
+                android:ems="4"
+                android:singleLine="true"
+                android:text="智创工场圈" />
+            <TextView
+                android:id="@+id/tv_cr_name"
+                style="@style/text_10_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:ellipsize="end"
+                android:ems="7"
+                android:singleLine="true"
+                android:text="创建人" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/join3"
+            style="@style/text_15"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:background="@mipmap/c_join"
+            android:gravity="center"
+            android:text="@string/join" />
+    </RelativeLayout>
+
+</LinearLayout>

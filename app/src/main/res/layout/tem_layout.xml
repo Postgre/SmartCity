@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--<TextView-->
+    <!--android:id="@+id/textview"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="主题"-->
+    <!--android:textSize="30sp"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_centerHorizontal="true"/>-->
+
+    <!--<com.wenchao.cardstack.CardStack-->
+        <!--android:id="@+id/cards"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:padding="20dp"-->
+        <!--android:clipChildren="false"-->
+        <!--android:clipToPadding="false" />-->
+
+    <com.smartcity.customview.SwipeFlingAdapterView
+        android:id="@+id/swipe_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        swipe:max_visible="4"
+        swipe:min_adapter_stack="4"
+        swipe:x_offset_step="20dp"
+        swipe:y_offset_step="20dp"
+        android:layout_marginBottom="10dp"/>
+
+
+</RelativeLayout>

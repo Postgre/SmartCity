@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/life_head" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.cpoopc.scrollablelayoutlib.ScrollableLayout
+            android:id="@+id/shop_home_scrollable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <FrameLayout
+                    android:id="@+id/shop_home_frame_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_273">
+
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/shop_iv_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_200"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/dianpushouye" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/dianpumoban" />
+
+                    <ImageView
+                        android:id="@+id/shop_is_collection"
+                        android:layout_width="@dimen/dp_31"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginRight="@dimen/dp_25"
+                        android:src="@mipmap/dianpushoucang" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_marginTop="@dimen/dp_21"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@mipmap/youhuiquan">
+
+                        <TextView
+                            android:id="@+id/shop_home_tv_youhui_money1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:singleLine="true"
+                            android:text="50"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_30" />
+
+                        <TextView
+                            android:id="@+id/shop_home_youhui_money1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_2"
+                            android:layout_marginTop="@dimen/dp_7"
+                            android:layout_toRightOf="@+id/shop_home_tv_youhui_money1"
+                            android:singleLine="true"
+                            android:text="优惠券"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_15" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/shop_home_youhui_money1"
+                            android:layout_marginLeft="@dimen/dp_2"
+                            android:layout_toRightOf="@+id/shop_home_tv_youhui_money1"
+                            android:singleLine="true"
+                            android:text="满600减50"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_9" />
+
+                        <View
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_2"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/dp_21"
+                            android:background="@color/white" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@mipmap/youhuiquan">
+
+                        <TextView
+                            android:id="@+id/shop_home_tv_youhui_money2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:singleLine="true"
+                            android:text="50"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_30" />
+
+                        <TextView
+                            android:id="@+id/shop_home_youhui_money2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_2"
+                            android:layout_marginTop="@dimen/dp_7"
+                            android:layout_toRightOf="@+id/shop_home_tv_youhui_money2"
+                            android:singleLine="true"
+                            android:text="优惠券"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_15" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/shop_home_youhui_money2"
+                            android:layout_marginLeft="@dimen/dp_2"
+                            android:layout_toRightOf="@+id/shop_home_tv_youhui_money2"
+                            android:singleLine="true"
+                            android:text="满600减50"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_9" />
+
+
+                        <View
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_2"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/dp_21"
+                            android:background="@color/white" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@mipmap/youhuiquan">
+
+                        <TextView
+                            android:id="@+id/shop_home_tv_youhui_money3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp_20"
+
+                            android:singleLine="true"
+                            android:text="50"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_30" />
+
+                        <TextView
+                            android:id="@+id/shop_home_youhui_money3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_2"
+                            android:layout_marginTop="@dimen/dp_7"
+                            android:layout_toRightOf="@+id/shop_home_tv_youhui_money3"
+                            android:singleLine="true"
+                            android:text="优惠券"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_15" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/shop_home_youhui_money3"
+                            android:layout_marginLeft="@dimen/dp_2"
+                            android:layout_toRightOf="@+id/shop_home_tv_youhui_money3"
+                            android:singleLine="true"
+                            android:text="满600减50"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/ts_9" />
+
+                        <View
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_2"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/dp_21"
+                            android:background="@color/white" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_38"
+                android:layout_marginTop="@dimen/dp_13"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:focusable="true"
+                    android:id="@+id/shop_rule_multiple"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="综合"
+                    android:textColor="@color/shop_hone_tv_bg"
+                    android:textSize="@dimen/ts_15" />
+
+                <TextView
+                    android:id="@+id/shop_rule_volume"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="销量"
+                    android:textColor="@color/shop_hone_tv_bg"
+                    android:textSize="@dimen/ts_15" />
+
+
+                <TextView
+                    android:id="@+id/shop_rule_minute"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="最新"
+                    android:textColor="@color/shop_hone_tv_bg"
+                    android:textSize="@dimen/ts_15" />
+
+                <TextView
+                    android:id="@+id/shop_rule_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="价格"
+                    android:textColor="@color/shop_hone_tv_bg"
+                    android:textSize="@dimen/ts_15" />
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/shop_home_recy_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_4" />
+        </com.cpoopc.scrollablelayoutlib.ScrollableLayout>
+    </RelativeLayout>
+</LinearLayout>

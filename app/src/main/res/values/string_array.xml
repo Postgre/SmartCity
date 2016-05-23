@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="arr_mark_type">
+        <item>时尚</item>
+        <item>搞笑</item>
+        <item>旅游</item>
+        <item>美食</item>
+        <item>音乐</item>
+        <item>舞蹈</item>
+        <item>现场</item>
+        <item>明星</item>
+        <item>宝宝</item>
+        <item>体育</item>
+        <item>汽车</item>
+        <item>网红</item>
+        <item>帅哥</item>
+        <item>美女</item>
+        <item>萌宠</item>
+        <item>学习</item>
+        <item>美妆</item>
+        <item>运动</item>
+        <item>健身</item>
+        <item>科技</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ghostwhite"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar1"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/c_quanzi" />
+
+            <TextView
+                style="@style/text_15_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的圈子" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_allcircle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/c_allquanzi" />
+
+            <TextView
+                style="@style/text_15_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/allcircle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_chat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/c_liaotian" />
+
+            <TextView
+                style="@style/text_15_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chat" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.smartcity.customview.SwipeFlingAdapterView
+        android:id="@+id/swipe_views"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:visibility="gone"
+        swipe:max_visible="4"
+        swipe:min_adapter_stack="4"
+        swipe:x_offset_step="20dp"
+        swipe:y_offset_step="20dp"  />
+    <ImageView
+        android:id="@+id/nullquanzi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="2"
+        android:visibility="visible"
+        android:background="@mipmap/c_zwquanzi" />
+
+    <RelativeLayout
+        android:id="@+id/relalayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        android:background="@color/white">
+
+        <TextView
+            style="@style/text_20"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@mipmap/c_xihuan"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="@string/youlike" />
+
+        <TextView
+            style="@style/text_20_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/more" />
+    </RelativeLayout>
+
+    <com.smartcity.customview.SwipeFlingAdapterView
+        android:id="@+id/swipe_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:visibility="visible"
+        swipe:max_visible="4"
+        swipe:min_adapter_stack="4"
+        swipe:x_offset_step="20dp"
+        swipe:y_offset_step="20dp" />
+</LinearLayout>

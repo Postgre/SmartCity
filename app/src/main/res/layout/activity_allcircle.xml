@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar1" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="207dp">
+
+        <com.jude.rollviewpager.RollPagerView
+            android:id="@+id/rl_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:rollviewpager_play_delay="3000" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_gravity="bottom"
+            android:background="#50000000">
+
+            <TextView
+                android:id="@+id/introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:text="世界那么美，我想去看看" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            android:text="热门标签" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/color_grey_888888" />
+
+
+        <!--<com.viewpagerindicator.TabPageIndicator-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/transparent"
+            app:tabSelectedTextColor="#0379ff"
+            app:tabTextColor="#777777"
+            app:tabPaddingEnd="12dp"
+            app:tabPaddingStart="12dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#dadada"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

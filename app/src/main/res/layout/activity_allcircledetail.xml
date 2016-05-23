@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/title_bar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_margin="20dp"
+        android:background="@mipmap/c_detail_bg">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/cr_detail"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:backgroundImage="@mipmap/circle_header_img"
+            fresco:roundAsCircle="true"
+            fresco:roundedCornerRadius="180dp" />
+
+        <TextView
+            android:id="@+id/cr_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/cr_detail"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="130dp"
+            android:text="智享城市圈"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/cr_type_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cr_name"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="100dp"
+                android:background="@mipmap/vip" />
+
+            <TextView
+                android:id="@+id/cr_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="100dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/cr_type_name"
+                android:text="尊享圈"
+                android:textColor="#ff5000"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ll_type"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/cr_num_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@mipmap/people_num" />
+
+            <TextView
+                android:id="@+id/cr_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="70dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="45人"
+                android:textColor="#777777"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_alignBottom="@id/ll_num">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:text="要么旅行，要么读书，要么玩耍。心无界，路无边···"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/tv_join"
+            android:layout_width="400dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/bt_bg"
+            android:gravity="center"
+            android:text="申请加入"
+            android:textColor="#0379ff"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

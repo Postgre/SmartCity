@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartcity.activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mainToolBar" />
+
+    <RadioGroup
+        android:id="@+id/mainToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/meili_navigation"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/chwRadioButton"
+            style="@style/homeToolBar"
+            android:checked="true"
+            android:drawableTop="@drawable/btn_tab_home"
+            android:text="城会玩" />
+
+        <RadioButton
+            android:id="@+id/circleRadioButton"
+            style="@style/homeToolBar"
+            android:drawableTop="@drawable/btn_tab_group"
+            android:text="圈子" />
+
+        <RadioButton style="@style/homeToolBar" />
+
+        <RadioButton
+            android:id="@+id/lifeRadioButton"
+            style="@style/homeToolBar"
+            android:drawableTop="@drawable/btn_tab_life"
+            android:text="生活" />
+
+        <RadioButton
+            android:id="@+id/myRadioButton"
+            style="@style/homeToolBar"
+            android:drawableTop="@drawable/btn_tab_fans"
+            android:text="我的" />
+    </RadioGroup>
+
+
+    <RelativeLayout
+        android:id="@+id/moneyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/wanjiazhengqianyuan">
+
+        <ImageView
+            android:id="@+id/icon_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/wanjiazhengqian" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,445 @@
+<resources>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="activity">首页</string>
+    <string name="life">生活圈</string>
+    <string name="group">圈子</string>
+    <string name="fans">粉丝</string>
+    <string name="news">24小时</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- 下拉刷新 -->
+    <string name="xlistview_header_hint_normal">敢拉我就敢刷</string>
+    <string name="xlistview_header_hint_ready">请刷新</string>
+    <string name="xlistview_header_hint_loading">卖力获取中…</string>
+    <string name="xlistview_header_last_time">此时此刻:</string>
+    <string name="xlistview_footer_hint_normal">获取更多</string>
+    <string name="xlistview_footer_hint_no_more">已经是最后一页了</string>
+    <string name="xlistview_footer_hint_ready">请获取更多</string>
+
+    <string name="smartcity_app_name">智享城市</string>
+    <string name="smartcity_name">智享城市</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="home">城会玩</string>
+    <string name="category">生活</string>
+    <string name="groups">圈子</string>
+    <string name="setting">粉</string>
+
+    <!-- 城市 -->
+    <string name="wuhan">武汉</string>
+    <string name="shenzhen">深圳</string>
+    <string name="jingzhou">荆州</string>
+    <string name="shanghai">上海</string>
+    <string name="beijing">北京</string>
+
+    <!--圈子-->
+    <string name="allcircle"> 全部圈子</string>
+    <string name="pyq"> 朋友圈</string>
+    <string name="youlike"> 猜你喜欢</string>
+    <string name="more"> 更多</string>
+    <string name="tongzhi">通知</string>
+    <string name="shiping">视频</string>
+    <string name="xiangce">相册</string>
+    <string name="huodong">活动</string>
+    <string name="xiangji">相机</string>
+    <string name="quanzixiaozu">圈子小组</string>
+    <string name="quanzichengyuan">圈子成员</string>
+    <string name="circle_code">圈子二维码</string>
+    <string name="xiaoximiandarao">消息免打扰</string>
+    <string name="join"> 加入</string>
+    <string name="tojoin"> 申请加入</string>
+    <string name="isjoin">已加入</string>
+    <string name="create_member">创建者</string>
+    <string name="circle_number">圈子数</string>
+    <string name="circle_member">圈子成员</string>
+    <string name="activity_number">活动次数</string>
+    <string name="circle_exit">退出圈子</string>
+    <string name="search"> 搜索</string>
+    <string name="biaoqian">标签</string>
+    <string name="circle_name">圈子名称</string>
+    <string name="circle_wordnumber">限200字以内</string>
+    <string name="circle_introduce">请输入圈子介绍，吸引更多伙伴加入...</string>
+    <string name="circle_prompt">该圈子人数在1天内未满10人，将自动解散</string>
+
+    <!-- 生活 -->
+    <string name="life_1">时尚衣服</string>
+    <string name="life_2">潮流鞋包</string>
+    <string name="life_3">运动塑身</string>
+    <string name="life_4">健康养生</string>
+    <string name="life_5">化妆美甲</string>
+    <string name="life_6">美容美体</string>
+    <string name="life_7">家具日常</string>
+    <string name="life_8">数码科技</string>
+    <string name="life_goods">商品</string>
+    <string name="life_merchant">商家</string>
+    <string name="life_near">附近</string>
+    <string name="life_screen">筛选</string>
+
+    <!-- 我的订单 -->
+    <string name="setting_order_all">全部订单</string>
+    <string name="setting_order_pay">待付款</string>
+    <string name="setting_order_receive">已付款</string>
+    <string name="setting_order_evaluate">已完成</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="fen_city_accounts">城市账户</string>
+    <string name="fen_pay_activies">买单的活动</string>
+    <string name="fen_order">订单</string>
+    <string name="fen_cart">购物车</string>
+    <string name="fen_shared">分享</string>
+    <string name="fen_setting">设置</string>
+    <string name="fen_send_publish_activites">发布的活动</string>
+    <string name="fen_manager_clicer">管理尊享圈</string>
+    <string name="fen_create_circle">创建圈子</string>
+    <string name="fen_notify">通知</string>
+    <string name="fen_enshrine">收藏</string>
+    <string name="setting_touxiang">设置头像</string>
+    <string name="edite_tv_head">昵称</string>
+    <string name="edite_tv_sex">性别</string>
+    <string name="edite_tv_domicile">居住地</string>
+    <string name="edite_tv_name">签名</string>
+    <string name="set_message_notify">消息通知</string>
+    <string name="set_user_agreement">用户协议</string>
+    <string name="set_clear_cache">清除缓存</string>
+    <string name="set_about_me">关于我们</string>
+    <string name="loginout">退出账号</string>
+    <string name="current_version">当前版本：0.2.1</string>
+    <string name="must_pay">立即秒杀</string>
+    <array name="publish">
+        <item>全部发布</item>
+        <item>进行中</item>
+        <item>已完成</item>
+        <item>未完成</item>
+    </array>
+    <!--24小时-->
+    <string name="dingyue">订阅</string>
+    <string name="pinglun">评论</string>
+    <string name="hotpinglun">热门评论</string>
+    <string name="left_drawer_no_login_tip">登录后，将推荐给你更多感兴趣的文章</string>
+    <string name="left_drawer_item_search">搜索</string>
+    <string name="left_drawer_item_favorite">收藏</string>
+    <string name="left_drawer_item_message">消息</string>
+    <string name="left_drawer_item_offline">离线</string>
+    <string name="left_drawer_item_offline_cancel">取消离线</string>
+    <string name="left_drawer_item_activity">活动</string>
+    <string name="left_drawer_item_setting">设置</string>
+    <string name="left_drawer_item_feedback">反馈</string>
+    <string name="left_drawer_item_appstore">精彩应用</string>
+    <string name="drawer_right_logout_hint_text">"登录后 可关注好友评论和收藏"</string>
+    <string name="drawer_right_tip_no_login">未登录</string>
+    <string name="ss_pattern_update">发现%1$d条更新</string>
+    <string name="ss_have_a_rest">暂无更新, 休息一会儿</string>
+    <string name="action_night_mode">夜间模式</string>
+    <string name="action_day_mode">日间模式</string>
+    <string name="setting_list_mode">列表显示摘要</string>
+    <string name="setting_font_size">字体大小</string>
+    <string name="setting_list_comment">列表页评论</string>
+    <string name="setting_refresh_list">列表页刷新</string>
+    <string name="setting_load_image">2G/3G网络流量</string>
+    <string name="setting_notify">推送通知</string>
+    <string name="setting_interactive">互动插件</string>
+    <string name="setting_share_when_favor">收藏时转发</string>
+    <string name="setting_share_when_diggbury">顶踩时转发</string>
+    <string name="setting_clear">清理缓存</string>
+    <string name="setting_feedback">意见反馈</string>
+    <string name="setting_recommend">精彩应用推荐</string>
+    <string name="setting_update">检查新版本</string>
+    <string name="setting_night_mode">夜间模式</string>
+    <string name="setting_use_swipe">左右翻页</string>
+    <string name="setting_switch_domain">启动网络调试</string>
+    <string name="setting_close_shake_hand">关闭摇一摇切换夜间模式</string>
+    <string name="setting_use_help">使用帮助</string>
+    <string name="app_copyright">© 头条网 toutiao.com</string>
+    <string name="favorite_btn_delete">删除</string>
+    <string name="favorite_btn_edit">编辑</string>
+    <string name="favorite_btn_cancel">取消</string>
+    <string name="dislike_dlg_lable_speech">读文章</string>
+    <string name="drawer_btn_rss">频道管理</string>
+    <string name="subscribe_my_category">我的频道</string>
+    <string name="subscribe_more_category">更多频道</string>
+    <string name="subscribe_manager_category_info">单击增删频道</string>
+    <string name="subscribe_manager_category_info_2">单击增删频道，长按拖拽排序</string>
+    <string name="label_cancel_dislike">撤消</string>
+    <string name="day_today">今天</string>
+    <string name="day_yesterday">昨天</string>
+    <string name="day_before">前天</string>
+    <string name="search_count_fmt">发现%1$s篇文章</string>
+    <string name="pattern_update">发现%1$d条更新</string>
+    <string name="city_category_list_header">点击选择其他城市</string>
+    <string name="city_category_list_hint">选择城市，立即查看本地新闻</string>
+    <string name="city_category_list_notify_no_city">请先选择您关注的城市</string>
+    <string name="retry_large_image"><u>加载失败，点击重试</u></string>
+
+    <array name="chatPopTitle">
+        <item>添加好友</item>
+        <item>创建高级群</item>
+        <item>创建讨论组</item>
+        <item>搜索高级群</item>
+    </array>
+
+    <string name="begin_regist">正在注册..</string>
+    <string name="regist_success">注册成功</string>
+    <string name="user_exite">用户已注册</string>
+    <string name="name_is_null">用户名不能为空!</string>
+    <string name="pwd_is_null">密码不能为空!</string>
+    <string name="con_time_out">连接失败!</string>
+    <string name="loginin">正在登陆..</string>
+    <string name="phone_is_not_null">手机号不能为空</string>
+    <string name="logining">登录中···</string>
+    <string name="accept_session">接受</string>
+    <string name="reject_session">拒绝</string>
+    <string name="doodle_clear">清屏</string>
+    <string name="doodle_back">上一步</string>
+
+    <string name="readed">已读</string>
+    <string name="about">关于</string>
+    <string name="logout">注销</string>
+    <string name="version">版本号:</string>
+    <string name="account">帐号:</string>
+    <string name="chat">聊天</string>
+    <string name="add">添加</string>
+    <string name="remove">移除</string>
+    <string name="network_forbidden_login">你被服务器禁止登录，详询客服</string>
+    <string name="menu">菜单</string>
+    <string name="verify_reminder">验证提醒</string>
+    <string name="without_content">暂无</string>
+    <string name="create">新建</string>
+    <string name="delete_tip">删除提示</string>
+    <string name="delete_system_message">删除该条系统消息？</string>
+    <string name="delete_success">删除成功</string>
+    <string name="clear_all_success">清空成功</string>
+    <string name="login_failed">帐号或密码错误</string>
+    <string name="kick_out">帐号在其它设备登录</string>
+    <string name="edittext_length_tips">你输入的字数已经超过了限制！</string>
+    <string name="file_transfer">文件云存储</string>
+    <string name="file_browser">文件浏览器</string>
+    <string name="upload_text">上传</string>
+    <string name="download_text">下载</string>
+    <string name="now_allow_space">不能含有空格</string>
+    <string name="how_to_get_account">如何获取帐号</string>
+    <string name="multi_client_management">多端登录管理</string>
+    <string name="kick_other_client_prompt">踢掉 %1$s</string>
+    <string name="open">开启</string>
+    <string name="close">关闭</string>
+    <string name="search_advanced_team">搜索高级群</string>
+    <string name="net_broken">当前网络不可用</string>
+    <string name="nim_status_unlogin">未登录</string>
+    <string name="copyright">Copyright ©1997-2016 网易公司版权所有</string>
+    <string name="edit_nick">修改昵称</string>
+    <string name="user_not_exsit">该用户不存在</string>
+    <string name="user_tips">请检查你输入的帐号是否正确</string>
+    <string name="edit">编辑</string>
+
+    <!-- session -->
+    <string name="input_panel_guess">猜 拳</string>
+    <string name="input_panel_audio_call">语音通话</string>
+    <string name="input_panel_video_call">视频通话</string>
+    <string name="input_panel_file">发送文件</string>
+    <string name="input_panel_RTS">白 板</string>
+    <string name="input_panel_snapchat">阅后即焚</string>
+    <string name="message_history_query">云消息记录</string>
+    <string name="message_search_title">搜索本地消息记录</string>
+    <string name="message_clear">清空本地消息记录</string>
+    <string name="message_info">聊天信息</string>
+
+    <!-- 通讯录 -->
+    <string name="add_friend">加为好友</string>
+    <string name="remove_friend">删除好友</string>
+    <string name="begin_chat">聊天</string>
+    <string name="remove_friend_tip">删除好友后，将同时解除双方的好友关系</string>
+    <string name="remove_friend_success">删除好友成功</string>
+    <string name="add_friend_self_tip">不能添加自己为好友</string>
+    <string name="add_friend_verify_tip">好友验证请求</string>
+    <string name="black_list_tip">你不会接收到列表中联系人的任何消息</string>
+
+    <!-- 群 -->
+    <string name="create_team_activity">创建群聊</string>
+    <string name="add_buddy">添加好友</string>
+    <string name="create_normal_team">创建讨论组</string>
+    <string name="team_apply_sending">发送中…</string>
+    <string name="no_team">您还没有群</string>
+    <string name="no_normal_team">您还没有讨论组</string>
+    <string name="team_search_hint">请输入群号进行搜索</string>
+    <string name="team_number_not_exist">群号不存在</string>
+    <string name="team_join">加入群组</string>
+    <string name="team_join_success">成功加入群: %1$s</string>
+    <string name="team_apply_to_join_send_success">申请已发出</string>
+    <string name="has_exist_in_team">已经在群里</string>
+
+    <!-- 消息提醒 -->
+    <string name="toolbar_mutli_new_msg_tips">个联系人发来新消息</string>
+    <string name="toolbar_new_msg_coming_ticker_text"> 有新消息</string>
+    <string name="toolbar_new_msg_general_tips">你收到一条新消息</string>
+    <string name="toolbar_add_buddy_request_tips">请求添加你为好友</string>
+    <string name="toolbar_add_buddy_verify_tips">通过了你的好友请求</string>
+    <string name="toolbar_new_notification_general_tips">你收到一条新通知</string>
+
+    <!-- 自定义通知 -->
+    <string name="custom_notification">自定义通知</string>
+    <string name="select_custom_notification_target">选择发送对象</string>
+    <string name="send_custom_notification_tip">请输入要发送的内容</string>
+    <string name="send_custom_notification_success">自定义通知发送成功</string>
+    <string name="send_custom_notification_failed">自定义通知发送失败</string>
+    <string name="send_custom_notification_to_buddy">发送给好友</string>
+    <string name="send_custom_notification_to_team">发送给群组</string>
+
+    <!-- 消息类型 -->
+    <string name="msg_type_image">图片</string>
+    <string name="msg_type_audio">语音</string>
+    <string name="title_activity_add_buddy">添加好友</string>
+
+    <!-- location -->
+    <string name="location_init_map_error">初始化地图服务失败</string>
+    <string name="location_navigate">导航</string>
+    <string name="self_location">我在这个位置</string>
+    <string name="location_unable_to_get_you">暂时无法获取您的位置</string>
+    <string name="location_loading">正在定位</string>
+    <string name="location_map">地图定位</string>
+    <string name="my_location">我的位置</string>
+    <string name="location_address_unkown">该位置信息暂无</string>
+    <string name="format_mylocation">我的位置：%s</string>
+    <string name="location_address_fail">获取位置信息失败</string>
+    <string name="tools_selected">选择工具</string>
+    <string name="friends_map_navigation_web">在网页中打开</string>
+    <string name="location_open_map_error">打开地图出错</string>
+
+    <!-- about -->
+    <string name="about_custom_button1">自定义1</string>
+    <string name="about_clear_msg_history">清空所有聊天记录</string>
+    <string name="clear_msg_history_success">聊天记录已清空</string>
+
+    <!-- 云信SDK所需文案 -->
+    <string name="nim_status_bar_multi_messages_incoming">%1$d位联系人有新消息</string>
+    <string name="nim_status_bar_ticker_text">%1$s有新消息</string>
+    <string name="nim_status_bar_image_message">%1$s发来一条图片消息</string>
+    <string name="nim_status_bar_audio_message">%1$s发来一条语音消息</string>
+    <string name="nim_status_bar_video_message">%1$s发来一条视频消息</string>
+    <string name="nim_status_bar_file_message">%1$s发来一条文件消息</string>
+    <string name="nim_status_bar_location_message">%1$s分享了一个地理位置</string>
+    <string name="nim_status_bar_notification_message">%1$s: 通知消息</string>
+    <string name="nim_status_bar_custom_message">%1$s: 自定义消息</string>
+    <string name="nim_status_bar_unsupported_message">%1$s: 无法显示该内容</string>
+    <string name="nim_status_bar_hidden_msg_content">你收到一条新消息</string>
+
+    <!--RTS白板-->
+    <string name="doodle">白板</string>
+    <string name="start_session">正在邀请对方，请稍后</string>
+    <string name="callee_reject">对方拒绝了本次请求</string>
+    <string name="callee_ack_timeout">对方未接受请求</string>
+    <string name="receive_session">对方发起白板演示</string>
+    <string name="start_session_record">我发起了白板演示</string>
+    <string name="session_end_record">白板演示已结束</string>
+    <string name="end_session_tip_head">退出白板演示</string>
+    <string name="end_session_tip_content">退出后，你将不再接收白板演示的消息内容</string>
+    <string name="target_has_leave_session">对方已离开</string>
+    <string name="target_has_end_session">对方结束白板演示</string>
+
+    <!-- setting -->
+    <string name="settings">设置</string>
+    <string name="no_disturb">免打扰</string>
+    <string name="msg_notice">消息提醒</string>
+    <string name="setting_about">关于</string>
+    <string name="setting_close">已关闭</string>
+    <string name="no_disturb_tips">在设定的时间段内云信消息将不再提醒</string>
+    <string name="time_from">从</string>
+    <string name="time_to">至</string>
+    <string name="time_from_default">22:00</string>
+    <string name="time_to_default">08:00</string>
+    <string name="black_list">黑名单</string>
+    <string name="msg_speaker">听筒模式</string>
+
+    <!-- 多端登录 -->
+    <string name="multiport_manager">多端登录管理</string>
+    <string name="multiport_logout">下线</string>
+    <string name="computer_version">云信电脑版</string>
+    <string name="web_version">云信网页版</string>
+    <string name="mobile_version">云信移动版</string>
+    <string name="multiport_logging">正在使用</string>
+    <string name="kickout_notify">下线通知</string>
+    <string name="kickout_content">你的帐号被%1$s踢出下线，请确定帐号信息安全</string>
+
+    <!-- 阅后即焚 -->
+    <string name="snapchat_longclick_to_view">按住查看</string>
+    <string name="snapchat_title">阅后即焚</string>
+
+    <!-- 个人名片 -->
+    <string name="birthday">生 日</string>
+    <string name="phone">手 机</string>
+    <string name="email">邮 箱</string>
+    <string name="signature">签 名</string>
+    <string name="head">头 像</string>
+    <string name="user_information">个人信息</string>
+    <string name="nickname">昵 称</string>
+    <string name="alias">备注名</string>
+    <string name="gender">性 别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="other">其他</string>
+    <string name="phone_number">手机号码</string>
+    <string name="set_head_image">设置头像</string>
+    <string name="user_info_update_success">设置成功</string>
+    <string name="user_info_update_cancel">取消更新</string>
+    <string name="user_info_update_failed">设置失败，请重试</string>
+    <string name="head_update_success">头像设置成功</string>
+    <string name="head_update_failed">头像设置失败，请重试</string>
+    <string name="nickname_empty">昵称不能为空</string>
+    <string name="avchat_no_pick_up">未接听</string>
+    <string name="prepare_data">正在准备数据...</string>
+    <string name="agree">同意</string>
+    <string name="reject">拒绝</string>
+    <string name="input_account">请输入账号</string>
+    <string name="user_profile">个人名片</string>
+    <string name="recentMsg">消息</string>
+    <string name="contactList">通讯录</string>
+    <string name="loading">正在加载中···</string>
+
+    <!--我要炫-->
+    <string name="str_jcsk">精彩时刻</string>
+    <string name="str_wdy">微电影</string>
+    <string name="str_trans">转发</string>
+    <string name="life_hot_shop">热门店铺</string>
+    <string name="life_near_shop">附近店铺</string>
+    <string name="cancel">取消</string>
+    <array name="life_near_title">
+        <item>健康养生</item>
+        <item>潮流鞋包</item>
+        <item>时尚服饰</item>
+        <item>箱包珠宝</item>
+        <item>酒水饮料</item>
+        <item>美容美体</item>
+        <item>活色生鲜</item>
+        <item>家居家纺</item>
+        <item>母婴玩具</item>
+        <item>全部分类</item>
+    </array>
+
+
+    <string name="str_hot_comment">热门评论</string>
+    <string name="str_new_comment">最新评论</string>
+    <!--
+       订单状态
+    -->
+    <array name="order_state_title">
+        <item>全部</item>
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>待评价</item>
+    </array>
+
+    <string name="str_submit">发布</string>
+</resources>

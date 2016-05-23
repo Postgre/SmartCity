@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_8"
+    android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/hotshop_item_tv_shop_img"
+        android:layout_width="@dimen/dp_130"
+        android:layout_height="@dimen/dp_70"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/hotshop_item_tv_shop_name"
+        android:layout_width="@dimen/dp_130"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:text="摩卡咖啡店" />
+</LinearLayout>

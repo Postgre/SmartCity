@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_25">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="dsfdas"
+            android:textColor="@color/black1"
+            android:textSize="@dimen/ts_14" />
+
+        <RatingBar
+            style="@style/life_eval_custom_ratingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_31"
+            android:numStars="5"
+            android:stepSize="1.0" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginRight="@dimen/dp_31">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:lineSpacingExtra="@dimen/dp_2"
+            android:maxLines="2"
+            android:text="dsfdas"
+            android:textColor="@color/black1"
+            android:textSize="@dimen/ts_14" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/commodity_ll_container"
+        android:gravity="center_vertical"
+        android:layout_marginRight="@dimen/dp_25"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/ts_15"
+            android:layout_width="0dp"
+
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_marginLeft="@dimen/ts_15"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_marginLeft="@dimen/ts_15"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginRight="@dimen/dp_25"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_37">
+
+        <TextView
+            android:textColor="#666666"
+            android:textSize="@dimen/ts_14"
+            android:layout_centerVertical="true"
+            android:text="规格:M号"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:textColor="#666666"
+            android:textSize="@dimen/ts_14"
+            android:layout_centerVertical="true"
+            android:text="规格:M号"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

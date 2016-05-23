@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/money_bg">
+
+    <ImageView
+        android:id="@+id/icon_qucoumei"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="116dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/quchoumei" />
+
+    <ImageView
+        android:id="@+id/icon_zhaolezi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="43dp"
+        android:layout_marginTop="81dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/zhaolezi" />
+
+    <ImageView
+        android:id="@+id/icon_jiankangxing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="234dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/jiankangxing" />
+
+    <ImageView
+        android:id="@+id/icon_dafuw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="241dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/dafuw" />
+
+    <ImageView
+        android:id="@+id/icon_chaofan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="361dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/caofan" />
+
+    <ImageView
+        android:id="@+id/icon_xueleifeng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="376dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/xueleifeng" />
+</RelativeLayout>

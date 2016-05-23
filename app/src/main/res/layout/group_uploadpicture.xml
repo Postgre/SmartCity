@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/gray" />
+
+    <com.smartcity.customview.MyGridView
+        android:id="@+id/group_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20"
+        android:layout_marginBottom="@dimen/y20"
+        android:paddingLeft="@dimen/x20"
+        android:paddingRight="@dimen/x20"
+        android:paddingTop="@dimen/y10"
+        android:paddingBottom="@dimen/y10"
+        android:background="@color/white"
+        android:horizontalSpacing="@dimen/x10"
+        android:listSelector="@color/black"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/x10" >
+    </com.smartcity.customview.MyGridView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/x15"
+        android:text="选择要上传的相册"
+        android:textColor="@color/gray"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:id="@+id/line_create"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="@dimen/x150"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/x50"
+                android:layout_gravity="center"
+                android:src="@mipmap/quan_jia" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="创建相册"
+            android:textColor="@color/black1"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview_popwindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:divider="@color/gray"
+        android:dividerHeight="@dimen/y1"
+        android:overScrollMode="never"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

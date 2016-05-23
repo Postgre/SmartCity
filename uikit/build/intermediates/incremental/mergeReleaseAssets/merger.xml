@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="G:\ZXCS\SmartCity-Android\uikit\assets"/><source path="G:\ZXCS\SmartCity-Android\uikit\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="G:\ZXCS\SmartCity-Android\uikit\src\release\assets"/></dataSet></merger>

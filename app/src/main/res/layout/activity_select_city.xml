@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+
+        <ImageView
+            android:id="@+id/select_city_iv_cance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:src="@mipmap/icon_quxiao" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:text="选择地区"
+            android:textColor="@color/black1"
+            android:textSize="@dimen/ts_17" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0.5"
+            android:layout_alignParentBottom="true"
+            android:background="#EEEEEE" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_9"
+        android:background="@drawable/city_list_rv_grave">
+
+
+        <EditText
+            android:id="@+id/input_search_query"
+            android:layout_width="match_parent"
+            android:hint="搜索商品"
+            android:drawableLeft="@mipmap/icon_search"
+            android:background="@null"
+            android:drawablePadding="@dimen/dp_3"
+            android:paddingLeft="@dimen/dp_10"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:singleLine="true"
+            android:text="当前选择:武汉全城"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/select_city_tv_shode_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_12"
+            android:drawablePadding="@dimen/dp_3dp"
+            android:drawableRight="@mipmap/icon_zhangkai"
+            android:text="选择区县" />
+    </RelativeLayout>
+
+
+    <com.smartcity.view.cittlist.ContactListViewImpl
+        android:id="@+id/select_city_lv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ffffff"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/line"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:listSelector="#00000000"
+        android:smoothScrollbar="true" />
+</LinearLayout>
+

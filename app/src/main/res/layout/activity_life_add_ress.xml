@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <include layout="@layout/life_head" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46">
+
+            <TextView
+                android:id="@+id/add_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:singleLine="true"
+                android:text="姓名"
+                android:textColor="@color/guide_view_bg"
+                android:textSize="@dimen/ts_15" />
+
+            <EditText
+                android:id="@+id/add_et_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_38"
+                android:layout_toRightOf="@+id/add_tv_name"
+                android:background="@null" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0.5"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:background="#2b2b2b" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46">
+
+            <TextView
+                android:id="@+id/add_tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:singleLine="true"
+                android:text="手机号码"
+                android:textColor="@color/guide_view_bg"
+                android:textSize="@dimen/ts_15" />
+
+            <EditText
+                android:inputType="phone"
+                android:id="@+id/add_et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/add_tv_phone"
+                android:background="@null" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0.5"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:background="#2b2b2b" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/add_rl_chose_prov"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46">
+
+            <TextView
+                android:id="@+id/add_tv_prod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:singleLine="true"
+                android:text="请选择.."
+                android:textColor="@color/black1"
+                android:textSize="@dimen/ts_15" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_12"
+                android:src="@mipmap/icon_xuanxiang" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0.5"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:background="#2b2b2b" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/add_et_detail_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_93"
+            android:background="@null"
+            android:gravity="top|left"
+            android:hint="详细地址"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingTop="@dimen/dp_12" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/add_rl_is_default_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:layout_marginTop="@dimen/dp_18"
+        android:background="@color/white">
+        <TextView
+
+            android:textColor="@color/add_addres_tv_bg"
+            android:id="@+id/add_tv_location"
+            android:textSize="@dimen/ts_15"
+            android:text="设为默认地址"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/add_iv_location"
+            android:background="@drawable/add_addres_iv_bg"
+            android:layout_marginRight="@dimen/dp_5"
+            android:layout_toLeftOf="@+id/add_tv_location"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/dp_23"
+            android:layout_height="@dimen/dp_30" />
+    </RelativeLayout>
+</LinearLayout>

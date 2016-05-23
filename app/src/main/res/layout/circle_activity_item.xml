@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/group_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/circle_u4" />
+
+            <TextView
+                android:id="@+id/biaoqian"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="3dp"
+                android:background="@mipmap/shijianbiaoqian1" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="135dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="一路向西"
+                        android:textColor="@color/dodgerblue"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/allpeople"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:text="总需人数:100人"
+                        android:textColor="@color/black1"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/stillpeople"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:text="剩余人数:40人"
+                        android:textColor="@color/black1"
+                        android:textSize="11sp" />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/zunxiang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    android:background="@mipmap/c_zunxiang"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:text="¥ 2"
+                    android:textColor="@color/red"
+                    android:textSize="17sp" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/price"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/kan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/c_liulan"
+                        android:drawablePadding="4dp"
+                        android:gravity="center"
+                        android:text="360"
+                        android:textColor="@color/gray2"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/collect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:drawableLeft="@mipmap/c_weishoucang"
+                        android:drawablePadding="4dp"
+                        android:gravity="center"
+                        android:text="150"
+                        android:textColor="@color/gray2"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/miaosha"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@mipmap/c_miaoshazhong"
+                    android:gravity="center" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

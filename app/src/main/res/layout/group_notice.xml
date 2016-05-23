@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/y10"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@drawable/group_notice_bg"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/group_notice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x10"
+            android:text="7日游"
+            android:textColor="@color/blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/group_notice_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/y10"
+            android:padding="@dimen/x10"
+            android:text="TextView"
+            android:textColor="@color/black1"
+            android:textSize="12sp" />
+
+        <include layout="@layout/line_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/group_notice_time"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x10"
+                android:text="TextView"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+            <ImageView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/car_shanchu"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.smartcity.activity.LoginActivity">
+
+    <!-- <include
+         android:id="@+id/toolbar"
+         layout="@layout/toolbar" />-->
+
+    <LinearLayout
+        android:id="@+id/loginLinearLayout"
+        style="@style/loginMargin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/userIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"
+                android:background="@mipmap/icon_user" />
+
+            <EditText
+                android:id="@+id/userEditText"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_toRightOf="@+id/userIcon"
+                android:background="@null"
+                android:hint="输入手机号码"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColorHint="@color/text_hint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/userIcon"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/pwdIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"
+                android:background="@mipmap/icon_pwd" />
+
+            <EditText
+                android:id="@+id/pwdEditText"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_toRightOf="@+id/pwdIcon"
+                android:background="@null"
+                android:hint="输入登录密码,至少7位数"
+                android:inputType="textPassword"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColorHint="@color/text_hint" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pwdIcon"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/forgetPasswordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:text="忘记密码" />
+
+
+        <Button
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/round_green_4dp"
+            android:text="登录"
+            android:textColor="@color/white" />
+
+
+        <Button
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/playerRegisterButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/round_green_4dp"
+            android:text="玩家注册"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</LinearLayout>

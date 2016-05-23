@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.smartcity.pulltofresh.PullToRefreshRecycleView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/micro_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrHeaderTextColor="#344a5d"></com.smartcity.pulltofresh.PullToRefreshRecycleView>
+
+</FrameLayout>

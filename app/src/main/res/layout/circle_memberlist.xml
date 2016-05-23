@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/x120"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/transparent"
+        fresco:placeholderImageScaleType="fitCenter"
+        fresco:pressedStateOverlayImage="@color/transparent"
+        fresco:progressBarAutoRotateInterval="1000"
+        fresco:progressBarImage="@drawable/progress_bar"
+        fresco:progressBarImageScaleType="centerInside"
+        fresco:retryImageScaleType="centerCrop"
+        fresco:roundAsCircle="true"
+        fresco:roundedCornerRadius="180dp" />
+
+    <ImageView
+        android:id="@+id/lingxiu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/c_lingxiu"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/img"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+</RelativeLayout>

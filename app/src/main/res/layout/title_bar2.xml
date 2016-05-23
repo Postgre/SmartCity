@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/title_bar_style">
+
+    <ImageView
+        android:id="@+id/back_img"
+        android:layout_width="@dimen/x90"
+        android:layout_height="@dimen/x90"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/x25"
+        android:src="@mipmap/w_back_left"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/left_sao"
+        android:layout_width="@dimen/x90"
+        android:layout_height="@dimen/x90"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/x25"
+        android:src="@mipmap/icon_scan"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/title_rela"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/x90"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/title_tvs"
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x15"
+            android:layout_alignBottom="@id/title_tv"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_toRightOf="@id/title_tv"
+            android:src="@mipmap/w_jiantou_down"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/right_fq"
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/x90"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/x15"
+        android:src="@mipmap/icon_fq"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/x90"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:padding="@dimen/x25"
+        android:text="完成"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/right_search"
+        android:layout_width="@dimen/x90"
+        android:layout_height="@dimen/x90"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/right_fq"
+        android:padding="@dimen/x25"
+        android:src="@mipmap/sousuo"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/right_imag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:background="@mipmap/pengyouquan"
+        android:padding="@dimen/x20" />
+
+    <ImageView
+        android:id="@+id/right_img2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@id/right_imag"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="50dp"
+        android:background="@mipmap/tongxunlu"
+        android:padding="@dimen/x20" />
+
+    <TextView
+        android:id="@+id/edittext_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@id/right_sousuo"
+        android:layout_toRightOf="@id/back_img"
+        android:background="@mipmap/sousuokuang"
+        android:drawablePadding="@dimen/x10"
+        android:paddingLeft="@dimen/x25"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

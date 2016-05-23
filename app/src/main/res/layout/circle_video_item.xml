@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y380"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@drawable/rect_white" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y266" >
+            <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+                android:id="@+id/custom_videoplayer_standard"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/video_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/df"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/sp_bofangjianhong"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/video_introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/y20"
+                android:text="黄山归来不看岳，九寨归来不看水"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y114"
+            android:layout_alignParentBottom="true" >
+
+            <TextView
+                android:id="@+id/video_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x100"
+                android:paddingTop="@dimen/x15"
+                android:text="7天游"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/video_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/x100"
+                android:drawableLeft="@mipmap/sp_bofangjianhui"
+                android:drawablePadding="@dimen/x15"
+                android:layout_marginBottom="@dimen/x10"
+                android:text="280"
+                android:textColor="@color/gray"
+                android:textSize="10sp" />
+            <LinearLayout android:layout_width="@dimen/x200"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+                <ImageView android:layout_width="@dimen/x1"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray"/>
+                <TextView 
+                    android:id="@+id/video_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/x20"
+                    android:gravity="center"
+                    android:text="转发分享"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp"
+                    android:drawableTop="@mipmap/icon_fenxiang"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/video_img"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y80"
+            android:layout_marginLeft="@dimen/x8"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/y60"
+            android:src="@mipmap/xiaozutouxiang"/>
+    </RelativeLayout>
+
+</LinearLayout>

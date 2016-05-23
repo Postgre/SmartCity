@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.smartcity">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- 权限声明 -->
+    <!-- 访问网络状态 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 如果需要实时音视频通话模块，下面的权限也是必须的。否则，可以不加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!--
+        高德地图
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
+    <permission
+        android:name="com.smartcity.permission.RECEIVE_MSG"
+        android:protectionLevel="signature" />
+    <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <uses-permission android:name="com.smartcity.permission.RECEIVE_MSG" />
+    <!-- 屏幕适配 -->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/citylogos"
+        android:label="@string/smartcity_app_name"
+        android:supportsRtl="true"
+        android:theme="@style/LightBaseActionBarTheme"
+        tools:replace="android:label">
+
+        <!--1e127e51cd8c67f2be33827375533cb0
+       高德apikey    7c10959da0f987df05b46340f737941d
+   -->
+        <!--        高德apikey    7c10959da0f987df05b46340f737941d -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="7e1d06cb68a6863b7a26e477c240c4c8" />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 注册 -->
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.circle.Allcircle_Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.circle.NewAllcircle_Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.circle.AllCircleDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.circle.CircleInfoDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!--我要炫-->
+        <activity
+            android:name=".activity.chw.wyx.CoolActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.chw.wyx.AddCoolActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.chw.wyx.CoolDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.chw.wyx.MyCoolActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 圈子详情 -->
+        <activity
+            android:name=".activity.circle.CircleDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 圈子成员 -->
+        <activity
+            android:name=".activity.circle.Circle_MemberActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 圈子设置 -->
+        <activity
+            android:name=".activity.circle.Circle_SetActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 圈子二维码 -->
+        <activity
+            android:name=".activity.circle.Circle_CodeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 圈子 -->
+        <activity
+            android:name=".activity.circle.Circle_People_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 圈子活动 -->
+        <activity
+            android:name=".activity.circle.Circle_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 创建相册 -->
+        <activity
+            android:name=".activity.circle.Circle_CreatePhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 通知 -->
+        <activity
+            android:name=".activity.circle.Circle_NoticeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 相册 -->
+        <activity
+            android:name=".activity.circle.Circle_PhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 上传图片 -->
+        <activity
+            android:name=".activity.circle.Circle_UploadPictureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 视频 -->
+        <activity
+            android:name=".activity.circle.Circle_VideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 上传视频 -->
+        <activity
+            android:name=".activity.circle.Circle_VideoUploadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 创建圈子 -->
+        <activity
+            android:name=".activity.circle.Circle_CreateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 圈子标签 -->
+        <activity
+            android:name=".activity.circle.Circle_Biaoqian"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 本地相册 -->
+        <activity
+            android:name=".activity.LocalAlbum"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 相册详情 -->
+        <activity
+            android:name=".activity.LocalAlbumDetail"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 登录 -->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 选择城市 -->
+        <activity
+            android:name=".activity.SelectCityActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 商铺列表 -->
+        <activity
+            android:name=".activity.life.ShopListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 圈子搜索 -->
+        <activity
+            android:name=".activity.circle.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 店铺首页 -->
+        <activity
+            android:name=".activity.life.ShopHomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 店铺简介 -->
+        <activity
+            android:name=".activity.life.ShopProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 店铺分类 -->
+        <activity
+            android:name=".activity.life.ShopClassifyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 商品详情 -->
+        <activity
+            android:name=".activity.life.ShopDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.desmond.squarecamera.CameraActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.desmond.squarecamera.RuntimePermissionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 购物车 -->
+        <activity
+            android:name=".activity.life.LifeCratActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 商品评论列表 -->
+
+        <activity
+            android:name=".activity.life.CommodityReviewListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 商品评价 -->
+
+        <activity
+            android:name=".activity.life.LifeEvaluationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 收货地址列表 -->
+        <activity
+            android:name=".activity.life.LifeAddressListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.life.LifeOrderActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 订单页面 -->
+        <activity
+            android:name=".activity.life.LifeOrderStateActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 添加地址 -->
+        <activity
+            android:name=".activity.life.LifeAddRessActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 24小时首页 -->
+        <activity
+            android:name=".activity.chw.twentyfourhour.TwentyFourHourActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 高德地图 -->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <!-- 玩家挣钱 -->
+        <activity
+            android:name=".activity.money.MoneyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.money.QuCouMeiActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.money.ZhaoLeZiActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.money.JianKangXingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.money.DaFuWengActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.money.ChaoFanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.money.XueLeiFengActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 聊天主界面 -->
+        <activity
+            android:name=".activity.circle.NewChatMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 通讯录 -->
+        <activity
+            android:name=".activity.circle.MyContactActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 云信配置 -->
+
+        <activity
+            android:name=".yx.main.activity.SystemMessageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/OverlayBaseActionBarTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <activity
+            android:name=".yx.main.activity.TeamListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".yx.contact.activity.BlackListActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".yx.contact.activity.AddFriendActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".yx.session.activity.MessageInfoActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".yx.session.activity.MessageHistoryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".yx.session.search.SearchMessageActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".yx.main.activity.MultiportActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".yx.contact.activity.UserProfileActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".yx.contact.activity.UserProfileEditItemActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".yx.team.activity.AdvancedTeamJoinActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".yx.team.activity.AdvancedTeamSearchActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 网易云信 -->
+
+
+        <!--
+             APP key, 可以在这里设置，也可以在 SDKOptions 中提供。
+            如果 SDKOptions 中提供了，取 SDKOptions 中的值。
+        -->
+        <meta-data
+            android:name="com.netease.nim.appKey"
+            android:value="62e46436b0ef053362f299f7ce44c8d5" />
+
+        <!-- 声明云信后台服务，如需保持后台推送，使用独立进程效果会更好。 -->
+        <service
+            android:name="com.netease.nimlib.service.NimService"
+            android:process=":core" />
+
+        <service
+            android:name="com.netease.nimlib.service.NimService$Aux"
+            android:process=":core" />
+
+        <!-- 云信SDK的监视系统启动和网络变化的广播接收器，用户开机自启动以及网络变化时候重新登录，
+            保持和 NimService 同一进程 -->
+        <receiver
+            android:name="com.netease.nimlib.service.NimReceiver"
+            android:exported="false"
+            android:process=":core">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 云信进程间通信 Receiver -->
+        <receiver android:name="com.netease.nimlib.service.ResponseReceiver" />
+
+        <!-- 安卓保活配置 -->
+        <service
+            android:name="com.netease.cosine.core.CosineService"
+            android:process=":cosine" />
+
+        <!-- 申明自定义通知的广播接收器，第三方APP集成时，action中的com.netease.nim.demo请替换为自己的包名 -->
+        <!-- 需要权限申明 <uses-permission android:name="com.netease.nim.demo.permission.RECEIVE_MSG"/> -->
+        <receiver
+            android:name=".yx.receiver.CustomNotificationReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.smartcity.ACTION.RECEIVE_CUSTOM_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.netease.cosine.target.CosineReceiver"
+            android:exported="true"
+            android:process=":cosine" />
+
+        <meta-data
+            android:name="com.netease.cosine.target"
+            android:value="" />
+        <meta-data
+            android:name="com.netease.cosine.target.receiver"
+            android:value="com.netease.nimlib.service.NimReceiver" />
+
+        <activity android:name=".activity.circle.Lift_ContentActivity"></activity>
+    </application>
+
+</manifest>

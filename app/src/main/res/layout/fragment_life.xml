@@ -1,0 +1,244 @@
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--
+        顶部搜索
+    -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:background="@mipmap/bj_jianbian">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_8">
+
+            <TextView
+                android:id="@+id/life_index_tv_location"
+                android:layout_width="@dimen/dp_53"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/dp_1"
+                android:drawableRight="@mipmap/icon_xiaosanjiao"
+                android:gravity="center"
+                android:text="武汉"
+                android:textColor="@color/white"
+                android:textSize="@dimen/ts_14" />
+
+            <EditText
+                android:paddingLeft="@dimen/dp_3"
+                android:textSize="@dimen/ts_11"
+                android:drawablePadding="@dimen/dp_3"
+                android:drawableLeft="@mipmap/icon_search"
+                android:textColorHint="@color/black1"
+                android:hint="搜索你想要的"
+                android:id="@+id/life_index_et_seacher"
+                android:layout_width="@dimen/dp_260"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@drawable/life_index_et_bg" />
+
+            <ImageView
+                android:id="@+id/life_index_iv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_7"
+                android:src="@mipmap/icon_youxiaoxi" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!--
+                生活轮播图
+            -->
+            <com.jude.rollviewpager.RollPagerView
+                android:id="@+id/life_index_auto_page"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_185"
+                app:rollviewpager_play_delay="3000" />
+
+
+            <!--
+                分类
+            -->
+
+
+            <GridView
+                android:id="@+id/life_index_gv_classify"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_135"
+                android:layout_marginTop="@dimen/dp_15"
+                android:numColumns="5"
+                android:scrollbars="none"
+                android:verticalSpacing="@dimen/dp_15" />
+
+
+            <!--
+            热门店铺
+            -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_11">
+
+                <TextView
+                    android:id="@+id/life_tv_hot_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:singleLine="true"
+                    android:text="@string/life_hot_shop"
+                    android:textColor="@color/black1"
+                    android:textSize="@dimen/ts_14" />
+
+                <View
+                    android:id="@+id/life_index_view_hot"
+                    android:layout_width="@dimen/dp_1"
+                    android:layout_height="@dimen/dp_14"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_9"
+                    android:layout_toRightOf="@+id/life_tv_hot_shop"
+                    android:background="@color/hot_shop" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_9"
+                    android:layout_toRightOf="@+id/life_index_view_hot"
+                    android:text="Hot shop"
+                    android:textColor="@color/hot_shop"
+                    android:textSize="@dimen/ts_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:singleLine="true"
+                    android:text="更多"
+                    android:textColor="@color/progressbar_app"
+                    android:textSize="@dimen/ts_12" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0.5"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@color/divider_day" />
+            </RelativeLayout>
+            <!--
+                热门店铺内容
+            -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/life_index_recy_hot_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_117"
+                android:layout_marginTop="@dimen/dp_12" />
+
+            <!--
+            附近店铺
+            -->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_24">
+
+                <TextView
+                    android:id="@+id/life_tv_near_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:singleLine="true"
+                    android:text="@string/life_near_shop"
+                    android:textColor="@color/black1"
+                    android:textSize="@dimen/ts_14" />
+
+                <View
+                    android:id="@+id/life_index_view_near"
+                    android:layout_width="@dimen/dp_1"
+                    android:layout_height="@dimen/dp_14"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_9"
+                    android:layout_toRightOf="@+id/life_tv_near_shop"
+                    android:background="@color/hot_shop" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_9"
+                    android:layout_toRightOf="@+id/life_index_view_near"
+                    android:text="Shop nearby"
+                    android:textColor="@color/hot_shop"
+                    android:textSize="@dimen/ts_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:singleLine="true"
+                    android:text="更多"
+                    android:textColor="@color/progressbar_app"
+                    android:textSize="@dimen/ts_12" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0.5"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@color/divider_day" />
+            </RelativeLayout>
+            <!--
+            附近店铺内容
+            -->
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/life_index_tab_near_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_36"
+                app:tabIndicatorColor="@color/black"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/black1" />
+
+            <com.smartcity.customview.CustomViewPager
+                android:id="@+id/life_index_pag_near_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

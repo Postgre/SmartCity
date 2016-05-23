@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/post_edit_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:background="@color/bg_gray"
+            android:orientation="vertical">
+
+            <include layout="@layout/title_bar1"></include>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/text_biaoqian"
+                    style="@style/text_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="标签：" />
+
+                <ImageView
+                    android:id="@id/biaoqian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/c_biaoqian" />
+
+                <TextView
+                    style="@style/text_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/biaoqian"
+                    android:layout_toRightOf="@id/text_biaoqian"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入标签..."
+                    android:visibility="gone"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/biaoqian_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/biaoqian"
+                    android:layout_toRightOf="@id/text_biaoqian"
+                    android:background="@null"
+                    android:visibility="visible"/>
+            </RelativeLayout>
+
+            <include layout="@layout/line_gray"></include>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/text_circle"
+                    style="@style/text_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="圈子名称：" />
+
+                <com.smartcity.customview.ClearEditText
+                    style="@style/text_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/text_circle"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入名称..." />
+            </RelativeLayout>
+
+            <include layout="@layout/line_gray"></include>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="@color/bg_gray">
+
+                <TextView
+                    style="@style/text_10_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="@string/circle_wordnumber" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/post_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="100dip"
+                    android:background="#ffffff"
+                    android:gravity="top"
+                    android:hint="@string/circle_introduce"
+                    android:maxLength="140"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/post_text_remain"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:gravity="right|center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="10dp"
+                    android:text="0/140"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/post_scrollview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="10dp"
+                    android:scrollbars="none"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/post_pic_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <com.smartcity.customview.FilterImageView
+                            android:id="@+id/post_add_pic"
+                            android:layout_width="@dimen/dp_100"
+                            android:layout_height="@dimen/dp_100"
+                            android:src="@mipmap/post_add_pic" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <com.smartcity.customview.MyGridView
+                    android:id="@+id/grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="5"></com.smartcity.customview.MyGridView>
+                <TextView
+                    android:id="@+id/post_pic_remain"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:gravity="right|center_vertical"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:paddingRight="@dimen/dp_5"
+                    android:text="0/9"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/text_15_gray"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:drawableLeft="@mipmap/c_tishi"
+                android:gravity="center_vertical"
+                android:text="@string/circle_prompt" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/pagerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.smartcity.customview.AlbumViewPager
+            android:id="@+id/albumviewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white" />
+
+        <include
+            android:id="@+id/album_item_header_bar"
+            layout="@layout/album_item_header_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" />
+    </FrameLayout>
+</LinearLayout>

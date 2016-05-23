@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartcity.activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mainToolBar"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/title_bar1" />
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/mainToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/meili_navigation"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:id="@+id/msgRadioButton"
+            style="@style/homeToolBar"
+            android:drawableTop="@drawable/btn_tab_group"
+            android:text="@string/recentMsg"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/telRadioButton"
+            style="@style/homeToolBar"
+            android:drawableTop="@drawable/btn_tab_fans"
+            android:text="@string/contactList"
+            android:checked="false" />
+    </RadioGroup>
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/life_bg"
+    android:layout_height="@dimen/dp_50"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/life_head_back"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/dp_12">
+
+        <ImageView
+            android:layout_width="@dimen/dp_9"
+            android:layout_height="@dimen/dp_16"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_fanghui" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/life_head_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:textColor="@color/black1"
+            android:textSize="@dimen/ts_16"
+            android:id="@+id/life_head_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="true" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/life_head_right_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_12">
+
+        <ImageView
+            android:id="@+id/life_head_iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_fenlei" />
+    </FrameLayout>
+</RelativeLayout>

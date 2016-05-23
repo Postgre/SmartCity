@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/classify_right_rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:background="#dee0d3">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/classify_right_iv_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_26" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/classify_right_iv_show"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/classify_right_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_marginTop="@dimen/dp_35"
+                android:singleLine="true"
+
+                android:textColor="@color/black1"
+                android:textSize="@dimen/ts_13" />
+
+
+            <TextView
+                android:id="@+id/classify_right_tv_name"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_3"
+                android:singleLine="true"
+                android:textColor="@color/black1"
+                android:textSize="@dimen/ts_13" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/classify_right_ll_bootm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_102">
+
+        <GridView
+            android:id="@+id/classify_item_gv_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="3"
+            android:verticalSpacing="@dimen/dp_10" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_gravity="bottom"
+        android:background="@color/white" />
+</LinearLayout>

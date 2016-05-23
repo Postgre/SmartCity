@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/x25"
+            android:text="相册名"
+            android:textColor="@color/black1" />
+
+        <com.smartcity.customview.EditTexts
+            android:id="@+id/photo_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:drawableRight="@mipmap/icon_delete"
+            android:padding="@dimen/x15"
+            android:textColor="@color/black1"
+            android:textColorHint="@color/black1"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <com.smartcity.customview.EditTexts
+            android:id="@+id/photo_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y300"
+            android:layout_margin="@dimen/x15"
+            android:background="@drawable/rect_gray"
+            android:drawableRight="@mipmap/icon_delete"
+            android:hint="相册描述"
+            android:padding="@dimen/x15"
+            android:textColor="@color/black1"
+            android:textColorHint="@color/black1"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>

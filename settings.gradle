@@ -1,0 +1,1 @@
+include ':app', ':http', ':pulltorefresh', ':squarecamera', ':share', ':uikit'

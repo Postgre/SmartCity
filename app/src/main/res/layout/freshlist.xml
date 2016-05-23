@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/title_bar1" />
+
+    <TextView
+        android:id="@+id/circle_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="申请加入圈子"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <com.smartcity.pulltofresh.PullToRefreshListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/circle_apply"
+        android:layout_below="@id/include"
+        android:background="@color/white"
+        android:fadingEdge="none"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:scrollbars="none" >
+    </com.smartcity.pulltofresh.PullToRefreshListView>
+
+</RelativeLayout>

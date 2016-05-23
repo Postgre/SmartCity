@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.smartcity"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    //签名
+    signingConfigs {
+        relealse {
+            storeFile file("smartcity.jks")
+            storePassword KEYSTORE_PASSWORD
+            keyAlias "smartcity"
+            keyPassword KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.relealse
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.relealse
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile project(path: ':http')
+    compile project(path: ':pulltorefresh')
+    compile(name: 'base-adapter-library-release', ext: 'aar')
+    compile(name: 'multi-image-selector-release', ext: 'aar')
+    compile project(path: ':squarecamera')
+    compile 'com.jude:rollviewpager:1.2.9'
+    //    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:23.0.3'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.android.support:support-v4:23.0.3'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.facebook.fresco:fresco:0.8.1'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.jude:rollviewpager:1.2.9'
+//    compile 'com.android.support:support-v4:23.3.0'
+//    compile files('libs/uil.jar')
+    compile 'com.zhy:flowlayout-lib:1.0.3'
+    compile 'com.github.cpoopc:scrollablelayoutlib:1.0.0'
+    compile files('libs/cosinesdk.jar')
+    compile project(':uikit')
+    compile project(path: ':share')
+//    compile project(path: ':pay')
+    compile 'fm.jiecao:jiecaovideoplayer:3.1'
+}
