@@ -160,7 +160,7 @@ public class LifeOrderActivity extends LifeBaseActivity {
         return R.layout.activity_life__order;
     }
 
-    @OnClick({R.id.life_order_rl_time, R.id.life_order_rl_paystate,R.id.life_order_rl_ship_method})
+    @OnClick({R.id.life_order_rl_time, R.id.life_order_rl_paystate, R.id.life_order_rl_ship_method})
     public void showSelectTime(View view) {
         switch (view.getId()) {
             case R.id.life_order_rl_time:
