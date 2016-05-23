@@ -16,17 +16,16 @@ import com.smartcity.view.ShopHomeView;
 /**
  * Created by Administrator on 2016/5/20.
  */
-public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadShopInfoListener<LifeShopModel>,ShopHomeModelImpl.LoadCouPonListListener<CouponModel>,ShopHomeModelImpl.LoadShopGoodsListener<LifeGoodsModel>,ShopHomeModelImpl.AddFovShopOrGoodListener {
+public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadShopInfoListener<LifeShopModel>, ShopHomeModelImpl.LoadCouPonListListener<CouponModel>, ShopHomeModelImpl.LoadShopGoodsListener<LifeGoodsModel>, ShopHomeModelImpl.AddFovShopOrGoodListener {
 
     private final String id;
-    private  ShopHomeView shopHomeView;
-    private  ShopHomeModel shopHomeModel;
-    private  String shopId;
+    private ShopHomeView shopHomeView;
+    private ShopHomeModel shopHomeModel;
+    private String shopId;
     private final String apikey;
     private LifeShopModel lifeShopModel;
 
-    public ShopHomePresenter(String shopId, ShopHomeView shopHomeView)
-    {
+    public ShopHomePresenter(String shopId, ShopHomeView shopHomeView) {
         shopHomeModel = new ShopHomeModelImpl();
         apikey = MyApplication.getApikey();
         this.shopHomeView = shopHomeView;
@@ -52,29 +51,21 @@ public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadS
 
     private boolean isLoadGoods;
 
-    public void initGoodsList(int type,int pageNo,int pageSize)
-    {
-        if(!isLoadGoods)
-        {
+    public void initGoodsList(int type, int pageNo, int pageSize) {
+        if (!isLoadGoods) {
             shopHomeView.showLoading("正在获取商品列表数据...");
-            shopHomeModel.getGoodsList(apikey,shopId,pageNo,pageSize,type,this);
+            shopHomeModel.getGoodsList(apikey, shopId, pageNo, pageSize, type, this);
             isLoadGoods = true;
-        }
-        else
-        {
+        } else {
             shopHomeView.showToast("正在loading...");
         }
     }
 
-    public void initShopInfo()
-    {
+    public void initShopInfo() {
 
-        if(!TextUtils.isEmpty(apikey))
-        {
-            shopHomeModel.getShopInfo(apikey,shopId,this);
-        }
-        else
-        {
+        if (!TextUtils.isEmpty(apikey)) {
+            shopHomeModel.getShopInfo(apikey, shopId, this);
+        } else {
             shopHomeView.startLogin();
         }
 
@@ -83,48 +74,38 @@ public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadS
     @Override
     public void onLoadInfoSuccess(LifeShopModel lifeShopModel) {
         this.lifeShopModel = lifeShopModel;
-       // shopHomeView.set
-        LogTool.e("test",lifeShopModel.toString());
+        // shopHomeView.set
+        LogTool.e("test", lifeShopModel.toString());
     }
 
     @Override
     public void onLaoInfoError(String msg) {
-        if(TextUtils.isEmpty(msg))
-        {
+        if (TextUtils.isEmpty(msg)) {
             shopHomeView.startLogin();
-        }
-        else
-        {
+        } else {
             shopHomeView.showToast(msg);
         }
 
     }
 
-    public void initCouponList()
-    {
-        shopHomeModel.getCouPonList(apikey,shopId,this);
+    public void initCouponList() {
+        shopHomeModel.getCouPonList(apikey, shopId, this);
     }
 
     @Override
     public void onLoadCouPonSuccess(CouponModel couponModel) {
-        if(null != couponModel && null != couponModel.getData() && couponModel.getData().size()>0)
-        {
+        if (null != couponModel && null != couponModel.getData() && couponModel.getData().size() > 0) {
             shopHomeView.setCouponList(couponModel);
-        }
-        else
-        {
+        } else {
             shopHomeView.showToast("没有优惠券!");
         }
     }
 
     @Override
     public void onLaoCouPonError(String msg) {
-        if(TextUtils.isEmpty(msg))
-        {
+        if (TextUtils.isEmpty(msg)) {
             shopHomeView.startLogin();
-        }
-        else
-        {
+        } else {
             shopHomeView.showToast(msg);
         }
     }
@@ -133,12 +114,9 @@ public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadS
     public void onLoadGoodsSuccess(LifeGoodsModel goodsModel) {
         shopHomeView.hideLoading();
         isLoadGoods = false;
-        if(null != goodsModel && null != goodsModel.getData() && goodsModel.getData().size()>0)
-        {
+        if (null != goodsModel && null != goodsModel.getData() && goodsModel.getData().size() > 0) {
             shopHomeView.setGoodsList(goodsModel);
-        }
-        else
-        {
+        } else {
             shopHomeView.showToast("没有商品!");
         }
     }
@@ -147,38 +125,30 @@ public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadS
     public void onLaoGoodsError(String msg) {
         shopHomeView.hideLoading();
         isLoadGoods = false;
-        if(TextUtils.isEmpty(msg))
-        {
+        if (TextUtils.isEmpty(msg)) {
             shopHomeView.startLogin();
-        }
-        else
-        {
+        } else {
             shopHomeView.showToast(msg);
         }
     }
 
     //收藏类别：1商品 2店铺
-    public void addFovShopOrShop(LifeGoodsModel.DataBean model)
-    {
+    public void addFovShopOrShop(LifeGoodsModel.DataBean model) {
 
-        if(null !=lifeShopModel)
-        {
+        if (null != lifeShopModel) {
             shopHomeView.showLoading("正在收藏中..");
             FovShopGood fovShopGood = new FovShopGood();
             fovShopGood.setCustomerId(id);
             //商品
 
-            if(null != model)
-            {
+            if (null != model) {
                 fovShopGood.setType(String.valueOf(1));
                 fovShopGood.setFavId(String.valueOf(model.getId()));
                 fovShopGood.setPicUrl(model.getPictureUrl());
                 fovShopGood.setPrice(model.getPrice());
                 fovShopGood.setDesc(model.getDescContent());
                 fovShopGood.setFavName(model.getGoodsName());
-            }
-            else
-            {
+            } else {
                 LifeShopModel.DataBean data = lifeShopModel.getData();
                 fovShopGood.setType(String.valueOf(2));
 
@@ -186,7 +156,7 @@ public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadS
                 fovShopGood.setPicUrl(data.getBgImage());
             }
 
-            shopHomeModel.addFovShopOrGood(apikey,fovShopGood,this);
+            shopHomeModel.addFovShopOrGood(apikey, fovShopGood, this);
         }
     }
 
@@ -200,12 +170,9 @@ public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadS
     @Override
     public void onaddError(String msg) {
         shopHomeView.hideLoading();
-        if(TextUtils.isEmpty(msg))
-        {
+        if (TextUtils.isEmpty(msg)) {
             shopHomeView.startLogin();
-        }
-        else
-        {
+        } else {
             shopHomeView.showToast(msg);
         }
     }
