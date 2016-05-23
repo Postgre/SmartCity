@@ -181,7 +181,6 @@ public class LifeOrderActivity extends LifeBaseActivity {
             default:
                 break;
         }
-
     }
 
 }
