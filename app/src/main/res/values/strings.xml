@@ -442,4 +442,9 @@
     </array>
 
     <string name="str_submit">发布</string>
+
+    <string name="str_hot_ms">热门秒杀</string>
+    <string name="str_new_jx">最新揭晓</string>
+    <string name="str_sd_share">晒单分享</string>
+    <string name="str_wj_money">玩家挣钱</string>
 </resources>
