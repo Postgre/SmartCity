@@ -46,10 +46,8 @@ public class LifeOrderActivity extends LifeBaseActivity {
 
     @Override
     protected void initViews() {
-
         initTime();
         initPayType();
-
         initShipMethod();
     }
 
