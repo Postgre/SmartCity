@@ -1,15 +1,12 @@
 package com.smartcity.activity.life;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.smartcity.R;
 import com.smartcity.customview.LifeListView;
 import com.smartcity.http.model.LifeOrderSelectType;
-import com.smartcity.utils.LogTool;
 import com.zhy.base.adapter.ViewHolder;
 import com.zhy.base.adapter.abslistview.CommonAdapter;
 
