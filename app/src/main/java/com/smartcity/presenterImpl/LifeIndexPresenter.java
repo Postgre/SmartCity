@@ -14,12 +14,10 @@ import com.smartcity.utils.SharedPreferencesUtil;
 import com.smartcity.view.ILifeIndexNearView;
 import com.smartcity.view.ILifeIndexView;
 
-import java.util.List;
-
 /**
  * Created by Yancy on 2016/5/19.
  */
-public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnGetHotShopOrBannerListener<HopShopAndBanner>, LifeIndexModelImpl.OnGetClassifyShopListener<LifeClassifyModel>, LifeIndexModelImpl.OnGetNearShopListener<HopShopAndBanner>,LifeIndexModelImpl.OnGetBannerAndHotListener<LifeBannerAndHotModel> {
+public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnGetHotShopOrBannerListener<HopShopAndBanner>, LifeIndexModelImpl.OnGetClassifyShopListener<LifeClassifyModel>, LifeIndexModelImpl.OnGetNearShopListener<HopShopAndBanner>, LifeIndexModelImpl.OnGetBannerAndHotListener<LifeBannerAndHotModel> {
 
     private LifeIndexModel model;
     private String apikey;
@@ -59,15 +57,15 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
 
     private void init() {
-       // initHotOrBanner();
-      //  initClassify();
+        // initHotOrBanner();
+        //  initClassify();
 
         initBannerAndClassify();
     }
 
 
     private void initBannerAndClassify() {
-        model.getBannerAndClassify(apikey,this);
+        model.getBannerAndClassify(apikey, this);
     }
 
     private void initClassify() {
@@ -115,11 +113,11 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
         switch (type) {
             case LifeIndexModelImpl.HOT_SHOP:
                 //设置首页热门商品
-              //  lifeIndexView.setHotShop(shopAndBanner);
+                //  lifeIndexView.setHotShop(shopAndBanner);
                 break;
             default:
                 //设置首页轮播图
-             //   lifeIndexView.setBanner(shopAndBanner);
+                //   lifeIndexView.setBanner(shopAndBanner);
                 break;
         }
     }
@@ -137,7 +135,7 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
     @Override
     public void loadClassifyShopSuccess(LifeClassifyModel lifeClassifyModel) {
         if (null != lifeClassifyModel && null != lifeClassifyModel.getData() && lifeClassifyModel.getData().size() > 0) {
-          //  lifeIndexView.setClassify(lifeClassifyModel);
+            //  lifeIndexView.setClassify(lifeClassifyModel);
         } else {
             lifeIndexView.showToast("分类无数据!");
         }
@@ -171,16 +169,13 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     @Override
     public void loadDataSuccess(LifeBannerAndHotModel model) {
-        if(null != model && null != model.getData())
-        {
+        if (null != model && null != model.getData()) {
             LifeBannerAndHotModel.DataBean data = model.getData();
 
             lifeIndexView.setClassify(data.getCategoryList());
             lifeIndexView.setHotShop(data.getHotShopList());
             lifeIndexView.setBanner(data.getSlideShopList());
-        }
-        else
-        {
+        } else {
             lifeIndexView.showToast("数据为空!");
         }
 
