@@ -3,10 +3,10 @@ package com.smartcity.http.service;
 import com.smartcity.http.Constant;
 import com.smartcity.http.model.UserInfo;
 
-import retrofit.Call;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
 
 /**
  * 登录服务
@@ -17,6 +17,8 @@ import retrofit.http.POST;
  * @date: 2016-04-29 16:41
  */
 public interface LoginService {
+    //登录
+    String LOGIN = "user/login";
 
     @FormUrlEncoded
     @POST(Constant.REST)

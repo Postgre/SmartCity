@@ -63,7 +63,7 @@ import java.util.Comparator;
  * the compatibility library, requiring changes to the source code
  * of apps when they are compiled against the newer version.</p>
  */
-//放置预加载
+
 public class LazyViewPager extends ViewGroup {
     private static final String TAG = "LazyViewPager";
     private static final boolean DEBUG = false;

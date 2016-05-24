@@ -14,10 +14,12 @@ import com.smartcity.utils.SharedPreferencesUtil;
 import com.smartcity.view.ILifeIndexNearView;
 import com.smartcity.view.ILifeIndexView;
 
+import java.util.List;
+
 /**
  * Created by Yancy on 2016/5/19.
  */
-public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnGetHotShopOrBannerListener<HopShopAndBanner>, LifeIndexModelImpl.OnGetClassifyShopListener<LifeClassifyModel>, LifeIndexModelImpl.OnGetNearShopListener<HopShopAndBanner>, LifeIndexModelImpl.OnGetBannerAndHotListener<LifeBannerAndHotModel> {
+public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnGetHotShopOrBannerListener<HopShopAndBanner>, LifeIndexModelImpl.OnGetClassifyShopListener<LifeClassifyModel>, LifeIndexModelImpl.OnGetNearShopListener<HopShopAndBanner>,LifeIndexModelImpl.OnGetBannerAndHotListener<LifeBannerAndHotModel> {
 
     private LifeIndexModel model;
     private String apikey;
@@ -27,21 +29,22 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     public LifeIndexPresenter(ILifeIndexView lifeIndexView) {
         this.lifeIndexView = lifeIndexView;
-        model = new LifeIndexModelImpl();
-        apikey = MyApplication.getApikey();
-        id = MyApplication.getId();
+        initConfig();
         init();
     }
 
-    public LifeIndexPresenter(ILifeIndexNearView lifeIndexNearView, int type) {
-        this.lifeIndexNearView = lifeIndexNearView;
+    private void initConfig() {
         model = new LifeIndexModelImpl();
         apikey = MyApplication.getApikey();
         id = MyApplication.getId();
-        initNear(type);
     }
 
-    private void initNear(int type) {
+    public LifeIndexPresenter(ILifeIndexNearView lifeIndexNearView) {
+        this.lifeIndexNearView = lifeIndexNearView;
+        initConfig();
+    }
+
+    public void initNear(int type) {
         if (!model.isNetState()) {
             lifeIndexNearView.showToast("请检查网络连接!");
             return;
@@ -57,15 +60,20 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
 
     private void init() {
-        // initHotOrBanner();
-        //  initClassify();
+       // initHotOrBanner();
+      //  initClassify();
 
         initBannerAndClassify();
     }
 
 
     private void initBannerAndClassify() {
+        if (!model.isNetState()) {
+            lifeIndexNearView.showToast("请检查网络连接!");
+            return;
+        }
         model.getBannerAndClassify(apikey, this);
+
     }
 
     private void initClassify() {
@@ -86,6 +94,7 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
             lifeIndexView.startLogin();
             return;
         }
+        lifeIndexNearView.setHasLoadDataOnce(true);
         lifeIndexView.showLoading("loading....");
         model.getHotShopOrBanner(apikey, LifeIndexModelImpl.HOT_SHOP, LifeIndexPresenter.this);
         model.getHotShopOrBanner(apikey, LifeIndexModelImpl.BANNER, LifeIndexPresenter.this);
@@ -113,11 +122,11 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
         switch (type) {
             case LifeIndexModelImpl.HOT_SHOP:
                 //设置首页热门商品
-                //  lifeIndexView.setHotShop(shopAndBanner);
+              //  lifeIndexView.setHotShop(shopAndBanner);
                 break;
             default:
                 //设置首页轮播图
-                //   lifeIndexView.setBanner(shopAndBanner);
+             //   lifeIndexView.setBanner(shopAndBanner);
                 break;
         }
     }
@@ -135,7 +144,7 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
     @Override
     public void loadClassifyShopSuccess(LifeClassifyModel lifeClassifyModel) {
         if (null != lifeClassifyModel && null != lifeClassifyModel.getData() && lifeClassifyModel.getData().size() > 0) {
-            //  lifeIndexView.setClassify(lifeClassifyModel);
+          //  lifeIndexView.setClassify(lifeClassifyModel);
         } else {
             lifeIndexView.showToast("分类无数据!");
         }
@@ -152,6 +161,7 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     @Override
     public void loadNearShopSuccess(HopShopAndBanner hopShopAndBanner) {
+        lifeIndexNearView.setHasLoadDataOnce(false);
         LogTool.e("test", hopShopAndBanner.toString());
         if (null != hopShopAndBanner && null != hopShopAndBanner.getData() && hopShopAndBanner.getData().size() > 0) {
             lifeIndexNearView.setNearShop(hopShopAndBanner);
@@ -163,19 +173,22 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     @Override
     public void loadNearShopError(String msg) {
-        LogTool.e("test", msg);
+        lifeIndexNearView.setHasLoadDataOnce(false);
         lifeIndexNearView.showToast(msg);
     }
 
     @Override
     public void loadDataSuccess(LifeBannerAndHotModel model) {
-        if (null != model && null != model.getData()) {
+        if(null != model && null != model.getData())
+        {
             LifeBannerAndHotModel.DataBean data = model.getData();
 
             lifeIndexView.setClassify(data.getCategoryList());
             lifeIndexView.setHotShop(data.getHotShopList());
             lifeIndexView.setBanner(data.getSlideShopList());
-        } else {
+        }
+        else
+        {
             lifeIndexView.showToast("数据为空!");
         }
 
@@ -183,6 +196,7 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     @Override
     public void loadDataError(String msg) {
+
         lifeIndexView.showToast(msg);
     }
 }

@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
+import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.CircleBean;
 import com.smartcity.http.model.CircleDetailInfoModel;
@@ -12,21 +12,23 @@ import com.smartcity.http.model.LabelBean;
 import com.smartcity.http.service.CircleService;
 import com.smartcity.model.CircleModel;
 import com.smartcity.utils.GsonUtils;
+import com.smartcity.utils.LogTool;
 import com.smartcity.utils.NetTool;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Administrator on 2016/5/7.
  */
 public class CircleModelImpl implements CircleModel {
+    private static final String TAG = CircleModelImpl.class.getName();
 
     private final CircleService circleService;
 
@@ -47,23 +49,23 @@ public class CircleModelImpl implements CircleModel {
         parameter.put("sStartpage", sStartpage);
         parameter.put("sPagerows", sPagerows);
         parameter.put("sPersonUserId", sPersonUserId);
-        Call<CircleBean> call = circleService.getAllCircles(apikey, Url.CIRCLEDETAIL, Constant.VALUE_VERSION, GsonUtils.objectToJson(parameter));
+        Call<CircleBean> call = circleService.getAllCircles(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(parameter));
         call.enqueue(new Callback<CircleBean>() {
+
             @Override
-            public void onResponse(Response<CircleBean> response, Retrofit retrofit) {
+            public void onResponse(Call<CircleBean> call, Response<CircleBean> response) {
                 CircleBean entity = response.body();
-                if (entity.getCode() == Constant.STATUS_SUCCESS) {
+                if (entity.getCode() == ResCode.STATUS_SUCCESS_CODE) {
                     if (null != entity) {
                         listener.onGetCirclesSuccess(entity.getData());
                     } else {
                         listener.onGetCirclesFailure(entity.getMsg());
                     }
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CircleBean> call, Throwable t) {
                 listener.onGetCirclesFailure(t.getMessage());
             }
         });
@@ -81,13 +83,14 @@ public class CircleModelImpl implements CircleModel {
     public void getDetail(String key, int detailId, final CircleDetailCallback callback) {
         Map<String, Object> pams = new HashMap<>();
         pams.put("detailId", detailId);
-        circleService.getCircleDetail(key, Url.CIRCLEDETAIL, Constant.VALUE_VERSION, GsonUtils.objectToJson(pams)).enqueue(new Callback<CircleDetailInfoModel>() {
+        circleService.getCircleDetail(key, Constant.VALUE_VERSION, GsonUtils.objectToJson(pams)).enqueue(new Callback<CircleDetailInfoModel>() {
+
             @Override
-            public void onResponse(Response<CircleDetailInfoModel> response, Retrofit retrofit) {
+            public void onResponse(Call<CircleDetailInfoModel> call, Response<CircleDetailInfoModel> response) {
                 if (null != response && null != response.body()) {
                     CircleDetailInfoModel info = response.body();
                     if (null != info) {
-                        if (info.getCode() == Constant.STATUS_SUCCESS) {
+                        if (info.getCode() == ResCode.STATUS_SUCCESS_CODE) {
                             callback.onSuccess(info);
                         } else {
                             callback.onError(info.getMsg() + "");
@@ -98,7 +101,7 @@ public class CircleModelImpl implements CircleModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CircleDetailInfoModel> call, Throwable t) {
                 if (null != callback) {
                     callback.onError(t.getMessage());
                 }
@@ -118,15 +121,13 @@ public class CircleModelImpl implements CircleModel {
         Map<String, Object> pam = new HashMap<>();
         pam.put("sStartpage", sStartpage);
         pam.put("sPagerows", sPagerows);
-
-        circleService.getLabels(apikey, Url.GETLABELS, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<LabelBean>() {
+        circleService.getLabels(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<LabelBean>() {
             @Override
-            public void onResponse(Response<LabelBean> response, Retrofit retrofit) {
+            public void onResponse(Call<LabelBean> call, Response<LabelBean> response) {
                 LabelBean labelBean = response.body();
                 Log.d("CircleModelImpl", "labelBean:" + labelBean);
-
                 if (null != labelBean) {
-                    if (labelBean.getCode() == Constant.STATUS_SUCCESS) {
+                    if (labelBean.getCode() == ResCode.STATUS_SUCCESS_CODE) {
                         listener.onSuccess(labelBean.getData());
                     } else {
                         listener.onError(labelBean.getMsg());
@@ -135,7 +136,7 @@ public class CircleModelImpl implements CircleModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<LabelBean> call, Throwable t) {
                 listener.onError(t.getMessage());
             }
         });
@@ -155,15 +156,15 @@ public class CircleModelImpl implements CircleModel {
         pam.put("detailMarkName", detailMarkName);
         pam.put("sStartpage", sStartpage);
         pam.put("sPagerows", sPagerows);
+        circleService.getCircleListByLabel(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleBean>() {
 
-        circleService.getCircleListByLabel(apikey, Url.GETCIRCLELISTBYLABEL, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleBean>() {
+
             @Override
-            public void onResponse(Response<CircleBean> response, Retrofit retrofit) {
-
+            public void onResponse(Call<CircleBean> call, Response<CircleBean> response) {
                 Log.d("getCirclesByLabel", "response.body():" + response.body().getCode());
                 CircleBean circleBean = response.body();
                 if (null != circleBean) {
-                    if (circleBean.getCode() == Constant.STATUS_SUCCESS) {
+                    if (circleBean.getCode() == ResCode.STATUS_SUCCESS_CODE) {
                         listener.onLoadCirclesListSuccess(circleBean.getData());
                     } else {
                         listener.onLoadCirclesListError(circleBean.getMsg());
@@ -172,7 +173,7 @@ public class CircleModelImpl implements CircleModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CircleBean> call, Throwable t) {
                 listener.onLoadCirclesListError(t.getMessage());
             }
         });
@@ -192,15 +193,15 @@ public class CircleModelImpl implements CircleModel {
         pam.put("personUserId", personUserId);
         pam.put("sStartpage", sStartpage);
         pam.put("sPagerows", sPagerows);
+        LogTool.d(TAG, "params:" + GsonUtils.objectToJson(pam));
+        circleService.getMyCircle(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleBean>() {
 
-        circleService.getMyCircle(apikey, Url.MYCIRCLE, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleBean>() {
             @Override
-            public void onResponse(Response<CircleBean> response, Retrofit retrofit) {
-
-//                Log.e("getMyCircle", "response.body():" + response.body().getCode());
+            public void onResponse(Call<CircleBean> call, Response<CircleBean> response) {
+                //                Log.e("getMyCircle", "response.body():" + response.body().getCode());
                 CircleBean circleBean = response.body();
                 if (null != circleBean) {
-                    if (circleBean.getCode() == Constant.STATUS_SUCCESS) {
+                    if (circleBean.getCode() == ResCode.STATUS_SUCCESS_CODE) {
                         listener.onLoadMyCirclesSuccess(circleBean.getData());
                     } else {
                         listener.onLoadMyCirclesError(circleBean.getMsg());
@@ -209,7 +210,7 @@ public class CircleModelImpl implements CircleModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CircleBean> call, Throwable t) {
                 listener.onLoadMyCirclesError(t.getMessage());
             }
         });
@@ -221,40 +222,21 @@ public class CircleModelImpl implements CircleModel {
         void onLoadMyCirclesError(String msg);
     }
 
-//     /*--------------------------圈子小组------------------------------------------------*/
-//
-//    @Override
-//    public void getMyGroup(String apikey, String detailPid, String sStartpage, String sPagerows, final onLoadMyGroup listener) {
-//        Map<String, Object> pam = new HashMap<>();
-//        pam.put("detailPid", detailPid);
-//        pam.put("sStartpage", sStartpage);
-//        pam.put("sPagerows", sPagerows);
-//
-//        circleService.getCircleGroup(apikey, Url.MYGROUP, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleBean>() {
-//            @Override
-//            public void onResponse(Response<CircleBean> response, Retrofit retrofit) {
-//
-//                Log.e("getMyCircle", "response.body():" + response.body().getCode());
-//                CircleBean circleBean = response.body();
-//                if (null != circleBean) {
-//                    if (circleBean.getCode() == Constant.STATUS_SUCCESS) {
-//                        listener.onLoadMyGroupSuccess(circleBean.getData());
-//
-//                    } else {
-//                        listener.onLoadMyGroupError(circleBean.getMsg());
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable t) {
-//                listener.onLoadMyGroupError(t.getMessage());
-//            }
-//        });
-//    }
-//    public interface onLoadMyGroup {
-//        void onLoadMyGroupSuccess(List<CircleBean.CirDataEntity> result);
-//
-//        void onLoadMyGroupError(String msg);
-//    }
+     /*--------------------------圈子小组------------------------------------------------*/
+
+    @Override
+    public void getMyGroup(String apikey, String detailPid, String sStartpage, String sPagerows, onLoadMyCircle listener) {
+        Map<String, Object> pam = new HashMap<>();
+        pam.put("detailPid", detailPid);
+        pam.put("sStartpage", sStartpage);
+        pam.put("sPagerows", sPagerows);
+
+
+    }
+
+    public interface onLoadMyGroup {
+        void onLoadMyGroupSuccess(List<CircleBean> result);
+
+        void onLoadMyGroupError(String msg);
+    }
 }

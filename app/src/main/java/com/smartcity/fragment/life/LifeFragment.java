@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -29,6 +30,7 @@ import com.smartcity.activity.life.ShopListActivity;
 import com.smartcity.base.BaseFragment;
 import com.smartcity.config.Constant;
 import com.smartcity.customview.CustomViewPager;
+import com.smartcity.customview.LazyViewPager;
 import com.smartcity.http.model.HopShopAndBanner;
 import com.smartcity.http.model.LifeBannerAndHotModel;
 import com.smartcity.http.model.LifeClassifyModel;
@@ -98,7 +100,15 @@ public class LifeFragment extends BaseFragment implements ILifeIndexView {
         autoPagerAdapter.setOnItemClick(new AutoPageOnItemClick() {
             @Override
             public void onItemClick(int postion) {
-                startActivity(new Intent(getActivity(), ShopDetailsActivity.class));
+                List<LifeBannerAndHotModel.DataBean.SlideShopListBean> data = autoPagerAdapter.getData();
+                LifeBannerAndHotModel.DataBean.SlideShopListBean listBean = data.get(postion);
+                int id = listBean.getId();
+                Intent intent = new Intent(getActivity(), ShopDetailsActivity.class);
+                if(!TextUtils.isEmpty(String.valueOf(id)))
+                {
+                    intent.putExtra(ShopDetailsActivity.GOODS_ID,String.valueOf(id));
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -208,7 +218,12 @@ public class LifeFragment extends BaseFragment implements ILifeIndexView {
         gvClassify.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(), ShopListActivity.class));
+                Intent intent = new Intent(getActivity(), ShopListActivity.class);
+                LifeBannerAndHotModel.DataBean.CategoryListBean bean = classifyAdapter.getmDatas().get(position);
+
+                intent.putExtra(ShopListActivity.CLASSIFY_NAME,bean.getCategoryName());
+                intent.putExtra(ShopListActivity.CLASSIFY_Id,bean.getId());
+                startActivity(intent);
             }
         });
     }
@@ -235,17 +250,20 @@ public class LifeFragment extends BaseFragment implements ILifeIndexView {
 
     @Override
     public void setBanner(List<LifeBannerAndHotModel.DataBean.SlideShopListBean> banner) {
+        LogTool.e("SlideShopListBean","SlideShopListBean = "+ banner.toString());
         autoPagerAdapter.setDatas(banner);
     }
 
     @Override
     public void setHotShop(List<LifeBannerAndHotModel.DataBean.HotShopListBean> banner) {
+        LogTool.e("HotShopListBean","HotShopListBean = "+ banner.toString());
         hotAdapter.setDatas(banner);
     }
 
     @Override
     public void setClassify(List<LifeBannerAndHotModel.DataBean.CategoryListBean> classifyModel) {
         classifyAdapter.setDatas(classifyModel);
+        LogTool.e("CategoryListBean","CategoryListBean = "+ classifyModel.toString());
     }
 
 
@@ -292,6 +310,10 @@ public class LifeFragment extends BaseFragment implements ILifeIndexView {
             return null == dataBeen ? 0 : dataBeen.size();
         }
 
+        public List<LifeBannerAndHotModel.DataBean.SlideShopListBean> getData()
+        {
+            return dataBeen;
+        }
 
     }
 

@@ -164,6 +164,7 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+
         cool_listview.onRefreshComplete();
     }
 

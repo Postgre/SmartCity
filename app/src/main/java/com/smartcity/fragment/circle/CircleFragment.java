@@ -431,7 +431,6 @@ public class CircleFragment extends BaseFragment implements SwipeFlingAdapterVie
     @Override
     public void addCircles(List<CircleBean.CirDataEntity> circleList) {
         circleLists = circleList;
-        ToastTool.showShort(getActivity(), circleList.get(0).getDetailName() + "name");
         loadDatas();
     }
 

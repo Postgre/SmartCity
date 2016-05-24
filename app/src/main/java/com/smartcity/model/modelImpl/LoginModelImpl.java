@@ -2,17 +2,22 @@ package com.smartcity.model.modelImpl;
 
 import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
+import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.UserInfo;
 import com.smartcity.http.service.LoginService;
 import com.smartcity.model.LoginModel;
+import com.smartcity.utils.GsonUtils;
 import com.smartcity.utils.LogTool;
 import com.smartcity.utils.NetTool;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * 在此写类用途
@@ -31,16 +36,20 @@ public class LoginModelImpl implements LoginModel {
     }
 
     @Override
-    public void login(String url, String version, String data, final LoginCallBack callback) {
+    public void login(String userName, String pwd, final LoginCallBack callback) {
         LoginService loginService = HttpApi.getInstance().create(LoginService.class);
-        LogTool.d(TAG, "data:" + data);
-        Call<UserInfo> loginCall = loginService.login(url, version, data);
+        Map<String, Object> params = new HashMap<>();
+        params.put("usercode", userName);
+        params.put("password", pwd);
+        LogTool.d(TAG, "params:" + GsonUtils.objectToJson(params));
+        Call<UserInfo> loginCall = loginService.login(LoginService.LOGIN, Constant.VALUE_VERSION, GsonUtils.objectToJson(params));
         loginCall.enqueue(new Callback<UserInfo>() {
+
             @Override
-            public void onResponse(Response<UserInfo> response, Retrofit retrofit) {
+            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
                 UserInfo userInfo = response.body();
                 if (null != userInfo) {
-                    if (userInfo.getCode() == Constant.STATUS_SUCCESS) {
+                    if (userInfo.getCode() == ResCode.STATUS_SUCCESS_CODE) {
                         callback.onSuccess(userInfo);
                     } else {
                         callback.onFailure(userInfo.getMsg());
@@ -49,7 +58,7 @@ public class LoginModelImpl implements LoginModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<UserInfo> call, Throwable t) {
                 callback.onFailure(t.getMessage());
             }
         });

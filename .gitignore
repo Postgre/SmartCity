@@ -4,5 +4,12 @@
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
+/app/build
+/app/app.iml
+/http/build
+/pulltorefresh/build
+/pulltorefresh/pulltorefresh.iml
+/squarecamera/build
+/squarecamera/squarecamera.iml
 /build
 /captures

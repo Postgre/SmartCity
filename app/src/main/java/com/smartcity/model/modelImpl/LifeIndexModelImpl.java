@@ -15,9 +15,10 @@ import com.smartcity.utils.NetTool;
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Administrator on 2016/5/19.
@@ -41,9 +42,10 @@ public class LifeIndexModelImpl implements LifeIndexModel {
     public void getListClassify(String apikey, final OnGetClassifyShopListener listener) {
         String params = GsonUtils.objectToJson(new HashMap<String, Object>());
         LogTool.e("test", params);
-        lifeIndexService.getLifeClassify(apikey, LifeIndexService.GET_CLASSIFY_CMD_VALUE, Constant.VALUE_VERSION, params).enqueue(new Callback<LifeClassifyModel>() {
+        lifeIndexService.getLifeClassify(apikey, Constant.VALUE_VERSION, params).enqueue(new Callback<LifeClassifyModel>() {
+
             @Override
-            public void onResponse(Response<LifeClassifyModel> response, Retrofit retrofit) {
+            public void onResponse(Call<LifeClassifyModel> call, Response<LifeClassifyModel> response) {
                 LifeClassifyModel body = response.body();
                 if (null != body) {
                     listener.loadClassifyShopSuccess(body);
@@ -53,7 +55,7 @@ public class LifeIndexModelImpl implements LifeIndexModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<LifeClassifyModel> call, Throwable t) {
                 listener.loadClassifyShopError(t.getMessage());
             }
         });
@@ -71,9 +73,9 @@ public class LifeIndexModelImpl implements LifeIndexModel {
                 break;
 
         }
-        lifeIndexService.getBannnerOrHotShop(apikey, LifeIndexService.GET_BANNER_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<HopShopAndBanner>() {
+        lifeIndexService.getBannnerOrHotShop(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<HopShopAndBanner>() {
             @Override
-            public void onResponse(Response<HopShopAndBanner> response, Retrofit retrofit) {
+            public void onResponse(Call<HopShopAndBanner> call, Response<HopShopAndBanner> response) {
                 HopShopAndBanner body = response.body();
                 if (null != body) {
                     listener.loadHotShopOrBannerSuccess(body, type);
@@ -83,7 +85,7 @@ public class LifeIndexModelImpl implements LifeIndexModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<HopShopAndBanner> call, Throwable t) {
                 if (null != listener) {
                     listener.loadHotShopOrBannerError(t.getMessage());
                 }
@@ -103,9 +105,10 @@ public class LifeIndexModelImpl implements LifeIndexModel {
         params.put("monthSellCntSort", monthSellCntSort);
         String str = GsonUtils.objectToJson(params);
         LogTool.e("test", str);
-        lifeIndexService.getLifeNear(apikey, LifeIndexService.GET_NEAR_SHOP_CMD_VALUE, Constant.VALUE_VERSION, str).enqueue(new Callback<HopShopAndBanner>() {
+        lifeIndexService.getLifeNear(apikey, Constant.VALUE_VERSION, str).enqueue(new Callback<HopShopAndBanner>() {
+
             @Override
-            public void onResponse(Response<HopShopAndBanner> response, Retrofit retrofit) {
+            public void onResponse(Call<HopShopAndBanner> call, Response<HopShopAndBanner> response) {
                 HopShopAndBanner body = response.body();
                 if (null != body) {
                     listener.loadNearShopSuccess(body);
@@ -115,7 +118,7 @@ public class LifeIndexModelImpl implements LifeIndexModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<HopShopAndBanner> call, Throwable t) {
                 if (null != listener) {
                     listener.loadNearShopError(t.getMessage());
                 }
@@ -123,21 +126,32 @@ public class LifeIndexModelImpl implements LifeIndexModel {
         });
     }
 
+    /**
+     * 首页分类和热门数据
+     */
     @Override
-    public void getBannerAndClassify(String apikey, OnGetBannerAndHotListener listener) {
-        lifeIndexService.getBannerAndHotList(apikey,LifeIndexService.GET_BANNER_AND_HOT_CMD_VALUE,Constant.VALUE_VERSION,null).enqueue(new Callback<LifeBannerAndHotModel>() {
-            @Override
-            public void onResponse(Response<LifeBannerAndHotModel> response, Retrofit retrofit) {
+    public void getBannerAndClassify(String apikey, final OnGetBannerAndHotListener listener) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("data", "data");
 
+        lifeIndexService.getBannerAndHotAndClassifyList(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeBannerAndHotModel>() {
+            @Override
+            public void onResponse(Call<LifeBannerAndHotModel> call, Response<LifeBannerAndHotModel> response) {
+                LifeBannerAndHotModel body = response.body();
+                if (null != body) {
+                    listener.loadDataSuccess(body);
+                } else {
+                    listener.loadDataError(null);
+                }
             }
 
             @Override
-            public void onFailure(Throwable t) {
-
+            public void onFailure(Call<LifeBannerAndHotModel> call, Throwable t) {
+                listener.loadDataError(t.getMessage());
             }
         });
-    }
 
+    }
 
     public interface OnGetNearShopListener<T> {
         void loadNearShopSuccess(T t);

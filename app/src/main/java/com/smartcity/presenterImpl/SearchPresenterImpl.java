@@ -1,7 +1,6 @@
 package com.smartcity.presenterImpl;
 
 import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
 import com.smartcity.http.model.CircleBean;
 import com.smartcity.model.SearchModel;
 import com.smartcity.model.modelImpl.SearchModelImpl;
@@ -36,7 +35,7 @@ public class SearchPresenterImpl implements SearchPresenter, SearchModelImpl.onL
         parm.put("detailName", detailName);
         parm.put("sStartpage", sStartpage);
         parm.put("sPagerows", sPagerows);
-        searchModel.loadSearchData(Constant.API_KEY, Url.GETCIRCLELIST, Constant.VERSION_CODE, GsonUtils.objectToJson(parm), this);
+        searchModel.loadSearchData(Constant.API_KEY, Constant.VERSION_CODE, GsonUtils.objectToJson(parm), this);
     }
 
     @Override

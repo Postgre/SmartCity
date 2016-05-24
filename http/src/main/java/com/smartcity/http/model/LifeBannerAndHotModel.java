@@ -703,6 +703,49 @@ public class LifeBannerAndHotModel extends BaseModel{
             public void setGoodsList(Object goodsList) {
                 this.goodsList = goodsList;
             }
+
+            @Override
+            public String toString() {
+                return "SlideShopListBean{" +
+                        "id=" + id +
+                        ", merchantId=" + merchantId +
+                        ", shopName='" + shopName + '\'' +
+                        ", shopShortName='" + shopShortName + '\'' +
+                        ", shopDesc='" + shopDesc + '\'' +
+                        ", shopStatus=" + shopStatus +
+                        ", byDoor=" + byDoor +
+                        ", logoUrl='" + logoUrl + '\'' +
+                        ", bgImage='" + bgImage + '\'' +
+                        ", provinceId='" + provinceId + '\'' +
+                        ", cityId='" + cityId + '\'' +
+                        ", areaId='" + areaId + '\'' +
+                        ", address='" + address + '\'' +
+                        ", longitude=" + longitude +
+                        ", latitude=" + latitude +
+                        ", name='" + name + '\'' +
+                        ", email='" + email + '\'' +
+                        ", mobile='" + mobile + '\'' +
+                        ", phone='" + phone + '\'' +
+                        ", phoneService='" + phoneService + '\'' +
+                        ", openTimeStart='" + openTimeStart + '\'' +
+                        ", openTimeEnd='" + openTimeEnd + '\'' +
+                        ", createTime='" + createTime + '\'' +
+                        ", modifyTime='" + modifyTime + '\'' +
+                        ", createUser=" + createUser +
+                        ", modifyUser=" + modifyUser +
+                        ", score=" + score +
+                        ", scoreDesc=" + scoreDesc +
+                        ", scoreService=" + scoreService +
+                        ", scoreDelivery=" + scoreDelivery +
+                        ", memberDiscount=" + memberDiscount +
+                        ", monthSellCnt=" + monthSellCnt +
+                        ", distance=" + distance +
+                        ", labelImageUrl='" + labelImageUrl + '\'' +
+                        ", labelDescription=" + labelDescription +
+                        ", topCategoryName=" + topCategoryName +
+                        ", goodsList=" + goodsList +
+                        '}';
+            }
         }
 
         public static class HotShopListBean {
@@ -1038,6 +1081,50 @@ public class LifeBannerAndHotModel extends BaseModel{
 
             public void setGoodsList(Object goodsList) {
                 this.goodsList = goodsList;
+            }
+
+
+            @Override
+            public String toString() {
+                return "HotShopListBean{" +
+                        "id=" + id +
+                        ", merchantId=" + merchantId +
+                        ", shopName='" + shopName + '\'' +
+                        ", shopShortName='" + shopShortName + '\'' +
+                        ", shopDesc='" + shopDesc + '\'' +
+                        ", shopStatus=" + shopStatus +
+                        ", byDoor=" + byDoor +
+                        ", logoUrl='" + logoUrl + '\'' +
+                        ", bgImage='" + bgImage + '\'' +
+                        ", provinceId='" + provinceId + '\'' +
+                        ", cityId='" + cityId + '\'' +
+                        ", areaId='" + areaId + '\'' +
+                        ", address='" + address + '\'' +
+                        ", longitude=" + longitude +
+                        ", latitude=" + latitude +
+                        ", name='" + name + '\'' +
+                        ", email='" + email + '\'' +
+                        ", mobile='" + mobile + '\'' +
+                        ", phone='" + phone + '\'' +
+                        ", phoneService='" + phoneService + '\'' +
+                        ", openTimeStart='" + openTimeStart + '\'' +
+                        ", openTimeEnd='" + openTimeEnd + '\'' +
+                        ", createTime='" + createTime + '\'' +
+                        ", modifyTime='" + modifyTime + '\'' +
+                        ", createUser=" + createUser +
+                        ", modifyUser=" + modifyUser +
+                        ", score=" + score +
+                        ", scoreDesc=" + scoreDesc +
+                        ", scoreService=" + scoreService +
+                        ", scoreDelivery=" + scoreDelivery +
+                        ", memberDiscount=" + memberDiscount +
+                        ", monthSellCnt=" + monthSellCnt +
+                        ", distance=" + distance +
+                        ", labelImageUrl='" + labelImageUrl + '\'' +
+                        ", labelDescription='" + labelDescription + '\'' +
+                        ", topCategoryName=" + topCategoryName +
+                        ", goodsList=" + goodsList +
+                        '}';
             }
         }
     }

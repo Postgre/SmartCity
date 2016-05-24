@@ -7,5 +7,5 @@ import com.smartcity.model.modelImpl.CartModelImpl;
  * Created by Administrator on 2016/5/18.
  */
 public interface CartModel extends BaseModel {
-    void getProductList(String customerId, String apiKry, CartModelImpl.OnProductListListener<CartInfo> listener);
+    void getProductList(String customerId, String apiKey, CartModelImpl.OnProductListListener<CartInfo> listener);
 }

@@ -9,5 +9,6 @@ package com.smartcity.model;
  * @date: 2016-05-20 16:27
  */
 public interface BaseModel {
+    //网络状态判断
     boolean isNetState();
 }

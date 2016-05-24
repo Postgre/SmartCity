@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <com.smartcity.customview.LifeGridView
         android:id="@+id/near_gv_container"
@@ -17,4 +16,4 @@
         android:scrollbars="none"
         android:verticalSpacing="@dimen/dp_15" />
 
-</LinearLayout>
+</FrameLayout>

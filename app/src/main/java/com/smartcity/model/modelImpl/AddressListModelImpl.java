@@ -2,7 +2,7 @@ package com.smartcity.model.modelImpl;
 
 import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
+import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.AddressList;
 import com.smartcity.http.service.AddressService;
@@ -13,9 +13,10 @@ import com.smartcity.utils.NetTool;
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Yancy on 2016/5/16.
@@ -38,22 +39,22 @@ public class AddressListModelImpl implements AddressListModel {
     public void getAllAddress(int userId, String apiKey, final GetAllAddressListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("customerId", userId);
-        addressService.getAllList(Url.ALL_LIST_ADDRESS, Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList>() {
+        addressService.getAllList(Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList>() {
+
             @Override
-            public void onResponse(Response<AddressList> response, Retrofit retrofit) {
+            public void onResponse(Call<AddressList> call, Response<AddressList> response) {
                 AddressList addressList = response.body();
                 if (null != addressList) {
-                    if (Constant.STATUS_SUCCESS == addressList.getCode()) {
+                    if (ResCode.STATUS_SUCCESS_CODE == addressList.getCode()) {
                         listener.getAllSuccess(addressList);
                     } else {
                         listener.getAllListError(null);
                     }
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<AddressList> call, Throwable t) {
                 listener.getAllListError(t.getMessage());
             }
         });
@@ -74,13 +75,12 @@ public class AddressListModelImpl implements AddressListModel {
         params.put("isDefault", address.getIsDefault());
         params.put("createTime", address.getCreateTime());
         params.put("modifyTime", address.getModifyTime());
-
-        addressService.updateOrAddAddress(Url.UPDATE_ADD_ADDRESS, Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList.LifeAddressModel>() {
+        addressService.updateOrAddAddress(Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList.LifeAddressModel>() {
             @Override
-            public void onResponse(Response<AddressList.LifeAddressModel> response, Retrofit retrofit) {
+            public void onResponse(Call<AddressList.LifeAddressModel> call, Response<AddressList.LifeAddressModel> response) {
                 AddressList.LifeAddressModel body = response.body();
                 if (null != body) {
-                    if (Constant.STATUS_SUCCESS == body.getCode()) {
+                    if (ResCode.STATUS_SUCCESS_CODE == body.getCode()) {
                         listener.updateOrAddAddressSuccess(body);
                     } else {
                         listener.updateOrAddAddressError(null);
@@ -89,7 +89,7 @@ public class AddressListModelImpl implements AddressListModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<AddressList.LifeAddressModel> call, Throwable t) {
                 listener.updateOrAddAddressError(t.getMessage());
             }
         });
@@ -100,23 +100,21 @@ public class AddressListModelImpl implements AddressListModel {
     public void deteleAddress(final int addressId, String apiKey, final DeleteAddressListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("id", addressId);
-
-        addressService.getAllList(Url.ALL_LIST_ADDRESS, Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList>() {
+        addressService.getAllList(Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList>() {
             @Override
-            public void onResponse(Response<AddressList> response, Retrofit retrofit) {
+            public void onResponse(Call<AddressList> call, Response<AddressList> response) {
                 AddressList addressList = response.body();
                 if (null != addressList) {
-                    if (Constant.STATUS_SUCCESS == addressList.getCode()) {
+                    if (ResCode.STATUS_SUCCESS_CODE == addressList.getCode()) {
                         listener.deleteAddressSuccess(addressId);
                     } else {
                         listener.deleteAddressError(null);
                     }
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<AddressList> call, Throwable t) {
                 listener.deleteAddressError(t.getMessage());
             }
         });

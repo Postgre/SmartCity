@@ -7,4 +7,6 @@ import com.smartcity.http.model.HopShopAndBanner;
  */
 public interface ILifeIndexNearView extends BaseViews {
     void setNearShop(HopShopAndBanner banner);
+
+    void setHasLoadDataOnce(boolean hasLoadDataOnce);
 }

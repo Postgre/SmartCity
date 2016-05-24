@@ -4,11 +4,12 @@ import com.smartcity.http.Constant;
 import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
 
-import retrofit.Call;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
-import retrofit.http.Header;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+
 
 /**
  * 在此写类用途
@@ -19,6 +20,21 @@ import retrofit.http.POST;
  * @date: 2016-05-12 10:32
  */
 public interface CoolService {
+    //发布炫
+    String ADD_COOL = "circle/addCool";
+    //查询炫
+    String GET_ALL_COOL = "circle/getAllCool";
+    //炫详情
+    String GET_COOL_DETAIL = "circle/getCBID";
+    //我炫的
+    String GET_COOL_BY_ME = "circle/getCBUID";
+    //编辑炫
+    String EDIT_COOL = "circle/uptCool";
+    //我要炫 关注
+    String FOCUS_COOL = "circle/addUA";
+    //我要炫 取消关注
+    String UNFOCUS_COOL = "circle/uptUA";
+
     //发布炫
     @FormUrlEncoded
     @POST(Constant.REST)

@@ -1,6 +1,7 @@
 package com.smartcity.customview;
 
 import android.content.Context;
+
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.view.View;
  * Created by Yancy on 2016/5/9.
  * 解决在ScrollView 中显示不全
  */
-public class CustomViewPager extends ViewPager{
+public class CustomViewPager extends ViewPager {
     public CustomViewPager(Context context) {
         super(context);
     }

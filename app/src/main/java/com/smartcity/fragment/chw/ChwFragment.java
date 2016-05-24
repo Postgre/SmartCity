@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.smartcity.R;
+import com.smartcity.activity.chw.service.ServiceFirstPageActivity;
 import com.smartcity.activity.chw.twentyfourhour.TwentyFourHourActivity;
 import com.smartcity.activity.chw.wyx.CoolActivity;
 import com.smartcity.activity.circle.NewChatMainActivity;
@@ -69,6 +70,8 @@ public class ChwFragment extends BaseFragment {
                         startActivity(intent);
                         break;
                     case 1://"呼叫服务"
+                        Intent service = new Intent(getActivity(), ServiceFirstPageActivity.class);
+                        startActivity(service);
                         break;
                     case 2://"白送白玩"
                         break;

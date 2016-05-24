@@ -1,6 +1,8 @@
 package com.smartcity.model.modelImpl;
 
 import com.smartcity.application.MyApplication;
+import com.smartcity.config.Constant;
+import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.CartInfo;
 import com.smartcity.http.service.CartService;
@@ -11,9 +13,10 @@ import com.smartcity.utils.NetTool;
 import java.util.Hashtable;
 import java.util.Map;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Administrator on 2016/5/18.
@@ -34,12 +37,12 @@ public class CartModelImpl implements CartModel {
     public void getProductList(String customerId, String apiKry, final OnProductListListener<CartInfo> listener) {
         Map<String, Object> params = new Hashtable<>();
         params.put("customerId", customerId);
-        cartService.getAllProduct(CartService.ALL_PRODUCT, com.smartcity.config.Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKry).enqueue(new Callback<CartInfo>() {
+        cartService.getAllProduct(Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKry).enqueue(new Callback<CartInfo>() {
             @Override
-            public void onResponse(Response<CartInfo> response, Retrofit retrofit) {
+            public void onResponse(Call<CartInfo> call, Response<CartInfo> response) {
                 CartInfo cartInfo = response.body();
                 if (null != cartInfo) {
-                    if (com.smartcity.config.Constant.STATUS_SUCCESS == cartInfo.getCode()) {
+                    if (ResCode.STATUS_SUCCESS_CODE == cartInfo.getCode()) {
                         if (null != listener) {
                             listener.getListProductSuccess(cartInfo);
                         }
@@ -53,7 +56,7 @@ public class CartModelImpl implements CartModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CartInfo> call, Throwable t) {
                 if (null != listener) {
                     listener.getListProductError(t.getMessage());
                 }

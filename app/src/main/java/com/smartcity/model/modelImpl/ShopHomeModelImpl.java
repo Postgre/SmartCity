@@ -1,6 +1,7 @@
 package com.smartcity.model.modelImpl;
 
 import com.smartcity.config.Constant;
+import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.BaseModel;
 import com.smartcity.http.model.CouponModel;
@@ -10,13 +11,15 @@ import com.smartcity.http.model.LifeShopModel;
 import com.smartcity.http.service.LifeIndexService;
 import com.smartcity.model.ShopHomeModel;
 import com.smartcity.utils.GsonUtils;
+import com.smartcity.utils.LogTool;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Yancy on 2016/5/20.
@@ -38,12 +41,12 @@ public class ShopHomeModelImpl implements ShopHomeModel {
     public void getShopInfo(String apiKey, String shopId, final LoadShopInfoListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("id", shopId);
-        lifeIndexService.getShopHome(apiKey, LifeIndexService.GET_SHOP_HONE_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeShopModel>() {
+        lifeIndexService.getShopHome(apiKey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeShopModel>() {
             @Override
-            public void onResponse(Response<LifeShopModel> response, Retrofit retrofit) {
+            public void onResponse(Call<LifeShopModel> call, Response<LifeShopModel> response) {
                 LifeShopModel body = response.body();
                 if (null != body) {
-                    if (Constant.STATUS_SUCCESS == body.getCode()) {
+                    if (ResCode.STATUS_SUCCESS_CODE == body.getCode()) {
                         listener.onLoadInfoSuccess(body);
                     } else {
                         listener.onLaoInfoError(null);
@@ -52,7 +55,7 @@ public class ShopHomeModelImpl implements ShopHomeModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<LifeShopModel> call, Throwable t) {
                 listener.onLaoInfoError(t.getMessage());
             }
         });
@@ -62,12 +65,12 @@ public class ShopHomeModelImpl implements ShopHomeModel {
     public void getCouPonList(String apikey, String shopid, final LoadCouPonListListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("shopId", shopid);
-        lifeIndexService.getCouponList(apikey, LifeIndexService.GET_SHOP_COUPON_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<CouponModel>() {
+        lifeIndexService.getCouponList(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<CouponModel>() {
             @Override
-            public void onResponse(Response<CouponModel> response, Retrofit retrofit) {
+            public void onResponse(Call<CouponModel> call, Response<CouponModel> response) {
                 CouponModel body = response.body();
                 if (null != body) {
-                    if (Constant.STATUS_SUCCESS == body.getCode()) {
+                    if (ResCode.STATUS_SUCCESS_CODE == body.getCode()) {
                         listener.onLoadCouPonSuccess(body);
                     } else {
                         listener.onLaoCouPonError(null);
@@ -76,7 +79,7 @@ public class ShopHomeModelImpl implements ShopHomeModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CouponModel> call, Throwable t) {
                 listener.onLaoCouPonError(t.getMessage());
             }
         });
@@ -106,12 +109,14 @@ public class ShopHomeModelImpl implements ShopHomeModel {
                 break;
         }
 
-        lifeIndexService.getGoodsList(apikey, LifeIndexService.GET_SHOP_GOODS_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeGoodsModel>() {
+        lifeIndexService.getGoodsList(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeGoodsModel>() {
+
+
             @Override
-            public void onResponse(Response<LifeGoodsModel> response, Retrofit retrofit) {
+            public void onResponse(Call<LifeGoodsModel> call, Response<LifeGoodsModel> response) {
                 LifeGoodsModel body = response.body();
                 if (null != body) {
-                    if (Constant.STATUS_SUCCESS == body.getCode()) {
+                    if (ResCode.STATUS_SUCCESS_CODE == body.getCode()) {
                         listener.onLoadGoodsSuccess(body);
                     } else {
                         listener.onLaoGoodsError(null);
@@ -120,7 +125,7 @@ public class ShopHomeModelImpl implements ShopHomeModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<LifeGoodsModel> call, Throwable t) {
                 listener.onLaoGoodsError(t.getMessage());
             }
         });
@@ -137,12 +142,14 @@ public class ShopHomeModelImpl implements ShopHomeModel {
         params.put("type", fovShopGood.getType());
         params.put("favUrl", fovShopGood.getFavUrl());
         params.put("price", fovShopGood.getPrice());
-        lifeIndexService.addFovShopOrGood(apikey, LifeIndexService.ADD_FAV_SHOP_OR_GOOD_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<BaseModel>() {
+        lifeIndexService.addFovShopOrGood(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<BaseModel>() {
+
             @Override
-            public void onResponse(Response<BaseModel> response, Retrofit retrofit) {
+            public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
                 BaseModel body = response.body();
                 if (null != body) {
-                    if (Constant.STATUS_SUCCESS == body.getCode()) {
+                    LogTool.e("test", "addFovShopOrGood code = " + body.getCode());
+                    if (ResCode.STATUS_SUCCESS_CODE == body.getCode()) {
                         listener.onaddSuccess();
                     } else {
                         listener.onaddError(null);
@@ -151,7 +158,7 @@ public class ShopHomeModelImpl implements ShopHomeModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<BaseModel> call, Throwable t) {
                 listener.onaddError(t.getMessage());
             }
         });

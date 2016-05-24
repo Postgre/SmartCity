@@ -1,8 +1,5 @@
 package com.smartcity.presenterImpl;
 
-import com.google.gson.Gson;
-import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
 import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
 import com.smartcity.model.CoolModel;
@@ -40,17 +37,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
             coolView.showToast("请检查网络连接!");
             return;
         }
-        Map<String, String> maps = new HashMap<>();
-        maps.put("coolVideoTypeId", coolVideoTypeId);
-        maps.put("coolCoverPic", coolCoverPic);
-        maps.put("coolFileAddress", coolFileAddress);
-        maps.put("coolDecrip", coolDecrip);
-        maps.put("coolUserId", coolUserId);
-        maps.put("coolMarkId", coolMarkId);
-        maps.put("coolAreaNo", coolAreaNo);
-        maps.put("coolJwd", coolJwd);
-        maps.put("coolRename", coolRename);
-        coolModel.addCool(Constant.API_KEY, Url.ADD_COOL, Constant.VALUE_VERSION, new Gson().toJson(maps), this);
+        coolModel.addCool(coolVideoTypeId, coolCoverPic, coolFileAddress, coolDecrip, coolUserId, coolMarkId, coolAreaNo, coolJwd, coolRename, this);
     }
 
     @Override
@@ -70,13 +57,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
             coolView.showToast("请检查网络连接!");
             return;
         }
-        Map<String, String> maps = new HashMap<>();
-        maps.put("coolMarkId", coolMarkId);
-        maps.put("coolAreaNo", coolAreaNo);
-        maps.put("coolUserId", coolUserId);
-        maps.put("sStartpage", sStartpage);
-        maps.put("sPagerows", sPagerows);
-        coolModel.getAllCool(Constant.API_KEY, Url.GET_ALL_COOL, Constant.VALUE_VERSION, new Gson().toJson(maps), this);
+        coolModel.getAllCool(coolMarkId, coolAreaNo, coolUserId, sStartpage, sPagerows, this);
     }
 
     @Override
@@ -98,10 +79,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
             coolView.showToast("请检查网络连接!");
             return;
         }
-        Map<String, String> maps = new HashMap<>();
-        maps.put("coolId", coolId);
-        maps.put("iCurrUserId", iCurrUserId);
-        coolModel.getCoolDetail(Constant.API_KEY, Url.GET_COOL_DETAIL, Constant.VALUE_VERSION, new Gson().toJson(maps), this);
+        coolModel.getCoolDetail(coolId, iCurrUserId, this);
     }
 
     @Override
@@ -126,7 +104,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
         maps.put("coolVideoTypeId", coolVideoTypeId);
         maps.put("sStartpage", sStartpage);
         maps.put("sPagerows", sPagerows);
-        coolModel.getCoolByMe(Constant.API_KEY, Url.GET_COOL_BY_ME, Constant.VALUE_VERSION, new Gson().toJson(maps), this);
+        coolModel.getCoolByMe(coolUserId, coolVideoTypeId, sStartpage, sPagerows, this);
     }
 
     @Override
@@ -146,19 +124,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
             coolView.showToast("请检查网络连接!");
             return;
         }
-        Map<String, String> maps = new HashMap<>();
-        maps.put("coolId", coolId);
-        maps.put("coolVideoTypeId", coolVideoTypeId);
-        maps.put("coolCoverPic", coolCoverPic);
-        maps.put("coolFileAddress", coolFileAddress);
-        maps.put("coolDecrip", coolDecrip);
-        maps.put("coolUserId", coolUserId);
-        maps.put("coolMarkId", coolMarkId);
-        maps.put("coolAreaNo", coolAreaNo);
-        maps.put("coolPlayTimes", coolPlayTimes);
-        maps.put("coolJwd", coolJwd);
-        maps.put("coolRename", coolRename);
-        coolModel.editCool(Constant.API_KEY, Url.EDIT_COOL, Constant.VALUE_VERSION, new Gson().toJson(maps), this);
+        coolModel.editCool(coolId, coolVideoTypeId, coolCoverPic, coolFileAddress, coolDecrip, coolUserId, coolMarkId, coolAreaNo, coolPlayTimes, coolJwd, coolRename, this);
     }
 
     @Override
@@ -178,10 +144,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
             coolView.showToast("请检查网络连接!");
             return;
         }
-        Map<String, String> maps = new HashMap<>();
-        maps.put("userAttentionIng", userAttentionIng);
-        maps.put("userAttentionEd", userAttentionEd);
-        coolModel.focusCool(Constant.API_KEY, Url.FOCUS_COOL, Constant.VALUE_VERSION, new Gson().toJson(maps), this);
+        coolModel.focusCool(userAttentionIng, userAttentionEd, this);
     }
 
     //-----------------------------取消关注炫-----------------------------
@@ -191,10 +154,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
             coolView.showToast("请检查网络连接!");
             return;
         }
-        Map<String, String> maps = new HashMap<>();
-        maps.put("userAttentionId", userAttentionId);
-        maps.put("userAttentionStatus", userAttentionStatus);
-        coolModel.unFocusCool(Constant.API_KEY, Url.UNFOCUS_COOL, Constant.VALUE_VERSION, new Gson().toJson(maps), this);
+        coolModel.unFocusCool(userAttentionId, userAttentionStatus, this);
     }
 
     @Override

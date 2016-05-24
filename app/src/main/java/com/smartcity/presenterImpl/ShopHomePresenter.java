@@ -176,4 +176,8 @@ public class ShopHomePresenter implements BasePresenter, ShopHomeModelImpl.LoadS
             shopHomeView.showToast(msg);
         }
     }
+
+    public void startShopProFile() {
+        shopHomeView.goShopDesActivity(lifeShopModel);
+    }
 }

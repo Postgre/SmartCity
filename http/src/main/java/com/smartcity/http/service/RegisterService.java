@@ -3,10 +3,11 @@ package com.smartcity.http.service;
 import com.smartcity.http.Constant;
 import com.smartcity.http.model.BaseModel;
 
-import retrofit.Call;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+
 
 /**
  * 在此写类用途
@@ -17,13 +18,17 @@ import retrofit.http.POST;
  * @date: 2016-04-30 17:30
  */
 public interface RegisterService {
+
+    String REQ_CODE = "user/reqCode";
+
+    String REGISTER = "user/reg";
+
     //获取验证码
     @FormUrlEncoded
     @POST(Constant.REST)
     Call<Object> getNewCode(@Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
-    //获取验证码
     @FormUrlEncoded
     @POST(Constant.REST)
-    Call<BaseModel> regist(@Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    Call<BaseModel> register(@Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 }

@@ -4,19 +4,14 @@ import android.text.TextUtils;
 
 import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
 import com.smartcity.dao.UserDao;
 import com.smartcity.http.model.UserInfo;
 import com.smartcity.model.LoginModel;
 import com.smartcity.model.modelImpl.LoginModelImpl;
 import com.smartcity.presenter.LoginPresenter;
-import com.smartcity.utils.GsonUtils;
 import com.smartcity.utils.LogTool;
 import com.smartcity.utils.SharedPreferencesUtil;
 import com.smartcity.view.ILoginView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 在此写类用途
@@ -57,11 +52,8 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModelImpl.LoginC
             loginView.showHintMsg("请检查网络连接!");
             return;
         }
-        Map<String, String> maps = new HashMap<>();
-        maps.put("usercode", userName);
-        maps.put("password", pwd);
         loginView.showProgress();
-        loginModel.login(Url.LOGIN, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps), this);
+        loginModel.login(userName, pwd, this);
     }
 
     @Override

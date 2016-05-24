@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,35 +13,14 @@ import com.smartcity.activity.circle.Circle_Activity;
 import com.smartcity.activity.circle.Circle_NoticeActivity;
 import com.smartcity.activity.circle.Circle_PhotoActivity;
 import com.smartcity.activity.circle.Circle_VideoActivity;
-import com.smartcity.application.MyApplication;
-import com.smartcity.bean.Card_new;
-import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
-import com.smartcity.fragment.circle.CircleFragment;
 import com.smartcity.http.model.CircleBean;
-import com.smartcity.http.model.CircleGroup_bean;
-import com.smartcity.http.model.LabelBean;
-import com.smartcity.http.service.CircleService;
-import com.smartcity.presenter.CirclePresenter;
-import com.smartcity.presenterImpl.CirclePresenterImpl;
 import com.smartcity.utils.CommonAdapter;
-import com.smartcity.utils.CommonAdapters;
-import com.smartcity.utils.GsonUtils;
-import com.smartcity.utils.SharedPreferencesUtil;
-import com.smartcity.utils.ToastTool;
 import com.smartcity.utils.ViewHolder;
-import com.smartcity.view.ICircleView;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 public class CircleFragmentsAdapter extends CommonAdapter<CircleBean.CirDataEntity> implements View.OnClickListener{
     List<CircleBean.CirDataEntity> objs;

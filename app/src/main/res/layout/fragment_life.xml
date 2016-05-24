@@ -32,17 +32,17 @@
                 android:textSize="@dimen/ts_14" />
 
             <EditText
-                android:paddingLeft="@dimen/dp_3"
-                android:textSize="@dimen/ts_11"
-                android:drawablePadding="@dimen/dp_3"
-                android:drawableLeft="@mipmap/icon_search"
-                android:textColorHint="@color/black1"
-                android:hint="搜索你想要的"
                 android:id="@+id/life_index_et_seacher"
                 android:layout_width="@dimen/dp_260"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="@drawable/life_index_et_bg" />
+                android:background="@drawable/life_index_et_bg"
+                android:drawableLeft="@mipmap/icon_search"
+                android:drawablePadding="@dimen/dp_3"
+                android:hint="搜索你想要的"
+                android:paddingLeft="@dimen/dp_3"
+                android:textColorHint="@color/black1"
+                android:textSize="@dimen/ts_11" />
 
             <ImageView
                 android:id="@+id/life_index_iv_message"
@@ -237,6 +237,7 @@
                 android:id="@+id/life_index_pag_near_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
         </LinearLayout>
 
     </ScrollView>

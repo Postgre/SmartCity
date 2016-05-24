@@ -11,17 +11,17 @@ import com.smartcity.model.modelImpl.CoolModelImpl;
  * @date: 2016-05-04 16:30
  */
 public interface CoolModel extends BaseModel {
-    void addCool(String key, String url, String version, String data, CoolModelImpl.AddCoolCallBack callBack);
+    void addCool(String coolVideoTypeId, String coolCoverPic, String coolFileAddress, String coolDecrip, String coolUserId, String coolMarkId, String coolAreaNo, String coolJwd, String coolRename, CoolModelImpl.AddCoolCallBack callBack);
 
-    void getAllCool(String key, String url, String version, String data, CoolModelImpl.GetAllCoolCallBack callBack);
+    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String sStartpage, String sPagerows, CoolModelImpl.GetAllCoolCallBack callBack);
 
-    void getCoolDetail(String key, String url, String version, String data, CoolModelImpl.GetCoolDetailCallBack callBack);
+    void getCoolDetail(String coolId, String iCurrUserId, CoolModelImpl.GetCoolDetailCallBack callBack);
 
-    void getCoolByMe(String key, String url, String version, String data, CoolModelImpl.GetCoolByMeCallBack callBack);
+    void getCoolByMe(String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows, CoolModelImpl.GetCoolByMeCallBack callBack);
 
-    void editCool(String key, String url, String version, String data, CoolModelImpl.EditCoolCallBack callBack);
+    void editCool(String coolId, String coolVideoTypeId, String coolCoverPic, String coolFileAddress, String coolDecrip, String coolUserId, String coolMarkId, String coolAreaNo, String coolPlayTimes, String coolJwd, String coolRename, CoolModelImpl.EditCoolCallBack callBack);
 
-    void focusCool(String key, String url, String version, String data, CoolModelImpl.FocusCallBack callBack);
+    void focusCool(String userAttentionIng, String userAttentionEd, CoolModelImpl.FocusCallBack callBack);
 
-    void unFocusCool(String key, String url, String version, String data, CoolModelImpl.FocusCallBack callBack);
+    void unFocusCool(String userAttentionId, String userAttentionStatus, CoolModelImpl.FocusCallBack callBack);
 }

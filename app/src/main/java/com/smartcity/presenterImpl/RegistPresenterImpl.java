@@ -4,6 +4,7 @@ import android.os.CountDownTimer;
 import android.text.TextUtils;
 
 import com.smartcity.config.Constant;
+import com.smartcity.config.ResCode;
 import com.smartcity.http.model.BaseModel;
 import com.smartcity.model.RegistModel;
 import com.smartcity.model.modelImpl.RegistModelImpl;
@@ -104,11 +105,11 @@ public class RegistPresenterImpl implements RegistPresenter {
                 views.hideLoading();
                 views.showMessage(baseBeans.getMsg());
                 switch (baseBeans.getCode()) {
-                    case Constant.STATUS_SUCCESS:
+                    case ResCode.STATUS_SUCCESS_CODE:
                         //可以处理跳转
                         //    ToastTool.showShort(UIUtils.getContext(), "regist success");
                         break;
-                    case Constant.STATUS_FAILURE:
+                    case ResCode.STATUS_FAILURE_CODE:
 
                         break;
                 }

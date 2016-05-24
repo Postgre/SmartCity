@@ -2,13 +2,11 @@ package com.smartcity.activity.circle;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.smartcity.R;
 import com.smartcity.activity.LoginActivity;
 import com.smartcity.adapter.circle.CircleFragment_Adapter;
@@ -16,7 +14,6 @@ import com.smartcity.application.MyApplication;
 import com.smartcity.base.BaseActivity;
 import com.smartcity.bean.CircleFragment_Model;
 import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
 import com.smartcity.http.model.NewCircleListInfo;
 import com.smartcity.http.service.CircleService;
 import com.smartcity.pulltofresh.PullToRefreshListView;
@@ -30,10 +27,11 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Administrator on 2016/4/18.
@@ -53,10 +51,11 @@ public class Circle_Activity extends BaseActivity implements View.OnClickListene
     TextView title;
     public static Circle_Activity instance;
     String detailPid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        instance =this;
+        instance = this;
 //        headview = (LinearLayout) LayoutInflater.from(this)
 //                .inflate(R.layout.fragment, null);
 //        xlistView.addHeaderView(headview);
@@ -76,19 +75,20 @@ public class Circle_Activity extends BaseActivity implements View.OnClickListene
     }
 
     private void initView() {
-        Intent intent=getIntent();
-        detailPid=intent.getStringExtra("detailPid");
+        Intent intent = getIntent();
+        detailPid = intent.getStringExtra("detailPid");
         back.setVisibility(View.VISIBLE);
         back.setOnClickListener(this);
         faqi.setVisibility(View.VISIBLE);
         faqi.setOnClickListener(this);
         title.setText("活动");
     }
+
     private void initData() {
         initNet();
     }
 
-    private List getList(){
+    private List getList() {
         lists = new ArrayList<CircleFragment_Model>();
 
         lists.add(new CircleFragment_Model(R.mipmap.circle_img,
@@ -103,6 +103,7 @@ public class Circle_Activity extends BaseActivity implements View.OnClickListene
                 "一路向南，新西兰之旅", 100, 40, 360, 150, 0));
         return lists;
     }
+
     private void initNet() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         CircleService service = retrofit.create(CircleService.class);
@@ -110,24 +111,24 @@ public class Circle_Activity extends BaseActivity implements View.OnClickListene
         maps.put("detailCircleId", detailPid);
         maps.put("sStartpage", "1");
         maps.put("sPagerows", "10");
-        service.getMyCircleList(MyApplication.getApikey(), Url.CIRCLEACTIVITY, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<NewCircleListInfo>() {
+        service.getMyCircleList(MyApplication.getApikey(), Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<NewCircleListInfo>() {
             @Override
-            public void onResponse(Response<NewCircleListInfo> response, Retrofit retrofit) {
-                LogTool.e("log",response.body() + "retrofit");
+            public void onResponse(Call<NewCircleListInfo> call, Response<NewCircleListInfo> response) {
+                LogTool.e("log", response.body() + "retrofit");
                 if (response.body() != null) {
                     if (response.body().getCode() == 1) {
                         list_CircleInfo = response.body().getData();
-                        adapter = new CircleFragment_Adapter(Circle_Activity.this,list_CircleInfo, R.layout.circle_activity_item);
+                        adapter = new CircleFragment_Adapter(Circle_Activity.this, list_CircleInfo, R.layout.circle_activity_item);
                         xlistView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                    }else{
+                    } else {
                         CommonUtils.launchActivity(Circle_Activity.this, LoginActivity.class);
                     }
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<NewCircleListInfo> call, Throwable t) {
                 Toast.makeText(Circle_Activity.this, "网络异常，访问服务器失败", Toast.LENGTH_SHORT).show();
             }
         });
@@ -147,6 +148,7 @@ public class Circle_Activity extends BaseActivity implements View.OnClickListene
         }
 
     }
+
     public void join(int personCircleId) {
 //        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.3.185").addConverterFactory(GsonConverterFactory.create()).build();
 //        ApiService service = retrofit.create(ApiService.class);

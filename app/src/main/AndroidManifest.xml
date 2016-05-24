@@ -483,7 +483,13 @@
             android:name="com.netease.cosine.target.receiver"
             android:value="com.netease.nimlib.service.NimReceiver" />
 
-        <activity android:name=".activity.circle.Lift_ContentActivity"></activity>
+        <!--呼叫服务的主页-->
+        <activity android:name=".activity.chw.service.ServiceFirstPageActivity"></activity>
+        <activity
+            android:name=".activity.circle.Lift_ContentActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!--我能的个人页面-->
+        <activity android:name=".activity.chw.service.WecanDetialActivity"></activity>
     </application>
 
 </manifest>

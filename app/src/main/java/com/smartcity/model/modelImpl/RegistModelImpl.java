@@ -2,7 +2,6 @@ package com.smartcity.model.modelImpl;
 
 import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
-import com.smartcity.config.Url;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.BaseModel;
 import com.smartcity.http.service.RegisterService;
@@ -14,9 +13,10 @@ import com.smartcity.utils.NetTool;
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * 在此写类用途
@@ -44,9 +44,10 @@ public class RegistModelImpl implements RegistModel {
         Map<String, Object> params = new HashMap<>();
         params.put("usercode", phone);
         LogTool.d(TAG, "data:" + GsonUtils.objectToJson(params));
-        service.getNewCode(Url.REQ_CODE, Constant.VERSION_CODE, GsonUtils.objectToJson(params)).enqueue(new Callback<Object>() {
+        service.getNewCode(RegisterService.REQ_CODE, Constant.VERSION_CODE, GsonUtils.objectToJson(params)).enqueue(new Callback<Object>() {
+
             @Override
-            public void onResponse(Response<Object> response, Retrofit retrofit) {
+            public void onResponse(Call<Object> call, Response<Object> response) {
                 if (null != response && null != response.body()) {
                     if (null != callback) {
                         callback.success(response.body().toString());
@@ -59,7 +60,7 @@ public class RegistModelImpl implements RegistModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<Object> call, Throwable t) {
                 if (null != callback) {
                     callback.success(t.getMessage());
                 }
@@ -73,16 +74,16 @@ public class RegistModelImpl implements RegistModel {
         params.put("usercode", usercode);
         params.put("captcha", captcha);
         params.put("password", pwd);
-        service.regist(Url.REGISTER, Constant.VERSION_CODE, GsonUtils.objectToJson(params)).enqueue(new Callback<BaseModel>() {
+        service.register(RegisterService.REGISTER, Constant.VERSION_CODE, GsonUtils.objectToJson(params)).enqueue(new Callback<BaseModel>() {
+
             @Override
-            public void onResponse(Response<BaseModel> response, Retrofit retrofit) {
+            public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
                 if (null != response && null != response.body()) {
                     if (null != callBack) {
                         callBack.registSuccess(response.body());
                     }
                 } else {
                     if (null != callBack) {
-
                         callBack.registError(null);
                     }
 
@@ -90,7 +91,7 @@ public class RegistModelImpl implements RegistModel {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<BaseModel> call, Throwable t) {
                 if (null != callBack) {
                     callBack.registError(t.getMessage());
                 }

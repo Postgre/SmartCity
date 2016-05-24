@@ -1,12 +1,14 @@
 package com.smartcity.activity.life;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ScrollView;
 
 import com.cpoopc.scrollablelayoutlib.ScrollableHelper;
 import com.cpoopc.scrollablelayoutlib.ScrollableLayout;
 import com.smartcity.R;
+import com.smartcity.presenterImpl.GoodsDetailPresenter;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -16,12 +18,16 @@ import butterknife.OnClick;
  */
 public class ShopDetailsActivity  extends LifeBaseActivity implements ScrollableHelper.ScrollableContainer{
 
+
+    public static final String GOODS_ID ="goodsId";
+
     @Bind(R.id.scrollableLayout)
     ScrollableLayout scrollableLayout;
 
 
     @Bind(R.id.shop_detail_scro_container)
     ScrollView scrollView;
+    private GoodsDetailPresenter goodsDetailPresenter;
 
     @Override
     protected void initViews() {
@@ -30,6 +36,15 @@ public class ShopDetailsActivity  extends LifeBaseActivity implements Scrollable
        // lifeBg.setBackgroundColor(Color.parseColor("#c9c9c9"));
 
         scrollableLayout.getHelper().setCurrentScrollableContainer(this);
+
+        goodsDetailPresenter = new GoodsDetailPresenter();
+        Intent intent = getIntent();
+        String goodsId = intent.getStringExtra(GOODS_ID);
+        if(!TextUtils.isEmpty(goodsId))
+        {
+           // goodsDetailPresenter.getDetailByGoodsId(goodsId);
+            goodsDetailPresenter.getDetailByGoodsId(String.valueOf(1));
+        }
     }
 
     @Override

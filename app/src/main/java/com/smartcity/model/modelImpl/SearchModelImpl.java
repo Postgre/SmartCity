@@ -1,7 +1,7 @@
 package com.smartcity.model.modelImpl;
 
 import com.smartcity.application.MyApplication;
-import com.smartcity.config.Constant;
+import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.CircleBean;
 import com.smartcity.http.service.SearchService;
@@ -10,10 +10,10 @@ import com.smartcity.utils.NetTool;
 
 import java.util.List;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Administrator on 2016/5/11.
@@ -26,25 +26,24 @@ public class SearchModelImpl implements SearchModel {
     }
 
     @Override
-    public void loadSearchData(String apikey, String cmd, String version, String data, final onLoadSearchListListener listener) {
+    public void loadSearchData(String apikey, String version, String data, final onLoadSearchListListener listener) {
         SearchService service = HttpApi.getInstance().create(SearchService.class);
-        Call<CircleBean> call = service.getSearchData(apikey, cmd, version, data);
+        Call<CircleBean> call = service.getSearchData(apikey, version, data);
         call.enqueue(new Callback<CircleBean>() {
+
             @Override
-            public void onResponse(Response<CircleBean> response, Retrofit retrofit) {
+            public void onResponse(Call<CircleBean> call, Response<CircleBean> response) {
                 CircleBean circleBean = response.body();
                 if (null != circleBean) {
-
-                    if (circleBean.getCode() == Constant.STATUS_SUCCESS)
+                    if (circleBean.getCode() == ResCode.STATUS_SUCCESS_CODE)
                         listener.onSuccess(circleBean.getData());
                 } else {
                     listener.onFailure(circleBean.getMsg());
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CircleBean> call, Throwable t) {
                 listener.onFailure(t.getMessage());
             }
         });

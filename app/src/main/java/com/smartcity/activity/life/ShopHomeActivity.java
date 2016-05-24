@@ -20,6 +20,7 @@ import com.smartcity.R;
 import com.smartcity.activity.LoginActivity;
 import com.smartcity.http.model.CouponModel;
 import com.smartcity.http.model.LifeGoodsModel;
+import com.smartcity.http.model.LifeShopModel;
 import com.smartcity.http.model.ShopHomeMorePop;
 import com.smartcity.model.modelImpl.ShopHomeModelImpl;
 import com.smartcity.presenterImpl.ShopHomePresenter;
@@ -42,7 +43,7 @@ import butterknife.OnClick;
  */
 public class ShopHomeActivity extends LifeBaseActivity implements ScrollableHelper.ScrollableContainer, ShopHomeView {
 
-    private static final int PAGE_SIZE =15;
+    private static final int PAGE_SIZE = 15;
     @Bind(R.id.shop_iv_bg)
     SimpleDraweeView shopBg;
 
@@ -65,15 +66,15 @@ public class ShopHomeActivity extends LifeBaseActivity implements ScrollableHelp
     private ShopHomePresenter shopHomePresenter;
 
 
-    private int currentType =-1;
-    private int pageNo =1;
+    private int currentType = -1;
+    private int pageNo = 1;
+
     @Override
     protected void initViews() {
 
         int id = getIntent().getIntExtra("id", 1);
         String bgImg = getIntent().getStringExtra("bg");
-        if(TextUtils.isEmpty(bgImg))
-        {
+        if (!TextUtils.isEmpty(bgImg)) {
             setShopBgUrl(bgImg);
         }
         initRecy();
@@ -84,14 +85,14 @@ public class ShopHomeActivity extends LifeBaseActivity implements ScrollableHelp
 
         mScrollLayout.getHelper().setCurrentScrollableContainer(this);
 
-        shopHomePresenter = new ShopHomePresenter(String.valueOf(id),this);
+        shopHomePresenter = new ShopHomePresenter(String.valueOf(id), this);
 
         //获取店铺信息
         shopHomePresenter.initShopInfo();
         //获取优惠券
         shopHomePresenter.initCouponList();
         //获取本店商品
-        shopHomePresenter.initGoodsList(currentType,pageNo,PAGE_SIZE);
+        shopHomePresenter.initGoodsList(currentType, pageNo, PAGE_SIZE);
 
     }
 
@@ -185,7 +186,8 @@ public class ShopHomeActivity extends LifeBaseActivity implements ScrollableHelp
     //店铺简介
     @OnClick(R.id.shop_home_frame_detail)
     public void startShopProfileActivity() {
-        startActivity(new Intent(this, ShopProfileActivity.class));
+
+        shopHomePresenter.startShopProFile();
     }
 
     @Override
@@ -222,32 +224,43 @@ public class ShopHomeActivity extends LifeBaseActivity implements ScrollableHelp
         startActivity(new Intent(this, LoginActivity.class));
     }
 
+    @Override
+    public void goShopDesActivity(LifeShopModel lifeShopModel) {
+        if (null != lifeShopModel) {
+            Intent intent = new Intent(this, ShopProfileActivity.class);
+            intent.putExtra("data", lifeShopModel);
+            startActivity(intent);
+        }
+
+    }
+
     /**
-     *  private final static int TIME =0;//时间
-     private final static int SELL_COUNT =1;//销量由高到低
-     private final static int PRICE_DOWN =2;//价格由低到高
-     private final static int PRICE_UP =3;//价格由高到低
-     * */
+     * private final static int TIME =0;//时间
+     * private final static int SELL_COUNT =1;//销量由高到低
+     * private final static int PRICE_DOWN =2;//价格由低到高
+     * private final static int PRICE_UP =3;//价格由高到低
+     */
     private boolean priceUp = true;
+
     @OnClick({R.id.shop_rule_multiple, R.id.shop_rule_volume, R.id.shop_rule_minute, R.id.shop_rule_price})
     public void getGoodsListByRule(View view) {
         switch (view.getId()) {
             case R.id.shop_rule_multiple:
-                shopHomePresenter.initGoodsList(-1,-1 == currentType?++pageNo:1,PAGE_SIZE);
+                shopHomePresenter.initGoodsList(-1, -1 == currentType ? ++pageNo : 1, PAGE_SIZE);
                 currentType = -1;
 
                 break;
             case R.id.shop_rule_volume:
-                shopHomePresenter.initGoodsList(ShopHomeModelImpl.SELL_COUNT,1,PAGE_SIZE);
+                shopHomePresenter.initGoodsList(ShopHomeModelImpl.SELL_COUNT, 1, PAGE_SIZE);
                 currentType = ShopHomeModelImpl.SELL_COUNT;
                 break;
             case R.id.shop_rule_minute:
-                shopHomePresenter.initGoodsList(ShopHomeModelImpl.TIME,1,PAGE_SIZE);
+                shopHomePresenter.initGoodsList(ShopHomeModelImpl.TIME, 1, PAGE_SIZE);
                 currentType = ShopHomeModelImpl.TIME;
                 break;
             case R.id.shop_rule_price:
-                shopHomePresenter.initGoodsList(priceUp?ShopHomeModelImpl.PRICE_UP:ShopHomeModelImpl.PRICE_DOWN,1,PAGE_SIZE);
-                currentType = priceUp?ShopHomeModelImpl.PRICE_UP:ShopHomeModelImpl.PRICE_DOWN;
+                shopHomePresenter.initGoodsList(priceUp ? ShopHomeModelImpl.PRICE_UP : ShopHomeModelImpl.PRICE_DOWN, 1, PAGE_SIZE);
+                currentType = priceUp ? ShopHomeModelImpl.PRICE_UP : ShopHomeModelImpl.PRICE_DOWN;
                 priceUp = !priceUp;
                 break;
             default:
@@ -256,8 +269,7 @@ public class ShopHomeActivity extends LifeBaseActivity implements ScrollableHelp
     }
 
     @OnClick(R.id.shop_is_collection)
-    public void collectionShop()
-    {
+    public void collectionShop() {
         shopHomePresenter.addFovShopOrShop(null);
     }
 }

@@ -2,6 +2,7 @@ package com.smartcity.view;
 
 import com.smartcity.http.model.CouponModel;
 import com.smartcity.http.model.LifeGoodsModel;
+import com.smartcity.http.model.LifeShopModel;
 
 /**
  * Created by Ynacy on 2016/5/20.
@@ -21,4 +22,6 @@ public interface ShopHomeView  extends BaseViews{
     void idCollection(boolean isCoolection);
 
     void startLogin();
+
+    void  goShopDesActivity(LifeShopModel lifeShopModel);
 }

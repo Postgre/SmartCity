@@ -23,6 +23,6 @@ public interface CircleModel extends BaseModel {
     /*我的圈子*/
     void getMyCircle(String apikey, String personUserId, String sStartpage, String sPagerows, CircleModelImpl.onLoadMyCircle listener);
 
-//    /*我的圈子*/
-//    void getMyGroup(String apikey, String detailPid,String sStartpage,String sPagerows,CircleModelImpl.onLoadMyCircle listener);
+    /*我的圈子*/
+    void getMyGroup(String apikey, String detailPid, String sStartpage, String sPagerows, CircleModelImpl.onLoadMyCircle listener);
 }

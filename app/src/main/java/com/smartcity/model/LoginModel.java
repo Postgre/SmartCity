@@ -11,5 +11,5 @@ import com.smartcity.model.modelImpl.LoginModelImpl;
  * @date: 2016-04-30 11:19
  */
 public interface LoginModel extends BaseModel {
-    void login(String url, String version, String data, LoginModelImpl.LoginCallBack callBack);
+    void login(String userName, String pwd, LoginModelImpl.LoginCallBack callBack);
 }

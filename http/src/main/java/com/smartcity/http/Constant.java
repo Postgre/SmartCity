@@ -10,9 +10,10 @@ package com.smartcity.http;
  */
 public class Constant {
 
-    public static final String BASEURL = "http://192.168.3.185"; //服务器地址
+    public static final String REST = "/zxcity_restful/ws/rest/";
 
-    public static final String REST = "/zxcity_restful/ws/rest";
+    public static final String BASEURL = "http://192.168.3.185";
+    public static final String BASEURL_TEST = "http://192.168.3.185:8080"; //测试服务器地址
 
     public static final String CMD = "cmd";
 

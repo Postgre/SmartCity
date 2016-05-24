@@ -118,8 +118,15 @@ public class CircleVideo {
          * remark : null
          */
 
+        private MPlmapBean mPlmap;
         private ScSysUserBean scSysUser;
+        public MPlmapBean getMPlmap() {
+            return mPlmap;
+        }
 
+        public void setMPlmap(MPlmapBean mPlmap) {
+            this.mPlmap = mPlmap;
+        }
         public int getVideoAlbumId() {
             return videoAlbumId;
         }
@@ -479,6 +486,701 @@ public class CircleVideo {
 
             public void setRemark(Object remark) {
                 this.remark = remark;
+            }
+        }
+        public static class MPlmapBean {
+            private int totalCount;
+            private int totalLikeCount;
+            /**
+             * sId : ad712fdc578e490aab8136bace601b14
+             * sType : 4
+             * sActivityId : null
+             * sCircleId : null
+             * sCoolId : null
+             * sShareId : null
+             * sVideoAlbumId : 1
+             * sUserId : 56
+             * sUserCode : 1
+             * sCommentDate : 2016-05-20 10:23:40
+             * sCommentNumber : null
+             * sCommentTitle : 标题1
+             * sCommentContent : 评论内容110
+             * sLikeDate : 2016-05-20 10:23:40
+             * sIsLike : 0
+             * sLikeCount : null
+             * sImgNameList : null
+             * sMemberImgName : http://zxcity.com/111.jpg
+             * commentSum : 0
+             * lsccr : null
+             * pagination : null
+             */
+
+            private List<HotCommentListBean> hotCommentList;
+            /**
+             * sId : 71999bf5b2324c3f9d0f0f74cb956deb
+             * sType : 4
+             * sActivityId : null
+             * sCircleId : null
+             * sCoolId : null
+             * sShareId : null
+             * sVideoAlbumId : 1
+             * sUserId : 56
+             * sUserCode : abc
+             * sCommentDate : 2016-05-24 14:12:01
+             * sCommentNumber : null
+             * sCommentTitle : 标题1
+             * sCommentContent : 评论内容10
+             * sLikeDate : 2016-05-24 14:12:01
+             * sIsLike : 0
+             * sLikeCount : null
+             * sImgNameList : null
+             * sMemberImgName : http://zxcity.com/111.jpg
+             * commentSum : 0
+             * lsccr : null
+             * pagination : null
+             */
+
+            private List<NewestCommentListBean> newestCommentList;
+            /**
+             * sId : ad712fdc578e490aab8136bace601b14
+             * sType : 4
+             * sActivityId : null
+             * sCircleId : null
+             * sCoolId : null
+             * sShareId : null
+             * sVideoAlbumId : 1
+             * sUserId : 56
+             * sUserCode : 1
+             * sCommentDate : 2016-05-20 10:23:40
+             * sCommentNumber : null
+             * sCommentTitle : 标题1
+             * sCommentContent : 评论内容110
+             * sLikeDate : 2016-05-20 10:23:40
+             * sIsLike : 0
+             * sLikeCount : null
+             * sImgNameList : null
+             * sMemberImgName : http://zxcity.com/111.jpg
+             * commentSum : 0
+             * lsccr : null
+             * pagination : null
+             */
+
+            private List<CommentListBean> commentList;
+
+            public int getTotalCount() {
+                return totalCount;
+            }
+
+            public void setTotalCount(int totalCount) {
+                this.totalCount = totalCount;
+            }
+
+            public int getTotalLikeCount() {
+                return totalLikeCount;
+            }
+
+            public void setTotalLikeCount(int totalLikeCount) {
+                this.totalLikeCount = totalLikeCount;
+            }
+
+            public List<HotCommentListBean> getHotCommentList() {
+                return hotCommentList;
+            }
+
+            public void setHotCommentList(List<HotCommentListBean> hotCommentList) {
+                this.hotCommentList = hotCommentList;
+            }
+
+            public List<NewestCommentListBean> getNewestCommentList() {
+                return newestCommentList;
+            }
+
+            public void setNewestCommentList(List<NewestCommentListBean> newestCommentList) {
+                this.newestCommentList = newestCommentList;
+            }
+
+            public List<CommentListBean> getCommentList() {
+                return commentList;
+            }
+
+            public void setCommentList(List<CommentListBean> commentList) {
+                this.commentList = commentList;
+            }
+
+            public static class HotCommentListBean {
+                private String sId;
+                private String sType;
+                private Object sActivityId;
+                private Object sCircleId;
+                private Object sCoolId;
+                private Object sShareId;
+                private String sVideoAlbumId;
+                private String sUserId;
+                private String sUserCode;
+                private String sCommentDate;
+                private Object sCommentNumber;
+                private String sCommentTitle;
+                private String sCommentContent;
+                private String sLikeDate;
+                private String sIsLike;
+                private Object sLikeCount;
+                private Object sImgNameList;
+                private String sMemberImgName;
+                private int commentSum;
+                private Object lsccr;
+                private Object pagination;
+
+                public String getSId() {
+                    return sId;
+                }
+
+                public void setSId(String sId) {
+                    this.sId = sId;
+                }
+
+                public String getSType() {
+                    return sType;
+                }
+
+                public void setSType(String sType) {
+                    this.sType = sType;
+                }
+
+                public Object getSActivityId() {
+                    return sActivityId;
+                }
+
+                public void setSActivityId(Object sActivityId) {
+                    this.sActivityId = sActivityId;
+                }
+
+                public Object getSCircleId() {
+                    return sCircleId;
+                }
+
+                public void setSCircleId(Object sCircleId) {
+                    this.sCircleId = sCircleId;
+                }
+
+                public Object getSCoolId() {
+                    return sCoolId;
+                }
+
+                public void setSCoolId(Object sCoolId) {
+                    this.sCoolId = sCoolId;
+                }
+
+                public Object getSShareId() {
+                    return sShareId;
+                }
+
+                public void setSShareId(Object sShareId) {
+                    this.sShareId = sShareId;
+                }
+
+                public String getSVideoAlbumId() {
+                    return sVideoAlbumId;
+                }
+
+                public void setSVideoAlbumId(String sVideoAlbumId) {
+                    this.sVideoAlbumId = sVideoAlbumId;
+                }
+
+                public String getSUserId() {
+                    return sUserId;
+                }
+
+                public void setSUserId(String sUserId) {
+                    this.sUserId = sUserId;
+                }
+
+                public String getSUserCode() {
+                    return sUserCode;
+                }
+
+                public void setSUserCode(String sUserCode) {
+                    this.sUserCode = sUserCode;
+                }
+
+                public String getSCommentDate() {
+                    return sCommentDate;
+                }
+
+                public void setSCommentDate(String sCommentDate) {
+                    this.sCommentDate = sCommentDate;
+                }
+
+                public Object getSCommentNumber() {
+                    return sCommentNumber;
+                }
+
+                public void setSCommentNumber(Object sCommentNumber) {
+                    this.sCommentNumber = sCommentNumber;
+                }
+
+                public String getSCommentTitle() {
+                    return sCommentTitle;
+                }
+
+                public void setSCommentTitle(String sCommentTitle) {
+                    this.sCommentTitle = sCommentTitle;
+                }
+
+                public String getSCommentContent() {
+                    return sCommentContent;
+                }
+
+                public void setSCommentContent(String sCommentContent) {
+                    this.sCommentContent = sCommentContent;
+                }
+
+                public String getSLikeDate() {
+                    return sLikeDate;
+                }
+
+                public void setSLikeDate(String sLikeDate) {
+                    this.sLikeDate = sLikeDate;
+                }
+
+                public String getSIsLike() {
+                    return sIsLike;
+                }
+
+                public void setSIsLike(String sIsLike) {
+                    this.sIsLike = sIsLike;
+                }
+
+                public Object getSLikeCount() {
+                    return sLikeCount;
+                }
+
+                public void setSLikeCount(Object sLikeCount) {
+                    this.sLikeCount = sLikeCount;
+                }
+
+                public Object getSImgNameList() {
+                    return sImgNameList;
+                }
+
+                public void setSImgNameList(Object sImgNameList) {
+                    this.sImgNameList = sImgNameList;
+                }
+
+                public String getSMemberImgName() {
+                    return sMemberImgName;
+                }
+
+                public void setSMemberImgName(String sMemberImgName) {
+                    this.sMemberImgName = sMemberImgName;
+                }
+
+                public int getCommentSum() {
+                    return commentSum;
+                }
+
+                public void setCommentSum(int commentSum) {
+                    this.commentSum = commentSum;
+                }
+
+                public Object getLsccr() {
+                    return lsccr;
+                }
+
+                public void setLsccr(Object lsccr) {
+                    this.lsccr = lsccr;
+                }
+
+                public Object getPagination() {
+                    return pagination;
+                }
+
+                public void setPagination(Object pagination) {
+                    this.pagination = pagination;
+                }
+            }
+
+            public static class NewestCommentListBean {
+                private String sId;
+                private String sType;
+                private Object sActivityId;
+                private Object sCircleId;
+                private Object sCoolId;
+                private Object sShareId;
+                private String sVideoAlbumId;
+                private String sUserId;
+                private String sUserCode;
+                private String sCommentDate;
+                private Object sCommentNumber;
+                private String sCommentTitle;
+                private String sCommentContent;
+                private String sLikeDate;
+                private String sIsLike;
+                private Object sLikeCount;
+                private Object sImgNameList;
+                private String sMemberImgName;
+                private int commentSum;
+                private Object lsccr;
+                private Object pagination;
+
+                public String getSId() {
+                    return sId;
+                }
+
+                public void setSId(String sId) {
+                    this.sId = sId;
+                }
+
+                public String getSType() {
+                    return sType;
+                }
+
+                public void setSType(String sType) {
+                    this.sType = sType;
+                }
+
+                public Object getSActivityId() {
+                    return sActivityId;
+                }
+
+                public void setSActivityId(Object sActivityId) {
+                    this.sActivityId = sActivityId;
+                }
+
+                public Object getSCircleId() {
+                    return sCircleId;
+                }
+
+                public void setSCircleId(Object sCircleId) {
+                    this.sCircleId = sCircleId;
+                }
+
+                public Object getSCoolId() {
+                    return sCoolId;
+                }
+
+                public void setSCoolId(Object sCoolId) {
+                    this.sCoolId = sCoolId;
+                }
+
+                public Object getSShareId() {
+                    return sShareId;
+                }
+
+                public void setSShareId(Object sShareId) {
+                    this.sShareId = sShareId;
+                }
+
+                public String getSVideoAlbumId() {
+                    return sVideoAlbumId;
+                }
+
+                public void setSVideoAlbumId(String sVideoAlbumId) {
+                    this.sVideoAlbumId = sVideoAlbumId;
+                }
+
+                public String getSUserId() {
+                    return sUserId;
+                }
+
+                public void setSUserId(String sUserId) {
+                    this.sUserId = sUserId;
+                }
+
+                public String getSUserCode() {
+                    return sUserCode;
+                }
+
+                public void setSUserCode(String sUserCode) {
+                    this.sUserCode = sUserCode;
+                }
+
+                public String getSCommentDate() {
+                    return sCommentDate;
+                }
+
+                public void setSCommentDate(String sCommentDate) {
+                    this.sCommentDate = sCommentDate;
+                }
+
+                public Object getSCommentNumber() {
+                    return sCommentNumber;
+                }
+
+                public void setSCommentNumber(Object sCommentNumber) {
+                    this.sCommentNumber = sCommentNumber;
+                }
+
+                public String getSCommentTitle() {
+                    return sCommentTitle;
+                }
+
+                public void setSCommentTitle(String sCommentTitle) {
+                    this.sCommentTitle = sCommentTitle;
+                }
+
+                public String getSCommentContent() {
+                    return sCommentContent;
+                }
+
+                public void setSCommentContent(String sCommentContent) {
+                    this.sCommentContent = sCommentContent;
+                }
+
+                public String getSLikeDate() {
+                    return sLikeDate;
+                }
+
+                public void setSLikeDate(String sLikeDate) {
+                    this.sLikeDate = sLikeDate;
+                }
+
+                public String getSIsLike() {
+                    return sIsLike;
+                }
+
+                public void setSIsLike(String sIsLike) {
+                    this.sIsLike = sIsLike;
+                }
+
+                public Object getSLikeCount() {
+                    return sLikeCount;
+                }
+
+                public void setSLikeCount(Object sLikeCount) {
+                    this.sLikeCount = sLikeCount;
+                }
+
+                public Object getSImgNameList() {
+                    return sImgNameList;
+                }
+
+                public void setSImgNameList(Object sImgNameList) {
+                    this.sImgNameList = sImgNameList;
+                }
+
+                public String getSMemberImgName() {
+                    return sMemberImgName;
+                }
+
+                public void setSMemberImgName(String sMemberImgName) {
+                    this.sMemberImgName = sMemberImgName;
+                }
+
+                public int getCommentSum() {
+                    return commentSum;
+                }
+
+                public void setCommentSum(int commentSum) {
+                    this.commentSum = commentSum;
+                }
+
+                public Object getLsccr() {
+                    return lsccr;
+                }
+
+                public void setLsccr(Object lsccr) {
+                    this.lsccr = lsccr;
+                }
+
+                public Object getPagination() {
+                    return pagination;
+                }
+
+                public void setPagination(Object pagination) {
+                    this.pagination = pagination;
+                }
+            }
+
+            public static class CommentListBean {
+                private String sId;
+                private String sType;
+                private Object sActivityId;
+                private Object sCircleId;
+                private Object sCoolId;
+                private Object sShareId;
+                private String sVideoAlbumId;
+                private String sUserId;
+                private String sUserCode;
+                private String sCommentDate;
+                private Object sCommentNumber;
+                private String sCommentTitle;
+                private String sCommentContent;
+                private String sLikeDate;
+                private String sIsLike;
+                private Object sLikeCount;
+                private Object sImgNameList;
+                private String sMemberImgName;
+                private int commentSum;
+                private Object lsccr;
+                private Object pagination;
+
+                public String getSId() {
+                    return sId;
+                }
+
+                public void setSId(String sId) {
+                    this.sId = sId;
+                }
+
+                public String getSType() {
+                    return sType;
+                }
+
+                public void setSType(String sType) {
+                    this.sType = sType;
+                }
+
+                public Object getSActivityId() {
+                    return sActivityId;
+                }
+
+                public void setSActivityId(Object sActivityId) {
+                    this.sActivityId = sActivityId;
+                }
+
+                public Object getSCircleId() {
+                    return sCircleId;
+                }
+
+                public void setSCircleId(Object sCircleId) {
+                    this.sCircleId = sCircleId;
+                }
+
+                public Object getSCoolId() {
+                    return sCoolId;
+                }
+
+                public void setSCoolId(Object sCoolId) {
+                    this.sCoolId = sCoolId;
+                }
+
+                public Object getSShareId() {
+                    return sShareId;
+                }
+
+                public void setSShareId(Object sShareId) {
+                    this.sShareId = sShareId;
+                }
+
+                public String getSVideoAlbumId() {
+                    return sVideoAlbumId;
+                }
+
+                public void setSVideoAlbumId(String sVideoAlbumId) {
+                    this.sVideoAlbumId = sVideoAlbumId;
+                }
+
+                public String getSUserId() {
+                    return sUserId;
+                }
+
+                public void setSUserId(String sUserId) {
+                    this.sUserId = sUserId;
+                }
+
+                public String getSUserCode() {
+                    return sUserCode;
+                }
+
+                public void setSUserCode(String sUserCode) {
+                    this.sUserCode = sUserCode;
+                }
+
+                public String getSCommentDate() {
+                    return sCommentDate;
+                }
+
+                public void setSCommentDate(String sCommentDate) {
+                    this.sCommentDate = sCommentDate;
+                }
+
+                public Object getSCommentNumber() {
+                    return sCommentNumber;
+                }
+
+                public void setSCommentNumber(Object sCommentNumber) {
+                    this.sCommentNumber = sCommentNumber;
+                }
+
+                public String getSCommentTitle() {
+                    return sCommentTitle;
+                }
+
+                public void setSCommentTitle(String sCommentTitle) {
+                    this.sCommentTitle = sCommentTitle;
+                }
+
+                public String getSCommentContent() {
+                    return sCommentContent;
+                }
+
+                public void setSCommentContent(String sCommentContent) {
+                    this.sCommentContent = sCommentContent;
+                }
+
+                public String getSLikeDate() {
+                    return sLikeDate;
+                }
+
+                public void setSLikeDate(String sLikeDate) {
+                    this.sLikeDate = sLikeDate;
+                }
+
+                public String getSIsLike() {
+                    return sIsLike;
+                }
+
+                public void setSIsLike(String sIsLike) {
+                    this.sIsLike = sIsLike;
+                }
+
+                public Object getSLikeCount() {
+                    return sLikeCount;
+                }
+
+                public void setSLikeCount(Object sLikeCount) {
+                    this.sLikeCount = sLikeCount;
+                }
+
+                public Object getSImgNameList() {
+                    return sImgNameList;
+                }
+
+                public void setSImgNameList(Object sImgNameList) {
+                    this.sImgNameList = sImgNameList;
+                }
+
+                public String getSMemberImgName() {
+                    return sMemberImgName;
+                }
+
+                public void setSMemberImgName(String sMemberImgName) {
+                    this.sMemberImgName = sMemberImgName;
+                }
+
+                public int getCommentSum() {
+                    return commentSum;
+                }
+
+                public void setCommentSum(int commentSum) {
+                    this.commentSum = commentSum;
+                }
+
+                public Object getLsccr() {
+                    return lsccr;
+                }
+
+                public void setLsccr(Object lsccr) {
+                    this.lsccr = lsccr;
+                }
+
+                public Object getPagination() {
+                    return pagination;
+                }
+
+                public void setPagination(Object pagination) {
+                    this.pagination = pagination;
+                }
             }
         }
     }

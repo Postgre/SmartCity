@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_159">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/shop_pro_iv_bg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_140"
             android:scaleType="fitXY"
@@ -24,12 +25,11 @@
             android:src="@mipmap/jianjiemengceng" />
 
         <FrameLayout
-            android:background="@color/white"
             android:layout_width="@dimen/dp_68"
             android:layout_height="@dimen/dp_68"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dp_95"
-          >
+            android:background="@color/white">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="@dimen/dp_64"
@@ -43,6 +43,7 @@
     </FrameLayout>
 
     <TextView
+        android:id="@+id/shop_pro_tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -96,6 +97,7 @@
                     android:textSize="@dimen/ts_14" />
 
                 <TextView
+                    android:id="@+id/shop_profile_dis_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -139,6 +141,7 @@
                     android:textSize="@dimen/ts_14" />
 
                 <TextView
+                    android:id="@+id/shop_profile_sell_server_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -181,6 +184,8 @@
                     android:textSize="@dimen/ts_14" />
 
                 <TextView
+
+                    android:id="@+id/shop_profile_logistics_service_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -217,6 +222,7 @@
             android:textSize="@dimen/ts_14" />
 
         <TextView
+            android:id="@+id/shop_pro_tv_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_10"
@@ -247,6 +253,7 @@
             android:textSize="@dimen/ts_14" />
 
         <TextView
+            android:id="@+id/shop_pro_tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_10"

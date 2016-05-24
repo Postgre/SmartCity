@@ -2,12 +2,13 @@ package com.smartcity.http.model;
 
 import com.smartcity.http.model.BaseModel;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/5/7.
  */
-public class CircleBean extends BaseModel {
+public class CircleBean extends BaseModel implements Serializable{
 
     /**
      * detailId : 5
@@ -57,7 +58,16 @@ public class CircleBean extends BaseModel {
         this.data = data;
     }
 
-    public static class CirDataEntity {
+    public static class CirDataEntity implements Serializable {
+        private boolean isSelected;
+
+        public void setSelected(boolean selected) {
+            isSelected = selected;
+        }
+
+        public boolean isSelected() {
+            return isSelected;
+        }
         private int detailId;
         private int detailTypeId;
         private String detailName;
@@ -379,7 +389,7 @@ public class CircleBean extends BaseModel {
         public void setLscd(List<LscdBean> lscd) {
             this.lscd = lscd;
         }
-        public static class LscdBean {
+        public static class LscdBean implements Serializable{
             private Object detailId;
             private Object detailTypeId;
             private String detailName;

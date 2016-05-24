@@ -104,12 +104,12 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_advanced_team_announce_list_item.xml",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\layout\\nim_advanced_team_announce_list_item.xml"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\abc_expanded_menu_layout.xml",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_advanced_team_announce_list_item.xml",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\layout\\nim_advanced_team_announce_list_item.xml"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_message_activity_bottom_layout.xml",
@@ -316,12 +316,12 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\layout\\nim_advanced_team_announce.xml"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_tab.xml",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_tab.xml"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_action_bar_right_clickable_tv.xml",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\layout\\nim_action_bar_right_clickable_tv.xml"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_tab.xml",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_tab.xml"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_emoji_layout.xml",

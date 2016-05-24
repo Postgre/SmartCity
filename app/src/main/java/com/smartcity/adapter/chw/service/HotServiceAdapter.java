@@ -26,7 +26,7 @@ public class HotServiceAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return titles.size();
+        return 3;
     }
 
     @Override
