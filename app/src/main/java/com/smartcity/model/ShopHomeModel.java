@@ -6,7 +6,7 @@ import com.smartcity.model.modelImpl.ShopHomeModelImpl;
 /**
  * Created by Administrator on 2016/5/20.
  */
-public interface ShopHomeModel {
+public interface ShopHomeModel{
 
     /**
      * 店铺首页信息

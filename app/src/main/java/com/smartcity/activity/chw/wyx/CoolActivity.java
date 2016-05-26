@@ -23,6 +23,7 @@ import com.smartcity.adapter.chw.wyx.MarkAdapter;
 import com.smartcity.adapter.chw.wyx.MyFragmentPagerAdapter;
 import com.smartcity.base.BaseActivity;
 import com.smartcity.bean.SelectItem;
+import com.smartcity.config.Constant;
 import com.smartcity.customview.MarkPopWindow;
 import com.smartcity.fragment.chw.wyx.CoolFragment;
 import com.smartcity.utils.LogTool;
@@ -33,6 +34,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import butterknife.OnPageChange;
 
 public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCallBack, MarkAdapter.ItemClickCallBack {
     private static final String TAG = CoolActivity.class.getName();
@@ -106,9 +108,9 @@ public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCall
 
     private void setupViewPager(ViewPager viewPager) {
         List<SelectItem> listViews = new ArrayList<>();
-        SelectItem momentItem = new SelectItem(CoolFragment.newInstance(1), getResources().getString(R
+        SelectItem momentItem = new SelectItem(CoolFragment.newInstance(Constant.TYPE_IMG), getResources().getString(R
                 .string.str_jcsk));
-        SelectItem filmItem = new SelectItem(CoolFragment.newInstance(2), getResources().getString(R
+        SelectItem filmItem = new SelectItem(CoolFragment.newInstance(Constant.TYPE_VIDEO), getResources().getString(R
                 .string.str_wdy));
         listViews.add(momentItem);
         listViews.add(filmItem);
@@ -140,6 +142,11 @@ public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCall
                 }
                 break;
         }
+    }
+
+    @OnPageChange(R.id.viewpager)
+    public void onPageSelected(int position) {
+
     }
 
     @Override

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.smartcity.R;
 import com.smartcity.activity.circle.CircleDetailActivity;
+import com.smartcity.activity.circle.CircleDetailActivity;
 import com.smartcity.activity.circle.Circle_Activity;
 import com.smartcity.activity.circle.Circle_NoticeActivity;
 import com.smartcity.activity.circle.Circle_PhotoActivity;
@@ -34,6 +35,7 @@ import com.smartcity.bean.Talent;
 import com.smartcity.config.Constant;
 import com.smartcity.customview.SwipeFlingAdapterView;
 import com.smartcity.http.model.CircleBean;
+import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.LabelBean;
 import com.smartcity.presenter.CirclePresenter;
 import com.smartcity.presenterImpl.CirclePresenterImpl;
@@ -432,6 +434,11 @@ public class CircleFragment extends BaseFragment implements SwipeFlingAdapterVie
     public void addCircles(List<CircleBean.CirDataEntity> circleList) {
         circleLists = circleList;
         loadDatas();
+    }
+
+    @Override
+    public void addCirclesByLabel(List<CircleByLabel.DataEntity> circleList) {
+
     }
 
     @Override

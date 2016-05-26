@@ -77,7 +77,7 @@ public class MomentsFragment extends BaseFragment implements ICoolView, PullToRe
         momentListView.addItemDecoration(decoration);
         momentListView.setOnRefreshListener(this);
         coolPresenterImpl = new CoolPresenterImpl(this);
-        coolPresenterImpl.getAllCool("1", "HBWH", "50", "0", "10");
+        coolPresenterImpl.getAllCool("1", "HBWH", "50", "1","0", "10");
         momentsAdapter = new MomentsAdapter(getActivity(), coolList);
         momentsAdapter.setListener(this);
         momentListView.setAdapter(momentsAdapter);

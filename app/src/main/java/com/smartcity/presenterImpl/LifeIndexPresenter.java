@@ -29,6 +29,7 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     public LifeIndexPresenter(ILifeIndexView lifeIndexView) {
         this.lifeIndexView = lifeIndexView;
+        lifeIndexView.showLoading("loading....");
         initConfig();
         init();
     }
@@ -179,10 +180,10 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     @Override
     public void loadDataSuccess(LifeBannerAndHotModel model) {
+        lifeIndexView.hideLoading();
         if(null != model && null != model.getData())
         {
             LifeBannerAndHotModel.DataBean data = model.getData();
-
             lifeIndexView.setClassify(data.getCategoryList());
             lifeIndexView.setHotShop(data.getHotShopList());
             lifeIndexView.setBanner(data.getSlideShopList());
@@ -196,7 +197,7 @@ public class LifeIndexPresenter implements BasePresenter, LifeIndexModelImpl.OnG
 
     @Override
     public void loadDataError(String msg) {
-
+        lifeIndexView.hideLoading();
         lifeIndexView.showToast(msg);
     }
 }

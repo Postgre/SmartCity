@@ -73,4 +73,6 @@ dependencies {
     //    compile project(path: ':pay')
     compile 'fm.jiecao:jiecaovideoplayer:3.1'
     compile 'com.android.support:support-v4:23.4.0'
+    compile files('libs/aliyun-oss-sdk-android-2.2.0.jar')
+    compile files('libs/AMap_Location_V2.4.0_20160308.jar')
 }

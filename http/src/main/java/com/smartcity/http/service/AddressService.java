@@ -2,11 +2,13 @@ package com.smartcity.http.service;
 
 import com.smartcity.http.Constant;
 import com.smartcity.http.model.AddressList;
+import com.smartcity.http.model.BaseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 
@@ -20,18 +22,21 @@ public interface AddressService {
     //修改或添加  地址列表
     String UPDATE_ADD_ADDRESS = "shop/recvAddrAddOrUpdate";
 
+    //删除  地址列表
+    String DELETE_ADDRESS = "shop/recvAddrDel";
     /**
      * 地址列表
      */
-    @POST(ALL_LIST_ADDRESS)
+    @POST(Constant.REST)
     @FormUrlEncoded
-    Call<AddressList> getAllList(@Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
+    Call<AddressList> getAllList(@Field(Constant.KEY_VERSION) String version,@Field(Constant.CMD)String cmd, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
 
-    @POST(UPDATE_ADD_ADDRESS)
+    @POST(Constant.REST)
     @FormUrlEncoded
-    Call<AddressList.LifeAddressModel> updateOrAddAddress(@Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
+    @Headers("Content-Type:application/x-www-form-urlencoded;charset=utf-8")
+    Call<BaseModel> updateOrAddAddress(@Field(Constant.KEY_VERSION) String version,@Field(Constant.CMD)String cmd, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
 
-    @POST("/zxcity_restful/ws/rest")
+    @POST(Constant.REST)
     @FormUrlEncoded
-    Call<AddressList.LifeAddressModel> deleteAddAddressById(@Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
+    Call<BaseModel> deleteAddAddressById(@Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
 }

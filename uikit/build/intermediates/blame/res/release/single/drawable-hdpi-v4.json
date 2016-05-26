@@ -184,12 +184,12 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable-hdpi\\nim_image_download_failed.jpg"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ptr_circle_loading.png",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable-hdpi\\ptr_circle_loading.png"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\nim_team_owner_icon.png",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable-hdpi\\nim_team_owner_icon.png"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ptr_circle_loading.png",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable-hdpi\\ptr_circle_loading.png"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\abc_tab_unselected_pressed_holo.9.png",
@@ -232,12 +232,12 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-hdpi\\abc_spinner_ab_pressed_holo_dark.9.png"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-hdpi\\abc_list_longpressed_holo.9.png"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\abc_ic_go.png",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-hdpi\\abc_ic_go.png"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-hdpi\\abc_list_longpressed_holo.9.png"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\nim_picker_image_normal.png",

@@ -100,6 +100,7 @@ public class LifeIndexNearFragment extends BaseFragment implements ILifeIndexNea
         if (!isPrepared || !isVisible || mHasLoadedOnce) {
             return;
         }
+        LogTool.e("test","near load data");
         Bundle bundle = getArguments();
         lifeIndexPresenter.initNear(bundle.getInt(TYPE, 1));
     }

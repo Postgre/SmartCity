@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.smartcity.activity.circle.CircleInfoDetailActivity;
 import com.smartcity.application.MyApplication;
 import com.smartcity.base.BaseFragment;
 import com.smartcity.http.model.CircleBean;
+import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.LabelBean;
 import com.smartcity.presenter.CirclePresenter;
 import com.smartcity.presenterImpl.CirclePresenterImpl;
@@ -47,7 +49,7 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
     @Override
     protected void initViews() {
         arg = getArguments().getString("arg");
-
+//        Log.i("NewItemFragment", arg);
     }
 
     @Override
@@ -56,7 +58,8 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
 
         String apikey = MyApplication.getApikey();
 
-        circlePresenter.getCircleListByLabel(apikey, arg, "1", "10");
+        circlePresenter.getCircleListByLabel(apikey, arg, "0", "10");
+//        circlePresenter.getLabels(apikey, "1", "10");
 
         if (temList.size() != 0) {
             temList.clear();
@@ -70,7 +73,7 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
         temList.add(new CircleBean.CirDataEntity("智慧生活圈", "创建人：林志玲", "https://ss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=7f74bb149745d688bc02b5a494c37dab/f703738da97739120f92f746fd198618367ae265.jpg"));
 
 
-        setTemListforRestcleView();
+//        setTemListforRestcleView();
 
     }
 
@@ -116,17 +119,47 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
 
     @Override
     public void addCircles(List<CircleBean.CirDataEntity> circleList) {
-//        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-//        manager.setOrientation(LinearLayoutManager.VERTICAL);
-//        crRecycleview.setLayoutManager(manager);
-//        crRecycleview.setAdapter(new CommonAdapter<CircleBean.CirDataEntity>(getActivity(),R.layout.fr_recycleview_item,circleList){
-//
-//            @Override
-//            public void convert(ViewHolder viewHolder, CircleBean.CirDataEntity cirDataEntity) {
-//                viewHolder.setImageUrl(R.id.header_img,"https://ss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=7f74bb149745d688bc02b5a494c37dab/f703738da97739120f92f746fd198618367ae265.jpg");
-//            }
-//
-//        });
+
+    }
+
+    @Override
+    public void addCirclesByLabel(List<CircleByLabel.DataEntity> circleList) {
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        crRecycleview.setLayoutManager(manager);
+        crRecycleview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        CommonAdapter<CircleByLabel.DataEntity> adapter = new CommonAdapter<CircleByLabel.DataEntity>(getActivity(), R.layout.fr_recycleview_item, circleList) {
+
+
+            @Override
+            public void convert(ViewHolder viewHolder, CircleByLabel.DataEntity dataEntity) {
+                viewHolder.setImageUrl(R.id.header_img, "https://ss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=7f74bb149745d688bc02b5a494c37dab/f703738da97739120f92f746fd198618367ae265.jpg");
+                viewHolder.setText(R.id.cir_name, dataEntity.getDetailName());
+                viewHolder.setText(R.id.tv_cr_name, dataEntity.getSUserName());
+
+                viewHolder.setOnClickListener(R.id.join3, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, "加入圈子成功", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+            }
+        };
+        crRecycleview.setAdapter(adapter);
+        adapter.setOnItemClickListener(new OnItemClickListener<CircleByLabel.DataEntity>() {
+            @Override
+            public void onItemClick(ViewGroup viewGroup, View view, CircleByLabel.DataEntity cirDataEntity, int i) {
+                Intent intent = new Intent(getActivity(), CircleInfoDetailActivity.class);
+                getActivity().startActivity(intent);
+            }
+
+            @Override
+            public boolean onItemLongClick(ViewGroup viewGroup, View view, CircleByLabel.DataEntity cirDataEntity, int i) {
+                return false;
+            }
+        });
     }
 
     @Override
@@ -136,6 +169,6 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
 
     @Override
     public void addLabels(List<LabelBean.DataEntity> labelList) {
-
+        Log.d("NewItemFragmentii", "labelList.size():" + labelList.size());
     }
 }

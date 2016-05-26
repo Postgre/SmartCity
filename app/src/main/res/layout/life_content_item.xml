@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:frecro="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,6 +34,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/content_img"
         android:layout_width="match_parent"
         android:layout_height="215dp"
         android:layout_marginBottom="10dp"
@@ -96,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_time"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/ll_header_time"
             android:text="2016年5月16日，习近平主持召开中央财经领导小组第十三次会议，分别研究落实供给侧结构性改革、扩大中等收入群体工作。他强调要坚持以人民为中心的发展思想，在全社会大力弘扬勤劳致富、艰苦奋斗精神，激励人们通过劳动创造美好生活，不断提高生活水平。"
@@ -107,6 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/ll_header_time"
             android:background="#DDE6F0"
@@ -116,6 +120,8 @@
                 android:id="@+id/iv_collect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="10dp"
                 android:src="@mipmap/zan" />
 
             <TextView
@@ -123,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
+                android:paddingTop="5dp"
                 android:text="爱丽丝"
                 android:textSize="12sp" />
 
@@ -133,6 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ll_zan"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/ll_header_time"
             android:background="#DDE6F0"
             android:orientation="horizontal">

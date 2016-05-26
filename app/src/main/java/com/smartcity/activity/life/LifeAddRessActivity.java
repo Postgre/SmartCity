@@ -2,9 +2,12 @@ package com.smartcity.activity.life;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.smartcity.R;
@@ -12,9 +15,9 @@ import com.smartcity.activity.LoginActivity;
 import com.smartcity.dao.ChinaCityDao;
 import com.smartcity.dao.impl.ChinaCityDaoImpl;
 import com.smartcity.fragment.life.ChoseProvinceFragment;
+import com.smartcity.http.model.AddressList;
 import com.smartcity.http.model.ProvinceModel;
 import com.smartcity.presenterImpl.AddressPresenter;
-import com.smartcity.utils.LogTool;
 import com.smartcity.utils.ThreadUtil;
 import com.smartcity.view.IAddAddressView;
 
@@ -23,11 +26,14 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class LifeAddRessActivity extends LifeBaseActivity implements ChoseProvinceFragment.OnChoseProvinceLIstener ,IAddAddressView {
+public class LifeAddRessActivity extends LifeBaseActivity implements ChoseProvinceFragment.OnChoseProvinceLIstener, IAddAddressView {
+    public static final int RESULT_CODE = 0x003;
     private ChinaCityDao dao;
     private ArrayList<ProvinceModel> provinceList;
     private ChoseProvinceFragment choseProvinceFragment;
 
+
+    private static final int DETAULT_LOCATION = 0;
 
     private boolean isDefault;
 
@@ -48,12 +54,41 @@ public class LifeAddRessActivity extends LifeBaseActivity implements ChoseProvin
 
     @Bind(R.id.add_iv_location)
     ImageView ivLocation;
-    private String provinceCIty ;
+
     private AddressPresenter addressPresenter;
+
+    private int postion;
+
+    private String provinceCIty;
 
     @Override
     protected void initViews() {
+
         dao = new ChinaCityDaoImpl();
+        Intent intent = getIntent();
+        if (null != intent) {
+            int type = intent.getIntExtra(LifeAddressListActivity.PARAMS_TYPE, -1);
+            postion = intent.getIntExtra(LifeAddressListActivity.POSTION, -1);
+            if (LifeAddressListActivity.EDITE_MODE == type) {
+                //来自编辑
+            }
+
+            AddressList.LifeAddressModel addressModel = (AddressList.LifeAddressModel) intent.getSerializableExtra(LifeAddressListActivity.PARAMS);
+
+            if (null != addressModel) {
+                setUserName(addressModel.getName());
+                setPhoneNumber(addressModel.getPhone());
+                setDetailAddress(addressModel.getAddress());
+                setIsDefaultAddress(addressModel.getIsDefault());
+
+                StringBuilder builder = new StringBuilder(dao.provinceName(addressModel.getProvinceId()) + " " + dao.cityName(addressModel.getCityId()) + " " + dao.areaName(addressModel.getAreaId()));
+                provinceCIty = builder.toString();
+                setProvinceCity(provinceCIty);
+                isDefault = DETAULT_LOCATION == addressModel.getIsDefault();
+            }
+
+        }
+
         addressPresenter = new AddressPresenter(this);
         choseProvinceFragment = new ChoseProvinceFragment();
         choseProvinceFragment.setOnChoseProvinceLIstener(this);
@@ -92,13 +127,50 @@ public class LifeAddRessActivity extends LifeBaseActivity implements ChoseProvin
 
     @Override
     public int isDefaultAddress() {
-        return 0;
+        return isDefault?DETAULT_LOCATION:1;
     }
 
     @Override
     public void startLogin() {
         startActivity(new Intent(this, LoginActivity.class));
     }
+
+    @Override
+    public void setUserName(String name) {
+        etName.setText(TextUtils.isEmpty(name) ? "" : name);
+    }
+
+    @Override
+    public void setPhoneNumber(String phone) {
+        etPhone.setText(TextUtils.isEmpty(phone) ? "" : phone);
+    }
+
+    @Override
+    public void setProvinceCity(String provinceCIty) {
+
+        tvProvinceCity.setText(TextUtils.isEmpty(provinceCIty) ? "" : provinceCIty);
+    }
+
+    @Override
+    public void setDetailAddress(String address) {
+        etDetailAddress.setText(TextUtils.isEmpty(address) ? "" : address);
+    }
+
+    @Override
+    public void setIsDefaultAddress(int isDefaultAddress) {
+        tvLocation.setSelected(DETAULT_LOCATION == isDefaultAddress);
+        ivLocation.setSelected(DETAULT_LOCATION == isDefaultAddress);
+    }
+
+    @Override
+    public void setEditeResult(AddressList.LifeAddressModel lifeAddressModel) {
+        Intent intent = new Intent();
+        intent.putExtra(LifeAddressListActivity.PARAMS, lifeAddressModel);
+        intent.putExtra(LifeAddressListActivity.POSTION, postion);
+        setResult(RESULT_CODE, intent);
+        finish();
+    }
+
 
     @Override
     protected View getCenterView() {
@@ -109,12 +181,12 @@ public class LifeAddRessActivity extends LifeBaseActivity implements ChoseProvin
     protected View getRightView() {
         TextView tvRight = new TextView(this);
         tvRight.setTextColor(getResources().getColor(R.color.black1));
-        tvRight.setTextSize(getResources().getDimension(R.dimen.ts_10));
+        tvRight.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         tvRight.setText("完成");
         tvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addressPresenter.addOrUpDataAddress(getUserName(),getPhoneNumber(),isDefault?0:1,getDetailAddress(),provinceCIty);
+                addressPresenter.addOrUpDataAddress(getUserName(), getPhoneNumber(), 1, getDetailAddress(), provinceCIty);
             }
         });
         return tvRight;
@@ -128,17 +200,14 @@ public class LifeAddRessActivity extends LifeBaseActivity implements ChoseProvin
 
     @OnClick(R.id.add_rl_chose_prov)
     public void choseProvice() {
-        if(null != provinceList)
-        {
+        if (null != provinceList) {
 
-            if(!choseProvinceFragment.isVisible())
-            {
+            if (!choseProvinceFragment.isVisible()) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("list", provinceList);
                 choseProvinceFragment.setArguments(bundle);
                 choseProvinceFragment.show(getSupportFragmentManager(), "choseProvinceFragment");
             }
-
         }
     }
 
@@ -148,12 +217,12 @@ public class LifeAddRessActivity extends LifeBaseActivity implements ChoseProvin
         tvProvinceCity.setText(result);
     }
 
+
     @OnClick(R.id.add_rl_is_default_address)
-    public void  setIsDefaultAdress(View view)
+    public void changgeColorAndSrc()
     {
-        isDefault = !isDefault;
-        LogTool.e("test",String.valueOf(isDefault));
-        tvLocation.setClickable(isDefault);
-        ivLocation.setClickable(isDefault);
+        tvLocation.setSelected(!tvLocation.isSelected());
+        ivLocation.setSelected(!ivLocation.isSelected());
+        isDefault = tvLocation.isSelected();
     }
 }

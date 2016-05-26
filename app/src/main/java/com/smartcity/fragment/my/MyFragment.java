@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.smartcity.R;
+import com.smartcity.activity.LoginActivity;
 import com.smartcity.activity.life.LifeAddressListActivity;
 import com.smartcity.activity.life.LifeCratActivity;
 import com.smartcity.base.BaseFragment;
 
+import butterknife.OnClick;
+
 public class MyFragment extends BaseFragment {
-    private static final String TAG = "MyFragment";
+
 
 
     @Override
@@ -29,13 +32,31 @@ public class MyFragment extends BaseFragment {
 
     @Override
     protected void init() {
-      //  startActivity(new Intent(getActivity(), CommodityReviewListActivity.class));
-        startActivity(new Intent(getActivity(), LifeCratActivity.class));
+
     }
+
 
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_life;
+        return R.layout.fragment_fans;
     }
+
+    @OnClick(R.id.fen_rl_city_account)
+    public void startLogin()
+    {
+        startActivity(new Intent(getActivity(), LoginActivity.class));
+    }
+
+    @OnClick(R.id.fen_rl_publish_activites)
+    public void startAddressList()
+    {
+        startActivity(new Intent(getActivity(), LifeAddressListActivity.class));
+    }
+    @OnClick(R.id.fen_rl_pay_order)
+    public void startLifeCart()
+    {
+        startActivity(new Intent(getActivity(), LifeCratActivity.class));
+    }
+
 }

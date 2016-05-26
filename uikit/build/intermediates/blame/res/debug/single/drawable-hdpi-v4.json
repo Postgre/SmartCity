@@ -368,12 +368,12 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable-hdpi\\nim_bg_message_tip.9.png"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ab_transparent_dark_holo.9.png",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-hdpi\\abc_ab_transparent_dark_holo.9.png"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_ic_failed.png",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable-hdpi\\nim_ic_failed.png"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ab_transparent_dark_holo.9.png",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-hdpi\\abc_ab_transparent_dark_holo.9.png"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\nim_message_input_emotion_pressed.png",

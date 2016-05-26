@@ -1,9 +1,11 @@
 package com.smartcity.model.modelImpl;
 
+
 import com.smartcity.config.Constant;
 import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.BannerInfo;
+import com.smartcity.http.model.HopShopAndBanner;
 import com.smartcity.http.model.ShopParameterInfo;
 import com.smartcity.http.service.LifeIndexService;
 import com.smartcity.model.ShopListModel;
@@ -46,23 +48,23 @@ public class ShopListModelImpl extends BaseModelImpl implements ShopListModel {
         pars.put("latitude", shopParameterInfo.getLatitude());
         pars.put("monthSellCntSort", shopParameterInfo.getMonthSellCntSort());
 
-        lifeIndexService.getShopList(apiKey, Constant.VALUE_VERSION, GsonUtils.objectToJson(pars)).enqueue(new Callback<Object>() {
+        lifeIndexService.getShopList(apiKey, LifeIndexService.GET_NEAR_SHOP_CMD_VALUE,Constant.VALUE_VERSION, GsonUtils.objectToJson(pars)).enqueue(new Callback<HopShopAndBanner>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
-                Object body = response.body();
+            public void onResponse(Call<HopShopAndBanner> call, Response<HopShopAndBanner> response) {
+                HopShopAndBanner body = response.body();
                 LogTool.e("test1", body.toString());
-               /* if(null != body && ResCode.STATUS_SUCCESS_CODE == body.getCode())
+                if(null != body && ResCode.STATUS_SUCCESS_CODE == body.getCode())
                 {
                     listener.loadShopListSuccess(body);
                 }
                 else
                 {
                     listener.loadShopListError(null);
-                }*/
+                }
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
+            public void onFailure(Call<HopShopAndBanner> call, Throwable t) {
                 listener.loadShopListError(t.getMessage());
             }
 
@@ -71,7 +73,7 @@ public class ShopListModelImpl extends BaseModelImpl implements ShopListModel {
 
     @Override
     public void getBannerList(String apiKey, final BannerListListener listener) {
-        lifeIndexService.getShopBanner(apiKey, Constant.VALUE_VERSION, GsonUtils.objectToJson(new HashMap<String, Object>() {
+        lifeIndexService.getShopBanner(apiKey,LifeIndexService.GET_SHOP_LIST_BANNER_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(new HashMap<String, Object>() {
             @Override
             public Object put(String key, Object value) {
                 return super.put("data", "fuck");
@@ -97,7 +99,7 @@ public class ShopListModelImpl extends BaseModelImpl implements ShopListModel {
 
     @Override
     public boolean isNetState() {
-        return false;
+        return super.isNetState();
     }
 
     public interface ShopListListener<T> {

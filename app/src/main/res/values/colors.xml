@@ -1070,4 +1070,5 @@
 
     <color name="province_line_border">#C7C7C7</color>
     <color name="page_backgroup">#f2f2f2</color>
+    <color name="normal_orange">#ff6633</color>
 </resources>

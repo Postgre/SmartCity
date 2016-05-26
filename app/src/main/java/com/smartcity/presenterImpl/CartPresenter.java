@@ -10,9 +10,9 @@ import com.smartcity.utils.LogTool;
 import com.smartcity.view.ICartView;
 
 /**
- * Created by Administrator on 2016/5/18.
+ * Created by Yancy on 2016/5/18.
  */
-public class CartPresenter implements BasePresenter, CartModelImpl.OnProductListListener {
+public class CartPresenter implements BasePresenter {
     private final CartModelImpl cartModel;
     private final ICartView cartView;
 
@@ -48,24 +48,28 @@ public class CartPresenter implements BasePresenter, CartModelImpl.OnProductList
             cartView.startLogin();
             return;
         }
-        cartModel.getProductList("1", apikey, this);
-    }
+        cartModel.getProductList(id, apikey, new CartModelImpl.OnProductListListener<CartInfo>() {
+            @Override
+            public void getListProductSuccess(CartInfo cartInfo) {
+                if(null != cartInfo.getData() && cartInfo.getData().size()>0)
+                {
+                    LogTool.e("cartInfo", cartInfo.toString());
+                    cartView.setList(cartInfo);
+                }
+                else
+                {
+                    cartView.showToast("购物车没有商品!");
+                }
+            }
 
-
-    @Override
-    public void getListProductSuccess(Object o) {
-        CartInfo info = (CartInfo) o;
-        LogTool.e("test", info.toString());
-        cartView.setList(info);
-
-    }
-
-    @Override
-    public void getListProductError(String msg) {
-        if (TextUtils.isEmpty(msg)) {
-            cartView.startLogin();
-        } else {
-            cartView.showToast(msg);
-        }
+            @Override
+            public void getListProductError(String msg) {
+                if (TextUtils.isEmpty(msg)) {
+                    cartView.startLogin();
+                } else {
+                    cartView.showToast(msg);
+                }
+            }
+        });
     }
 }

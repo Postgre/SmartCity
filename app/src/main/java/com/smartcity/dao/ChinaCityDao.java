@@ -41,4 +41,19 @@ public interface ChinaCityDao {
      * */
     String[] areaId(String areaId);
 
+
+    /**
+     *根据省id查询名称
+     * */
+    String provinceName(String provinceId);
+    /**
+     *根据市id查询名称
+     * */
+    String cityName(String cityId);
+
+    /**
+     *根据区id查询名称
+     * */
+    String areaName(String areaId);
+
 }

@@ -1,6 +1,7 @@
 package com.smartcity.http.service;
 
 import com.smartcity.http.Constant;
+import com.smartcity.http.model.AddCoolInfo;
 import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
 
@@ -38,7 +39,7 @@ public interface CoolService {
     //发布炫
     @FormUrlEncoded
     @POST(Constant.REST)
-    Call<CoolInfo> addCool(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    Call<AddCoolInfo> addCool(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
     //查询炫
     @FormUrlEncoded

@@ -13,9 +13,10 @@
         android:background="#cbcbcb" />
 
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_34">
+        android:layout_height="@dimen/dp_34"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/shop_tv_location"
@@ -23,12 +24,12 @@
             android:text="武汉" />
 
         <TextView
-
             android:id="@+id/shop_tv_brand"
             style="@style/shop_list_style"
             android:text="品牌" />
 
         <TextView
+
             android:id="@+id/shop_tv_sales_volume"
             style="@style/shop_list_style"
             android:text="销量" />
@@ -42,13 +43,19 @@
         android:layout_marginRight="@dimen/dp_12"
         android:background="@color/black1" />
 
-    <com.smartcity.pulltofresh.PullToRefreshListView
-        android:id="@+id/shop_recy_container"
-        android:layout_marginLeft="@dimen/dp_12"
-        android:layout_marginRight="@dimen/dp_12"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:dividerHeight="@dimen/dp_10"
-        android:divider="@color/bg_gray"
         android:layout_height="match_parent"
-        android:background="@color/bg_gray" />
+        android:background="@color/bg_gray">
+
+        <com.smartcity.pulltofresh.PullToRefreshListView
+            android:id="@+id/shop_recy_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginRight="@dimen/dp_12"
+            android:divider="@color/bg_gray"
+            android:dividerHeight="@dimen/dp_10" />
+    </FrameLayout>
+
 </LinearLayout>

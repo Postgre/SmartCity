@@ -14,7 +14,7 @@ import com.smartcity.utils.SharedPreferencesUtil;
 import com.smartcity.view.ILoginView;
 
 /**
- * 在此写类用途
+ * 登录PresenterImpl
  *
  * @version V2.0
  * @FileName: LoginPresenterImpl.java

@@ -1,6 +1,7 @@
 package com.smartcity.presenterImpl;
 
 import com.smartcity.http.model.CircleBean;
+import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.LabelBean;
 import com.smartcity.model.CircleModel;
 import com.smartcity.model.modelImpl.CircleModelImpl;
@@ -94,9 +95,9 @@ public class CirclePresenterImpl implements CirclePresenter, CircleModelImpl.onL
     }
 
     @Override
-    public void onLoadCirclesListSuccess(List<CircleBean.CirDataEntity> result) {
+    public void onLoadCirclesListSuccess(List<CircleByLabel.DataEntity> result) {
         iCircleView.hideLoading();
-        iCircleView.addCircles(result);
+        iCircleView.addCirclesByLabel(result);
     }
 
     @Override

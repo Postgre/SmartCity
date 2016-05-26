@@ -487,9 +487,15 @@
         <activity android:name=".activity.chw.service.ServiceFirstPageActivity"></activity>
         <activity
             android:name=".activity.circle.Lift_ContentActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <!--我能的个人页面-->
         <activity android:name=".activity.chw.service.WecanDetialActivity"></activity>
+        <!--我能的个人页面-->
+        <activity android:name=".activity.chw.service.WeNeedDetialActivity"></activity>
+        <!--我能的list界面-->
+        <activity android:name=".activity.chw.service.WecanListActivity"></activity>
+        <!--个人资料界面-->
+        <activity android:name=".activity.chw.service.PersonalZiLiaoActivity"></activity>
     </application>
 
 </manifest>

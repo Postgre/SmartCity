@@ -57,13 +57,18 @@ public abstract class LifeBaseActivity extends BaseActivity {
         View rightView = getRightView();
         if(null != rightView)
         {
-            ivShow.setVisibility(View.GONE);
-            frameRightContainer.addView(rightView);
+            hindImageView();
+            if(null != frameRightContainer)
+            {
+                frameRightContainer.addView(rightView);
+            }
+
         }
 
         View centerView = getCenterView();
         if(null != centerView)
         {
+            hindTextView();
             frameContainer.addView(centerView);
         }
     }
@@ -80,12 +85,19 @@ public abstract class LifeBaseActivity extends BaseActivity {
 
     public void hindTextView()
     {
-        tvTitle.setVisibility(View.GONE);
+        if(null != tvTitle)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
     }
 
     public void hindImageView()
     {
-        ivShow.setVisibility(View.GONE);
+        if(null != ivShow)
+        {
+            ivShow.setVisibility(View.GONE);
+        }
+
     }
 
     @Override

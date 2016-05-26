@@ -1,6 +1,7 @@
 package com.smartcity.activity.life;
 
 import android.content.Intent;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,7 @@ public class LifeCratActivity extends LifeBaseActivity implements ShopcartExpand
         tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(getResources().getColor(R.color.black1));
-        tv.setTextSize(getResources().getDimension(R.dimen.ts_11));
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
         tv.setText("编辑全部");
         return tv;
     }
@@ -184,9 +185,9 @@ public class LifeCratActivity extends LifeBaseActivity implements ShopcartExpand
     }
 
     /**
-     * 统计操作<br>
-     * 1.先清空全局计数器<br>
-     * 2.遍历所有子元素，只要是被选中状态的，就进行相关的计算操作<br>
+     * 统计操作
+     * 1.先清空全局计数器
+     * 2.遍历所有子元素，只要是被选中状态的，就进行相关的计算操作
      * 3.给底部的textView进行数据填充
      */
     private void calculate() {

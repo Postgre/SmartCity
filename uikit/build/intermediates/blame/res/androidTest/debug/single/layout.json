@@ -436,15 +436,15 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_decor.xml"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_new_message_tip_layout.xml",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_new_message_tip_layout.xml"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_advanced_team_announce_list_item.xml",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_advanced_team_announce_list_item.xml"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_easy_alert_dialog_with_listview.xml",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_easy_alert_dialog_with_listview.xml"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\nim_new_message_tip_layout.xml",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\bundles\\debug\\res\\layout\\nim_new_message_tip_layout.xml"
     }
 ]

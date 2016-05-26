@@ -9,10 +9,10 @@ import com.smartcity.model.modelImpl.AddressListModelImpl;
 public interface AddressListModel extends BaseModel {
 
     //获取所有地址列表
-    void getAllAddress(int userId, String apiKey, AddressListModelImpl.GetAllAddressListener<AddressList> listener);
+    void getAllAddress(String userId, String apiKey, AddressListModelImpl.GetAllAddressListener<AddressList> listener);
 
     //添加或更新地址
-    void addAddress(AddressList.LifeAddressModel address, String apiKey, AddressListModelImpl.UpdateOrAddAddressListener listener);
+    void addAddress(AddressList.LifeAddressModel model, String apiKey, AddressListModelImpl.UpdateOrAddAddressListener listener);
 
     //根据id删除地址
     void deteleAddress(int addressId, String apiKey, AddressListModelImpl.DeleteAddressListener listener);

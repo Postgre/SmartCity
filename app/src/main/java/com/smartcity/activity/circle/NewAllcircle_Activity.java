@@ -28,6 +28,7 @@ import com.smartcity.config.Constant;
 import com.smartcity.fragment.circle.ItemFragment;
 import com.smartcity.fragment.circle.NewItemFragment;
 import com.smartcity.http.model.CircleBean;
+import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.LabelBean;
 import com.smartcity.http.model.MyCircle_Bean;
 import com.smartcity.presenter.CirclePresenter;
@@ -93,6 +94,8 @@ public class NewAllcircle_Activity extends BaseActivity implements ICircleView {
 
         ViewPager vp = (ViewPager) findViewById(R.id.vp);
         adapter = new TabPageIndicatorAdapter(getSupportFragmentManager());
+        vp.setOffscreenPageLimit(0);
+
         vp.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(vp);
@@ -118,6 +121,11 @@ public class NewAllcircle_Activity extends BaseActivity implements ICircleView {
 
     @Override
     public void addCircles(List<CircleBean.CirDataEntity> circleList) {
+
+    }
+
+    @Override
+    public void addCirclesByLabel(List<CircleByLabel.DataEntity> circleList) {
 
     }
 
@@ -168,6 +176,7 @@ public class NewAllcircle_Activity extends BaseActivity implements ICircleView {
             Bundle args = new Bundle();
 //            args.putString("arg", TITLE[position]);
             args.putString("arg", stringList.get(position));
+            Toast.makeText(NewAllcircle_Activity.this, stringList.get(position), Toast.LENGTH_SHORT).show();
             fragment.setArguments(args);
             return fragment;
         }

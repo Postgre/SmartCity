@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@mipmap/icon_dizhi"  android:state_checkable="true" />
-    <item android:drawable="@mipmap/icon_dizhi2"  android:state_checkable="false" />
+    <item android:drawable="@mipmap/icon_dizhi"  android:state_selected="true" />
+    <item android:drawable="@mipmap/icon_dizhi2"  android:state_selected="false" />
+    <item android:drawable="@mipmap/icon_dizhi2"/>
 </selector>

@@ -1,12 +1,10 @@
 package com.smartcity.model.modelImpl;
 
-import com.smartcity.application.MyApplication;
 import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.CircleBean;
 import com.smartcity.http.service.SearchService;
 import com.smartcity.model.SearchModel;
-import com.smartcity.utils.NetTool;
 
 import java.util.List;
 
@@ -18,11 +16,11 @@ import retrofit2.Response;
 /**
  * Created by Administrator on 2016/5/11.
  */
-public class SearchModelImpl implements SearchModel {
+public class SearchModelImpl extends BaseModelImpl implements SearchModel {
 
     @Override
     public boolean isNetState() {
-        return NetTool.isNetworkAvailable(MyApplication.getInstance());
+        return super.isNetState();
     }
 
     @Override

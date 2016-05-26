@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 在此写类用途
+ * 我要炫PresenterImpl
  *
  * @version V2.0
  * @FileName: CoolPresenterImpl.java
@@ -41,8 +41,8 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
     }
 
     @Override
-    public void onAddCoolSuccess(CoolInfo coolInfo) {
-        coolView.showSuccessMsg(coolInfo.getMsg());
+    public void onAddCoolSuccess(String msg) {
+        coolView.showSuccessMsg(msg);
     }
 
     @Override
@@ -52,12 +52,12 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
 
     //-----------------------------查询炫-------------------------------------
     @Override
-    public void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String sStartpage, String sPagerows) {
+    public void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows) {
         if (!coolModel.isNetState()) {
             coolView.showToast("请检查网络连接!");
             return;
         }
-        coolModel.getAllCool(coolMarkId, coolAreaNo, coolUserId, sStartpage, sPagerows, this);
+        coolModel.getAllCool(coolMarkId, coolAreaNo, coolUserId, coolVideoTypeId, sStartpage, sPagerows, this);
     }
 
     @Override

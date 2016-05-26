@@ -260,7 +260,7 @@ public class CircleMenuLayout extends ViewGroup {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         g.drawBitmap(imageOriginal, matrix, paint);
-        postInvalidate();
+//
 
         bit_inner = BitmapFactory.decodeResource(getResources(),
                 R.mipmap.zhongjianyuan);
@@ -272,7 +272,7 @@ public class CircleMenuLayout extends ViewGroup {
         Paint inner = new Paint();
         inner.setAntiAlias(true);
         canvas.drawBitmap(bit_inner, matrix_inner, inner);
-        postInvalidate();
+//
 
         Bitmap inner_circle = BitmapFactory.decodeResource(getResources(),
                 R.mipmap.xiaoshi);
@@ -282,7 +282,7 @@ public class CircleMenuLayout extends ViewGroup {
         inner_circle_paint.setAlpha(alpha);
         canvas.drawBitmap(inner_circle, mRadius / 2 - inner_circle.getWidth() / 2,
                 mRadius / 2 - inner_circle.getHeight() / 2, inner_circle_paint);
-        postInvalidate();
+//
 
     }
 

@@ -197,6 +197,63 @@ public class ChinaCityDaoImpl implements ChinaCityDao {
         return result;
     }
 
+    @Override
+    public String provinceName(String provinceId) {
+        SQLiteDatabase sqLiteDatabase = null;
+        Cursor cursor = null;
+        String result = "";
+        try {
+            sqLiteDatabase = getChinaCityDb();
+            cursor = sqLiteDatabase.rawQuery("select "+ChinaCityInfo.colnumProvinceName+" from " + ChinaCityInfo.provinceName + " where " + ChinaCityInfo.colnumProvinceSortId + " = ?", new String[]{provinceId});
+            if(cursor.moveToNext())
+            {
+                result = cursor.getString(cursor.getColumnIndex(ChinaCityInfo.colnumProvinceName));
+            }
+        } finally {
+            closeCourse(cursor);
+            closeSqlDb(sqLiteDatabase);
+        }
+        return result;
+    }
+
+    @Override
+    public String cityName(String cityId) {
+        SQLiteDatabase sqLiteDatabase = null;
+        Cursor cursor = null;
+        String result = "";
+        try {
+            sqLiteDatabase = getChinaCityDb();
+            cursor = sqLiteDatabase.rawQuery("select "+ChinaCityInfo.colnumCityName+" from " + ChinaCityInfo.cityName + " where " + ChinaCityInfo.colnumCitySortId + " = ?", new String[]{cityId});
+            if(cursor.moveToNext())
+            {
+                result = cursor.getString(cursor.getColumnIndex(ChinaCityInfo.colnumCityName));
+            }
+        } finally {
+            closeCourse(cursor);
+            closeSqlDb(sqLiteDatabase);
+        }
+        return result;
+    }
+
+    @Override
+    public String areaName(String areaId) {
+        SQLiteDatabase sqLiteDatabase = null;
+        Cursor cursor = null;
+        String result = "";
+        try {
+            sqLiteDatabase = getChinaCityDb();
+            cursor = sqLiteDatabase.rawQuery("select "+ChinaCityInfo.colnumAreaName+" from " + ChinaCityInfo.areaName + " where " + ChinaCityInfo.colnumAreaId + " = ?", new String[]{areaId});
+            if(cursor.moveToNext())
+            {
+                result = cursor.getString(cursor.getColumnIndex(ChinaCityInfo.colnumAreaName));
+            }
+        } finally {
+            closeCourse(cursor);
+            closeSqlDb(sqLiteDatabase);
+        }
+        return result;
+    }
+
     public interface ChinaCityInfo {
         String provinceName = "T_Province";
         String cityName = "T_City";

@@ -12,7 +12,7 @@ public interface CoolPresenter {
 
     void addCool(String coolVideoTypeId, String coolCoverPic, String coolFileAddress, String coolDecrip, String coolUserId, String coolMarkId, String coolAreaNo, String coolJwd, String coolRename);
 
-    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String sStartpage, String sPagerows);
+    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows);
 
     void getCoolDetail(String coolId, String iCurrUserId);
 

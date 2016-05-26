@@ -40,13 +40,13 @@ public class RegisterActivity extends BaseActivity implements IRegistViews {
     }
 
     @Override
-    public String getPhone() {
-        return etPhone.getText().toString().trim();
+    public String getPwd() {
+        return etPwd.getText().toString().trim();
     }
 
     @Override
-    public String getPwd() {
-        return etPwd.getText().toString().trim();
+    public String getPhone() {
+        return etPhone.getText().toString().trim();
     }
 
     @Override
@@ -81,7 +81,9 @@ public class RegisterActivity extends BaseActivity implements IRegistViews {
 
     @OnClick(R.id.r_bt_submit)
     public void regist() {
-        presenter.regist(getPhone(), getPwd(), getComPwd(), getPhoneCode());
+        presenter.regist(getPhone(), getPwd(), getComPwd(), getPhoneCode(
+
+        ));
     }
 
 

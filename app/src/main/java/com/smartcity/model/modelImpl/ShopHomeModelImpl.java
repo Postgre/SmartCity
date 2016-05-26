@@ -37,11 +37,13 @@ public class ShopHomeModelImpl implements ShopHomeModel {
         lifeIndexService = HttpApi.getInstance().create(LifeIndexService.class);
     }
 
+
+
     @Override
     public void getShopInfo(String apiKey, String shopId, final LoadShopInfoListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("id", shopId);
-        lifeIndexService.getShopHome(apiKey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeShopModel>() {
+        lifeIndexService.getShopHome(apiKey,LifeIndexService.GET_SHOP_HONE_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeShopModel>() {
             @Override
             public void onResponse(Call<LifeShopModel> call, Response<LifeShopModel> response) {
                 LifeShopModel body = response.body();
@@ -65,7 +67,7 @@ public class ShopHomeModelImpl implements ShopHomeModel {
     public void getCouPonList(String apikey, String shopid, final LoadCouPonListListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("shopId", shopid);
-        lifeIndexService.getCouponList(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<CouponModel>() {
+        lifeIndexService.getCouponList(apikey,LifeIndexService.GET_SHOP_COUPON_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<CouponModel>() {
             @Override
             public void onResponse(Call<CouponModel> call, Response<CouponModel> response) {
                 CouponModel body = response.body();
@@ -109,7 +111,7 @@ public class ShopHomeModelImpl implements ShopHomeModel {
                 break;
         }
 
-        lifeIndexService.getGoodsList(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeGoodsModel>() {
+        lifeIndexService.getGoodsList(apikey,LifeIndexService.GET_SHOP_GOODS_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeGoodsModel>() {
 
 
             @Override
@@ -142,7 +144,7 @@ public class ShopHomeModelImpl implements ShopHomeModel {
         params.put("type", fovShopGood.getType());
         params.put("favUrl", fovShopGood.getFavUrl());
         params.put("price", fovShopGood.getPrice());
-        lifeIndexService.addFovShopOrGood(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<BaseModel>() {
+        lifeIndexService.addFovShopOrGood(apikey,LifeIndexService.ADD_FAV_SHOP_OR_GOOD_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<BaseModel>() {
 
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {

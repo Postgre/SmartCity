@@ -6,7 +6,7 @@ import com.smartcity.model.modelImpl.ShopListModelImpl;
 /**
  * Created by Yancy on 2016/5/23.
  */
-public interface ShopListModel {
+public interface ShopListModel extends BaseModel {
 
     void getShopList(String apiKey, ShopParameterInfo shopParameterInfo, ShopListModelImpl.ShopListListener listener);
 

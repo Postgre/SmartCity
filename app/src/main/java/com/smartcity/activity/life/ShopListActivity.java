@@ -3,6 +3,7 @@ package com.smartcity.activity.life;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import com.smartcity.R;
 import com.smartcity.fragment.life.ChoseBrandFragment;
@@ -20,6 +21,9 @@ import butterknife.OnClick;
 
 /**
  * Created by Yancy on 2016/5/10.
+ *
+ *
+ *
  */
 public class ShopListActivity extends LifeBaseActivity implements ShopListView {
 
@@ -27,8 +31,19 @@ public class ShopListActivity extends LifeBaseActivity implements ShopListView {
     public static final String CLASSIFY_Id="classifyId";
     private ShopListPresenter shopListPresenter;
 
+
+    @Bind(R.id.shop_tv_location)
+    TextView tvLocation;
+
+    @Bind(R.id.shop_tv_brand)
+    TextView tvBrand;
+
+    @Bind(R.id.shop_tv_sales_volume)
+    TextView tvSalesVolume;
+
     @Override
     protected void initViews() {
+        tvLocation.setSelected(true);
         initRecy();
     }
 
@@ -40,6 +55,7 @@ public class ShopListActivity extends LifeBaseActivity implements ShopListView {
         choseBrandFragment = new ChoseBrandFragment();
 
         List<String> datas  = new ArrayList<>();
+
 
         for(int i=0;i<10;i++)
         {
@@ -53,14 +69,13 @@ public class ShopListActivity extends LifeBaseActivity implements ShopListView {
 
             }
         });
+        Intent intent = getIntent();
 
-        shopListPresenter = new ShopListPresenter();
+        shopListPresenter = new ShopListPresenter(intent.getIntExtra(CLASSIFY_Id,1));
 
         shopListPresenter.getShopListBannerInfo();
 
-        Intent intent = getIntent();
-        int classifyId = intent.getIntExtra(CLASSIFY_Id,1);
-        shopListPresenter.getShopListByClassifyId(classifyId,"武汉","洪山区",null,null);
+        shopListPresenter.getShopListByClassifyId("武汉","洪山区",null,null);
 
     }
 
@@ -102,21 +117,7 @@ public class ShopListActivity extends LifeBaseActivity implements ShopListView {
         choseBrandFragment.show(getSupportFragmentManager(),"shopActivity");
     }
 
-    /**
-     * 根据销量排序
-     * */
-    public void showSales()
-    {
 
-    }
-
-    /**
-     * 选择城市
-     * */
-    public void showLocation()
-    {
-
-    }
 
     /**
      * 设置商品列表
@@ -132,4 +133,33 @@ public class ShopListActivity extends LifeBaseActivity implements ShopListView {
     public void setBrand() {
 
     }
+
+    @OnClick({R.id.shop_tv_location,R.id.shop_tv_brand,R.id.shop_tv_sales_volume})
+    public void changeColor(View view)
+    {
+        switch (view.getId())
+        {
+            case R.id.shop_tv_location:
+                tvLocation.setSelected(true);
+                tvBrand.setSelected(false);
+                tvSalesVolume.setSelected(false);
+              break;
+
+            case R.id.shop_tv_brand:
+                tvLocation.setSelected(false);
+                tvBrand.setSelected(true);
+                tvSalesVolume.setSelected(false);
+                break;
+
+            case R.id.shop_tv_sales_volume:
+                tvLocation.setSelected(false);
+                tvBrand.setSelected(false);
+                tvSalesVolume.setSelected(true);
+
+                break;
+            default:
+                break;
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.smartcity.model.modelImpl;
 
-import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.HopShopAndBanner;
@@ -10,7 +9,6 @@ import com.smartcity.http.service.LifeIndexService;
 import com.smartcity.model.LifeIndexModel;
 import com.smartcity.utils.GsonUtils;
 import com.smartcity.utils.LogTool;
-import com.smartcity.utils.NetTool;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +21,7 @@ import retrofit2.Response;
 /**
  * Created by Administrator on 2016/5/19.
  */
-public class LifeIndexModelImpl implements LifeIndexModel {
+public class LifeIndexModelImpl extends BaseModelImpl implements LifeIndexModel {
 
     public static final int HOT_SHOP = 0x1;
     public static final int BANNER = 0x2;
@@ -35,14 +33,14 @@ public class LifeIndexModelImpl implements LifeIndexModel {
 
     @Override
     public boolean isNetState() {
-        return NetTool.isNetworkAvailable(MyApplication.getInstance());
+        return super.isNetState();
     }
 
     @Override
     public void getListClassify(String apikey, final OnGetClassifyShopListener listener) {
         String params = GsonUtils.objectToJson(new HashMap<String, Object>());
         LogTool.e("test", params);
-        lifeIndexService.getLifeClassify(apikey, Constant.VALUE_VERSION, params).enqueue(new Callback<LifeClassifyModel>() {
+        lifeIndexService.getLifeClassify(apikey, LifeIndexService.GET_CLASSIFY_CMD_VALUE,Constant.VALUE_VERSION, params).enqueue(new Callback<LifeClassifyModel>() {
 
             @Override
             public void onResponse(Call<LifeClassifyModel> call, Response<LifeClassifyModel> response) {
@@ -73,7 +71,7 @@ public class LifeIndexModelImpl implements LifeIndexModel {
                 break;
 
         }
-        lifeIndexService.getBannnerOrHotShop(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<HopShopAndBanner>() {
+        lifeIndexService.getBannnerOrHotShop(apikey, LifeIndexService.GET_BANNER_CMD_VALUE,Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<HopShopAndBanner>() {
             @Override
             public void onResponse(Call<HopShopAndBanner> call, Response<HopShopAndBanner> response) {
                 HopShopAndBanner body = response.body();
@@ -105,12 +103,13 @@ public class LifeIndexModelImpl implements LifeIndexModel {
         params.put("monthSellCntSort", monthSellCntSort);
         String str = GsonUtils.objectToJson(params);
         LogTool.e("test", str);
-        lifeIndexService.getLifeNear(apikey, Constant.VALUE_VERSION, str).enqueue(new Callback<HopShopAndBanner>() {
+        lifeIndexService.getLifeNear(apikey, LifeIndexService.GET_NEAR_SHOP_CMD_VALUE,Constant.VALUE_VERSION, str).enqueue(new Callback<HopShopAndBanner>() {
 
             @Override
             public void onResponse(Call<HopShopAndBanner> call, Response<HopShopAndBanner> response) {
                 HopShopAndBanner body = response.body();
                 if (null != body) {
+
                     listener.loadNearShopSuccess(body);
                 } else {
                     listener.loadNearShopError(null);
@@ -134,7 +133,7 @@ public class LifeIndexModelImpl implements LifeIndexModel {
         Map<String, Object> params = new HashMap<>();
         params.put("data", "data");
 
-        lifeIndexService.getBannerAndHotAndClassifyList(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeBannerAndHotModel>() {
+        lifeIndexService.getBannerAndHotAndClassifyList(apikey,LifeIndexService.GET_BANNER_AND_HOT_AND_CLASSIFY_CMD_VALUE, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<LifeBannerAndHotModel>() {
             @Override
             public void onResponse(Call<LifeBannerAndHotModel> call, Response<LifeBannerAndHotModel> response) {
                 LifeBannerAndHotModel body = response.body();

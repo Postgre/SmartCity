@@ -13,7 +13,7 @@ import com.smartcity.model.modelImpl.CoolModelImpl;
 public interface CoolModel extends BaseModel {
     void addCool(String coolVideoTypeId, String coolCoverPic, String coolFileAddress, String coolDecrip, String coolUserId, String coolMarkId, String coolAreaNo, String coolJwd, String coolRename, CoolModelImpl.AddCoolCallBack callBack);
 
-    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String sStartpage, String sPagerows, CoolModelImpl.GetAllCoolCallBack callBack);
+    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows, CoolModelImpl.GetAllCoolCallBack callBack);
 
     void getCoolDetail(String coolId, String iCurrUserId, CoolModelImpl.GetCoolDetailCallBack callBack);
 

@@ -344,12 +344,12 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\nim_cameras_hover.png"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_cab_done_holo_light.png",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-xhdpi\\abc_ic_cab_done_holo_light.png"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\nim_actionbar_white_back_icon.png",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\nim_actionbar_white_back_icon.png"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_cab_done_holo_light.png",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\drawable-xhdpi\\abc_ic_cab_done_holo_light.png"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\abc_ic_ab_back_holo_light.png",

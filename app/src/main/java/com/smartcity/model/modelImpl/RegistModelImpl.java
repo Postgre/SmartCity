@@ -1,6 +1,5 @@
 package com.smartcity.model.modelImpl;
 
-import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.BaseModel;
@@ -8,7 +7,6 @@ import com.smartcity.http.service.RegisterService;
 import com.smartcity.model.RegistModel;
 import com.smartcity.utils.GsonUtils;
 import com.smartcity.utils.LogTool;
-import com.smartcity.utils.NetTool;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +24,7 @@ import retrofit2.Response;
  * @author: fengliang
  * @date: 2016-05-20 15:21
  */
-public class RegistModelImpl implements RegistModel {
+public class RegistModelImpl extends BaseModelImpl implements RegistModel {
     private static final String TAG = "RegistModelImpl";
     private final RegisterService service;
 
@@ -36,7 +34,7 @@ public class RegistModelImpl implements RegistModel {
 
     @Override
     public boolean isNetState() {
-        return NetTool.isNetworkAvailable(MyApplication.getInstance());
+        return super.isNetState();
     }
 
     @Override

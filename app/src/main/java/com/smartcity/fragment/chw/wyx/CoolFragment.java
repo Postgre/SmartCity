@@ -19,6 +19,7 @@ import com.smartcity.presenterImpl.CoolPresenterImpl;
 import com.smartcity.pulltofresh.PullToRefreshBase;
 import com.smartcity.pulltofresh.PullToRefreshRecycleView;
 import com.smartcity.utils.LogTool;
+import com.smartcity.utils.ToastTool;
 import com.smartcity.view.ICoolView;
 
 import java.util.ArrayList;
@@ -130,31 +131,7 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
         if (!isPrepared || !isVisible || mHasLoadedOnce) {
             return;
         }
-        initData(mParam1);
-//        coolPresenterImpl.getAllCool("1", "HBWH", "50", "0", "10");
-    }
-
-
-    private void initData(int type) {
-        if (type == 1) {
-            for (int i = 0; i < 13; i++) {
-                CoolInfo.CoolListInfo info = new CoolInfo.CoolListInfo();
-                info.setCoolCoverPic("http://1.2.3.4/1.png");
-                info.setCoolVideoTypeId(type);
-                coolList.add(info);
-            }
-        } else if (type == 2) {
-            for (int i = 0; i < 11; i++) {
-                CoolInfo.CoolListInfo info = new CoolInfo.CoolListInfo();
-                info.setCoolCoverPic("http://1.2.3.4/1.png");
-                info.setCoolVideoTypeId(type);
-                coolList.add(info);
-            }
-        }
-        coolAdapter = new CoolAdapter(getActivity(), coolList);
-        coolAdapter.setListener(this);
-        cool_listview.setAdapter(coolAdapter);
-        mHasLoadedOnce = true;
+        coolPresenterImpl.getAllCool("1", "HBWH", "50", "1", "35", "10");
     }
 
     @Override
@@ -164,7 +141,6 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
-
         cool_listview.onRefreshComplete();
     }
 
@@ -175,12 +151,16 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void showFailMsg(String msg) {
-
+        ToastTool.showShort(getActivity(), msg);
     }
 
     @Override
     public void showList(List<CoolInfo.CoolListInfo> list) {
         LogTool.d(TAG, "list=====" + list.size());
+        coolAdapter = new CoolAdapter(getActivity(), list);
+        coolAdapter.setListener(this);
+        cool_listview.setAdapter(coolAdapter);
+        mHasLoadedOnce = true;
     }
 
     @Override

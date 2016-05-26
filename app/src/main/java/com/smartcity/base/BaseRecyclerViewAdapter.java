@@ -89,6 +89,11 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
         return holder;
     }
 
+
+    public List<T> getDatas()
+    {
+        return  list;
+    }
     public abstract void bindView(RecyclerViewHolderBase viewHolder, int position, List<T> list);
 
     public abstract View createView(ViewGroup viewGroup, int viewType);

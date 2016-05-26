@@ -54,69 +54,69 @@ public interface LifeIndexService {
 
     //生活 轮播图和热门商品
     @FormUrlEncoded
-    @POST(GET_BANNER_CMD_VALUE)
-    Call<HopShopAndBanner> getBannnerOrHotShop(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION)
+    @POST(Constant.REST)
+    Call<HopShopAndBanner> getBannnerOrHotShop(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD)String cmd,@Field(Constant.KEY_VERSION)
     String version, @Field(Constant.KEY_DATA) String data);
 
     //首页分类
     @FormUrlEncoded
-    @POST(GET_CLASSIFY_CMD_VALUE)
-    Call<LifeClassifyModel> getLifeClassify(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION)
+    @POST(Constant.REST)
+    Call<LifeClassifyModel> getLifeClassify(@Header(Constant.API_KEY) String apikey,@Field(Constant.CMD)String cmd, @Field(Constant.KEY_VERSION)
     String version, @Field(Constant.KEY_DATA) String data);
 
     //首页附近
     @FormUrlEncoded
-    @POST(GET_NEAR_SHOP_CMD_VALUE)
-    Call<HopShopAndBanner> getLifeNear(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION)
+    @POST(Constant.REST)
+    Call<HopShopAndBanner> getLifeNear(@Header(Constant.API_KEY) String apikey,@Field(Constant.CMD)String cmd, @Field(Constant.KEY_VERSION)
     String version, @Field(Constant.KEY_DATA) String data);
 
     //店铺首页
     @FormUrlEncoded
-    @POST(GET_SHOP_HONE_CMD_VALUE)
-    Call<LifeShopModel> getShopHome(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION)
+    @POST(Constant.REST)
+    Call<LifeShopModel> getShopHome(@Header(Constant.API_KEY) String apikey,@Field(Constant.CMD)String cmd, @Field(Constant.KEY_VERSION)
     String version, @Field(Constant.KEY_DATA) String data);
 
     //店铺优惠券
     @FormUrlEncoded
-    @POST(GET_SHOP_COUPON_CMD_VALUE)
-    Call<CouponModel> getCouponList(@Header(Constant.API_KEY) String apikey,
+    @POST(Constant.REST)
+    Call<CouponModel> getCouponList(@Header(Constant.API_KEY) String apikey,@Field(Constant.CMD)String cmd,
                                     @Field(Constant.KEY_VERSION)
                                     String version, @Field(Constant.KEY_DATA) String data);
 
     //店铺商品
     @FormUrlEncoded
-    @POST(GET_SHOP_GOODS_CMD_VALUE)
-    Call<LifeGoodsModel> getGoodsList(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION)
+    @POST(Constant.REST)
+    Call<LifeGoodsModel> getGoodsList(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD)String cmd,@Field(Constant.KEY_VERSION)
     String version, @Field(Constant.KEY_DATA) String data);
 
     //收藏店铺或者商品
     @FormUrlEncoded
-    @POST(ADD_FAV_SHOP_OR_GOOD_CMD_VALUE)
-    Call<BaseModel> addFovShopOrGood(@Header(Constant.API_KEY) String apikey,
+    @POST(Constant.REST)
+    Call<BaseModel> addFovShopOrGood(@Header(Constant.API_KEY) String apikey,@Field(Constant.CMD)String cmd,
                                      @Field(Constant.KEY_VERSION)
                                      String version, @Field(Constant.KEY_DATA) String data);
 
     //获取生活首页banner和热门
     @FormUrlEncoded
-    @POST(GET_BANNER_AND_HOT_AND_CLASSIFY_CMD_VALUE)
-    Call<LifeBannerAndHotModel> getBannerAndHotAndClassifyList(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION)
+    @POST(Constant.REST)
+    Call<LifeBannerAndHotModel> getBannerAndHotAndClassifyList(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD)String cmd,@Field(Constant.KEY_VERSION)
     String version, @Field(Constant.KEY_DATA) String data);
 
     //获取店铺列表
     @FormUrlEncoded
-    @POST(GET_NEAR_SHOP_CMD_VALUE)
-    Call<Object> getShopList(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION)
+    @POST(Constant.REST)
+    Call<HopShopAndBanner> getShopList(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD)String cmd,@Field(Constant.KEY_VERSION)
     String version, @Field(Constant.KEY_DATA) String data);
 
     //获取商品详情
     @FormUrlEncoded
-    @POST(GET_GOODS_DETAILS_CMD_VALUE)
-    Call<GoodsDetailInfo> getGoodsDetails(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    @POST(Constant.REST)
+    Call<GoodsDetailInfo> getGoodsDetails(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD)String cmd,@Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
     @FormUrlEncoded
     //获取店铺 品牌
-    @POST(GET_SHOP_LIST_BANNER_CMD_VALUE)
-    Call<BannerInfo> getShopBanner(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    @POST(Constant.REST)
+    Call<BannerInfo> getShopBanner(@Header(Constant.API_KEY) String apikey,@Field(Constant.CMD)String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
     Call<LifeBannerAndHotModel> getBannerAndHotList(@Header(Constant.API_KEY) String apikey,
                                                     @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION)

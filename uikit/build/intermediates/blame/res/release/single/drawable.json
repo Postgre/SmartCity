@@ -176,12 +176,12 @@
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable\\nim_message_button_bottom_emoji_selector.xml"
     },
     {
-        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable\\nim_bg_edittext_rectangle.xml",
-        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable\\nim_bg_edittext_rectangle.xml"
-    },
-    {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable\\nim_play_btn_select.xml",
         "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable\\nim_play_btn_select.xml"
+    },
+    {
+        "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable\\nim_bg_edittext_rectangle.xml",
+        "source": "G:\\ZXCS\\SmartCity-Android\\uikit\\res\\drawable\\nim_bg_edittext_rectangle.xml"
     },
     {
         "merged": "G:\\ZXCS\\SmartCity-Android\\uikit\\build\\intermediates\\res\\merged\\release\\drawable\\nim_view_pager_indicator_selector.xml",

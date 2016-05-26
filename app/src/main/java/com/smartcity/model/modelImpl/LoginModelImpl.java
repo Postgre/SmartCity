@@ -1,6 +1,5 @@
 package com.smartcity.model.modelImpl;
 
-import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
 import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
@@ -9,7 +8,6 @@ import com.smartcity.http.service.LoginService;
 import com.smartcity.model.LoginModel;
 import com.smartcity.utils.GsonUtils;
 import com.smartcity.utils.LogTool;
-import com.smartcity.utils.NetTool;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,12 +25,12 @@ import retrofit2.Response;
  * @author: fengliang
  * @date: 2016-04-30 11:21
  */
-public class LoginModelImpl implements LoginModel {
+public class LoginModelImpl extends BaseModelImpl implements LoginModel {
     private static final String TAG = LoginModelImpl.class.getName();
 
     @Override
     public boolean isNetState() {
-        return NetTool.isNetworkAvailable(MyApplication.getInstance());
+        return super.isNetState();
     }
 
     @Override

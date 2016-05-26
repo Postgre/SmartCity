@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -13,10 +12,14 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.alibaba.sdk.android.oss.ClientConfiguration;
+import com.alibaba.sdk.android.oss.OSSClient;
+import com.alibaba.sdk.android.oss.common.OSSLog;
+import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
+import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvider;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.netease.nim.uikit.ImageLoaderKit;
 import com.netease.nim.uikit.NimUIKit;
@@ -93,8 +96,14 @@ public class MyApplication extends Application {
     private static MyApplication myApplication = null;
     private Display display;
 
-    public static final String PROVINCE_CITY_NAME="province_city";
-    private static final String DB_PROVINCE_CITY_NAME="china_city.db";
+    public static final String PROVINCE_CITY_NAME = "province_city";
+    private static final String DB_PROVINCE_CITY_NAME = "china_city.db";
+
+    private static final String accessKeyId = "AFNeMLmCjpYszhLU";
+    private static final String accessKeySecret = "qSWKSPe8zBfjK7UJA7Q90mYAskgiru";
+    public static final String bucketName = "tsnrhapp";
+    public static final String endPoint = "http://oss-cn-hangzhou.aliyuncs.com";
+    public static OSSClient oss;
 
     @Override
     public void onCreate() {
@@ -103,7 +112,7 @@ public class MyApplication extends Application {
         myApplication = this;
         initConfig();
         init();
-
+        initOSSConfig();
         initNetEase();//易信初始化配置
     }
 
@@ -124,43 +133,34 @@ public class MyApplication extends Application {
     }
 
     private void initCitydb() {
-        File  file;
-        if(Environment.MEDIA_MOUNTED .equals(Environment.getExternalStorageState()))
-        {
-            file = new File(Environment.getExternalStorageDirectory(),PROVINCE_CITY_NAME);
+        File file;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            file = new File(Environment.getExternalStorageDirectory(), PROVINCE_CITY_NAME);
+        } else {
+            file = new File(getFilesDir(), PROVINCE_CITY_NAME);
         }
-        else
-        {
-            file = new File(getFilesDir(),PROVINCE_CITY_NAME);
-        }
-        if(!file.exists())
-        {
-            BufferedOutputStream  outputStream = null;
+        if (!file.exists()) {
+            BufferedOutputStream outputStream = null;
             InputStream inputStream = null;
-            try
-            {
+            try {
                 byte[] buff = new byte[1024];
                 inputStream = getAssets().open(DB_PROVINCE_CITY_NAME);
-                int len =0;
+                int len = 0;
                 outputStream = new BufferedOutputStream(new FileOutputStream(file));
-                while ((len = inputStream.read(buff))!=-1)
-                {
-                    outputStream.write(buff,0,len);
+                while ((len = inputStream.read(buff)) != -1) {
+                    outputStream.write(buff, 0, len);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            }
-            finally {
-                if(null != outputStream)
-                {
+            } finally {
+                if (null != outputStream) {
                     try {
                         outputStream.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                if(null != inputStream)
-                {
+                if (null != inputStream) {
                     try {
                         inputStream.close();
                     } catch (IOException e) {
@@ -170,6 +170,17 @@ public class MyApplication extends Application {
             }
 
         }
+    }
+
+    private void initOSSConfig() {
+        OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(accessKeyId, accessKeySecret);
+        ClientConfiguration conf = new ClientConfiguration();
+        conf.setConnectionTimeout(15 * 1000); // 连接超时，默认15秒
+        conf.setSocketTimeout(15 * 1000); // socket超时，默认15秒
+        conf.setMaxConcurrentRequest(5); // 最大并发请求书，默认5个
+        conf.setMaxErrorRetry(2); // 失败后最大重试次数，默认2次
+        OSSLog.enableLog();
+        oss = new OSSClient(getApplicationContext(), endPoint, credentialProvider, conf);
     }
 
     private void initConfig() {

@@ -8,6 +8,6 @@ import com.smartcity.http.model.AddressList;
  * 地址列表
  */
 public interface IAddressView extends BaseViews{
-    void setData(AddressList addressList);
+    void setListData(AddressList addressList);
     void startLogin();
 }

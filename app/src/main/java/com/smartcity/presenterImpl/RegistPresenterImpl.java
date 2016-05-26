@@ -12,7 +12,7 @@ import com.smartcity.presenter.RegistPresenter;
 import com.smartcity.view.IRegistViews;
 
 /**
- * 在此写类用途
+ * 注册PresenterImpl
  *
  * @version V2.0
  * @FileName: RegistPresenterImpl.java

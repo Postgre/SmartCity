@@ -24,7 +24,7 @@ public class Constant {
     public static final String KEY_DATA = "data";
     public static final String VERSION_CODE = "1";
     public static final String VALUE_VERSION = "1";
-    public static final String BASE_URL = "http://192.168.3.185";
+    public static final String BASE_URL = "http://192.168.3.61:8080";
     public static final String USER_CODE = "usercode";
     public static final String PWD = "password";
     public static final String API_KEY = "apikey";

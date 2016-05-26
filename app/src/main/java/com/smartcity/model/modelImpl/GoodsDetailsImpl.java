@@ -18,7 +18,7 @@ import retrofit2.Response;
 /**
  * Created by Administrator on 2016/5/23.
  */
-public class GoodsDetailsImpl implements GoodsDetailsModel {
+public class GoodsDetailsImpl extends BaseModelImpl implements GoodsDetailsModel {
 
     private final LifeIndexService indexService;
 
@@ -26,12 +26,16 @@ public class GoodsDetailsImpl implements GoodsDetailsModel {
         indexService = HttpApi.getInstance().create(LifeIndexService.class);
     }
 
+    @Override
+    public boolean isNetState() {
+        return super.isNetState();
+    }
 
     @Override
     public void getGoodsDetail(String apikey, String goodsId, final LoadGoodDetailListener listener) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("id", goodsId);
-        indexService.getGoodsDetails(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<GoodsDetailInfo>() {
+        indexService.getGoodsDetails(apikey, LifeIndexService.GET_GOODS_DETAILS_CMD_VALUE,Constant.VALUE_VERSION, GsonUtils.objectToJson(params)).enqueue(new Callback<GoodsDetailInfo>() {
             @Override
             public void onResponse(Call<GoodsDetailInfo> call, Response<GoodsDetailInfo> response) {
                 GoodsDetailInfo model = response.body();

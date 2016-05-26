@@ -4,13 +4,13 @@ import com.smartcity.application.MyApplication;
 import com.smartcity.config.Constant;
 import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
+import com.smartcity.http.model.AddCoolInfo;
 import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
 import com.smartcity.http.service.CoolService;
 import com.smartcity.model.CoolModel;
 import com.smartcity.utils.GsonUtils;
 import com.smartcity.utils.LogTool;
-import com.smartcity.utils.NetTool;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,17 +29,19 @@ import retrofit2.Response;
  * @author: fengliang
  * @date: 2016-05-04 16:31
  */
-public class CoolModelImpl implements CoolModel {
+public class CoolModelImpl extends BaseModelImpl implements CoolModel {
     private static final String TAG = CoolModelImpl.class.getName();
     private CoolService coolService;
+    private String apiKey;
 
     public CoolModelImpl() {
         coolService = HttpApi.getInstance().create(CoolService.class);
+        apiKey = MyApplication.getApikey();
     }
 
     @Override
     public boolean isNetState() {
-        return NetTool.isNetworkAvailable(MyApplication.getInstance());
+        return super.isNetState();
     }
 
     @Override
@@ -54,23 +56,26 @@ public class CoolModelImpl implements CoolModel {
         maps.put("coolAreaNo", coolAreaNo);
         maps.put("coolJwd", coolJwd);
         maps.put("coolRename", coolRename);
-        Call<CoolInfo> addCoolCall = coolService.addCool(Constant.API_KEY, CoolService.ADD_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
-        addCoolCall.enqueue(new Callback<CoolInfo>() {
+        maps.put("coolCoverWidth", "120");
+        maps.put("coolCoverHeight", "180");
+        Call<AddCoolInfo> addCoolCall = coolService.addCool(apiKey, CoolService.ADD_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
+        addCoolCall.enqueue(new Callback<AddCoolInfo>() {
 
             @Override
-            public void onResponse(Call<CoolInfo> call, Response<CoolInfo> response) {
-                CoolInfo coolInfo = response.body();
-                if (null != coolInfo) {
-                    if (coolInfo.getCode() == ResCode.STATUS_SUCCESS_CODE) {
-                        callBack.onAddCoolSuccess(coolInfo);
+            public void onResponse(Call<AddCoolInfo> call, Response<AddCoolInfo> response) {
+                AddCoolInfo addCoolInfo = response.body();
+                LogTool.d(TAG, "addCoolInfo======" + addCoolInfo);
+                if (null != addCoolInfo) {
+                    if (addCoolInfo.getCode() == ResCode.STATUS_SUCCESS_CODE) {
+                        callBack.onAddCoolSuccess(addCoolInfo.getMsg());
                     } else {
-                        callBack.onAddCoolFailure(coolInfo.getMsg());
+                        callBack.onAddCoolFailure(addCoolInfo.getMsg());
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<CoolInfo> call, Throwable t) {
+            public void onFailure(Call<AddCoolInfo> call, Throwable t) {
                 callBack.onAddCoolFailure(t.getMessage());
             }
 
@@ -78,14 +83,15 @@ public class CoolModelImpl implements CoolModel {
     }
 
     @Override
-    public void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String sStartpage, String sPagerows, final GetAllCoolCallBack callBack) {
+    public void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows, final GetAllCoolCallBack callBack) {
         Map<String, String> maps = new HashMap<>();
         maps.put("coolMarkId", coolMarkId);
         maps.put("coolAreaNo", coolAreaNo);
         maps.put("coolUserId", coolUserId);
+        maps.put("coolVideoTypeId", coolVideoTypeId);
         maps.put("sStartpage", sStartpage);
         maps.put("sPagerows", sPagerows);
-        Call<CoolInfo> getAllCoolCall = coolService.getAllCool(Constant.API_KEY, CoolService.GET_ALL_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
+        Call<CoolInfo> getAllCoolCall = coolService.getAllCool(apiKey, CoolService.GET_ALL_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
         getAllCoolCall.enqueue(new Callback<CoolInfo>() {
 
             @Override
@@ -115,7 +121,7 @@ public class CoolModelImpl implements CoolModel {
         Map<String, String> maps = new HashMap<>();
         maps.put("coolId", coolId);
         maps.put("iCurrUserId", iCurrUserId);
-        Call<CoolDetailInfo> getCoolDetailCall = coolService.getCoolDetail(Constant.API_KEY, CoolService.GET_COOL_DETAIL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
+        Call<CoolDetailInfo> getCoolDetailCall = coolService.getCoolDetail(apiKey, CoolService.GET_COOL_DETAIL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
         getCoolDetailCall.enqueue(new Callback<CoolDetailInfo>() {
 
             @Override
@@ -144,7 +150,7 @@ public class CoolModelImpl implements CoolModel {
         maps.put("coolVideoTypeId", coolVideoTypeId);
         maps.put("sStartpage", sStartpage);
         maps.put("sPagerows", sPagerows);
-        Call<CoolInfo> getCoolByMeCall = coolService.getCoolByMe(Constant.API_KEY, CoolService.GET_COOL_BY_ME, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
+        Call<CoolInfo> getCoolByMeCall = coolService.getCoolByMe(apiKey, CoolService.GET_COOL_BY_ME, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
         getCoolByMeCall.enqueue(new Callback<CoolInfo>() {
 
             @Override
@@ -180,7 +186,7 @@ public class CoolModelImpl implements CoolModel {
         maps.put("coolPlayTimes", coolPlayTimes);
         maps.put("coolJwd", coolJwd);
         maps.put("coolRename", coolRename);
-        Call<CoolInfo> editCoolCall = coolService.editCool(Constant.API_KEY, CoolService.EDIT_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
+        Call<CoolInfo> editCoolCall = coolService.editCool(apiKey, CoolService.EDIT_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
         editCoolCall.enqueue(new Callback<CoolInfo>() {
 
             @Override
@@ -208,7 +214,7 @@ public class CoolModelImpl implements CoolModel {
         Map<String, String> maps = new HashMap<>();
         maps.put("userAttentionIng", userAttentionIng);
         maps.put("userAttentionEd", userAttentionEd);
-        Call<String> focusCoolCall = coolService.focusCool(Constant.API_KEY, CoolService.FOCUS_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
+        Call<String> focusCoolCall = coolService.focusCool(apiKey, CoolService.FOCUS_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
         focusCoolCall.enqueue(new Callback<String>() {
 
             @Override
@@ -228,7 +234,7 @@ public class CoolModelImpl implements CoolModel {
         Map<String, String> maps = new HashMap<>();
         maps.put("userAttentionId", userAttentionId);
         maps.put("userAttentionStatus", userAttentionStatus);
-        Call<String> unFocusCoolCall = coolService.unFocusCool(Constant.API_KEY, CoolService.UNFOCUS_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
+        Call<String> unFocusCoolCall = coolService.unFocusCool(apiKey, CoolService.UNFOCUS_COOL, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps));
         unFocusCoolCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -243,7 +249,7 @@ public class CoolModelImpl implements CoolModel {
     }
 
     public interface AddCoolCallBack {
-        void onAddCoolSuccess(CoolInfo coolInfo);
+        void onAddCoolSuccess(String msg);
 
         void onAddCoolFailure(String msg);
     }

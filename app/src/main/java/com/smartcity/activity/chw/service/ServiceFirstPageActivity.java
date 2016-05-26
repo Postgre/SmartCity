@@ -14,21 +14,9 @@ import android.widget.ListView;
 import com.smartcity.R;
 import com.smartcity.adapter.chw.service.HotServiceAdapter;
 import com.smartcity.adapter.chw.service.ServiceFenNeiAdapter;
-import com.smartcity.application.MyApplication;
-import com.smartcity.config.Constant;
-import com.smartcity.http.model.ServiceRecommendBean;
-import com.smartcity.http.service.CallService;
-import com.smartcity.utils.SharedPreferencesUtil;
-import com.smartcity.utils.ToastTool;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -71,7 +59,6 @@ public class ServiceFirstPageActivity extends Activity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //进入我能的个人详情
                 Intent intent = new Intent(ServiceFirstPageActivity.this, WecanDetialActivity.class);
                 startActivity(intent);
             }
@@ -80,12 +67,14 @@ public class ServiceFirstPageActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //进入我要的个人详情
+                Intent intent = new Intent(ServiceFirstPageActivity.this, WeNeedDetialActivity.class);
+                startActivity(intent);
             }
         });
         ll_wecan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ServiceFirstPageActivity.this, WecanDetialActivity.class);
+                Intent intent = new Intent(ServiceFirstPageActivity.this, WecanListActivity.class);
                 startActivity(intent);
             }
         });
@@ -94,6 +83,7 @@ public class ServiceFirstPageActivity extends Activity {
 
 
     private void initData() {
+
         //获取接口数据的方法
         //getMyCircle();
         titles = new ArrayList<>();
@@ -122,17 +112,30 @@ public class ServiceFirstPageActivity extends Activity {
     }
 
     public void getMyCircle() {
+/*
         SharedPreferencesUtil spUtils = MyApplication.getSpUtils();
         String apikey = spUtils.getString(Constant.API_KEY, "");
         String personUserId = spUtils.getString(Constant.ID, "");
-      /*  LogTool.e("lists", apikey + "apikey" + personUserId + "personUserId");*/
+      *//*
+*/
+/*  LogTool.e("lists", apikey + "apikey" + personUserId + "personUserId");*//*
+*/
+/*
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         CallService service = retrofit.create(CallService.class);
-        /*Map<String, Object> pam = new HashMap<>();*/
-       /* pam.put("personUserId", "61");
+        *//*
+*/
+/*Map<String, Object> pam = new HashMap<>();*//*
+*/
+/*
+       *//*
+*/
+/* pam.put("personUserId", "61");
         pam.put("sStartpage", "1");
-        pam.put("sPagerows", "10");*/
-        service.getServiceRecommend(apikey, Constant.VALUE_VERSION).enqueue(new Callback<ServiceRecommendBean>() {
+        pam.put("sPagerows", "10");*//*
+*/
+/*
+        service.getServiceRecommend(apikey, Url.SERVICE_FENNEI, Constant.VALUE_VERSION).enqueue(new Callback<ServiceRecommendBean>() {
 
             @Override
             public void onResponse(Call<ServiceRecommendBean> call, Response<ServiceRecommendBean> response) {
@@ -144,31 +147,12 @@ public class ServiceFirstPageActivity extends Activity {
 
             }
 
-            public void onResponse(Response<ServiceRecommendBean> response, Retrofit retrofit) {
 
-//                Log.e("getMyCircle", "response.body():" + response.body().getCode());
-//                LogTool.e("lists",response.body().getCode()+"code");
-                ServiceRecommendBean circleBean = response.body();
-                circleBean.toString();
-             /*   if (null != circleBean) {
-                    if (circleBean.getCode() == Constant.STATUS_SUCCESS) {
-                        ServiceRecommendBean.DataBean circleLists = circleBean.getData();
-                        adaper = new CircleGalleryAdapter(getActivity(), circleLists,R.layout.card_new);
-                        viewpager.setAdapter(adaper);
-                    } else {
-                        CommonUtils.launchActivity(ServiceFirstPageActivity.this, LoginActivity.class);
-                    }
-                }*/
-            }
-
-
-            public void onFailure(Throwable t) {
-                ToastTool.showShort(ServiceFirstPageActivity.this, "获取接口失败");
-            }
         });
+
+*/
+
     }
-
 }
-
 
 

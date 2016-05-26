@@ -57,8 +57,7 @@ public class MarkAdapter extends BaseRecyclerViewAdapter<String> {
 
     @Override
     public View createView(ViewGroup viewGroup, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_item_mark_item,
-                null);
+        View view = layoutInflater.inflate(R.layout.list_item_mark_item, null);
         return view;
     }
 

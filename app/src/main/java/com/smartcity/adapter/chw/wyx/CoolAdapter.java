@@ -1,12 +1,13 @@
 package com.smartcity.adapter.chw.wyx;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.smartcity.R;
 import com.smartcity.base.BaseRecyclerViewAdapter;
 import com.smartcity.base.RecyclerViewHolderBase;
@@ -58,15 +59,17 @@ public class CoolAdapter extends BaseRecyclerViewAdapter<CoolInfo.CoolListInfo> 
             case ITEM_TYPE_MOMENT:
                 MomentsViewHolder holder = (MomentsViewHolder) viewHolder;
                 int width = (int) UIUtils.getScreenWidth() / 2;
-                int height = width * (position + 10) / 10;
-//        int height = width * img.getHeight() / img.getWidth();
+                int height = width * info.getCoolCoverHeight() / info.getCoolCoverWidth();//高通过宽等比例缩放
                 FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) holder.itemImgView
                         .getLayoutParams();
                 layoutParams.width = width;
                 layoutParams.height = height;
                 holder.itemImgView.setLayoutParams(layoutParams);
-                holder.itemImgView.setImageResource(R.mipmap.circle_img);
-
+                holder.itemImgView.setImageURI(Uri.parse(info.getCoolCoverPic()));
+                holder.itemHeadView.setImageURI(Uri.parse(info.getSysUser().getUserpic()));
+                holder.itemTitleView.setText(info.getCoolDecrip());
+                holder.itemNameView.setText(info.getSysUser().getUsername());
+                holder.itemZanView.setText(info.getMPlmap().getTotalLikeCount() + "");
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -79,14 +82,17 @@ public class CoolAdapter extends BaseRecyclerViewAdapter<CoolInfo.CoolListInfo> 
             case ITEM_TYPE_MICRO_FILM:
                 MicroFilmViewHolder mHolder = (MicroFilmViewHolder) viewHolder;
                 int mWidth = (int) UIUtils.getScreenWidth() / 2;
-                int mHeight = mWidth * (position + 10) / 10;
-//        int height = width * img.getHeight() / img.getWidth();
+                int mHeight = mWidth * info.getCoolCoverHeight() / info.getCoolCoverWidth();
                 FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mHolder.itemImgView
                         .getLayoutParams();
                 params.width = mWidth;
                 params.height = mHeight;
                 mHolder.itemImgView.setLayoutParams(params);
-                mHolder.itemImgView.setImageResource(R.mipmap.createcircleimage);
+                mHolder.itemImgView.setImageURI(Uri.parse(info.getCoolCoverPic()));
+                mHolder.itemHeadView.setImageURI(Uri.parse(info.getSysUser().getUserpic()));
+                mHolder.itemTitleView.setText(info.getCoolDecrip());
+                mHolder.itemNameView.setText(info.getSysUser().getUsername());
+                mHolder.itemZanView.setText(info.getMPlmap().getTotalLikeCount() + "");
                 mHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -125,15 +131,15 @@ public class CoolAdapter extends BaseRecyclerViewAdapter<CoolInfo.CoolListInfo> 
     }
 
     static class MomentsViewHolder extends RecyclerViewHolderBase {
-        @Bind(R.id.list_item_img)
-        ImageView itemImgView;
-        @Bind(R.id.list_item_title)
+        @Bind(R.id.list_item_moment_img)
+        SimpleDraweeView itemImgView;
+        @Bind(R.id.list_item_moment_title)
         TextView itemTitleView;
-        @Bind(R.id.list_item_zan_num)
+        @Bind(R.id.list_item_moment_zan_num)
         TextView itemZanView;
-        @Bind(R.id.list_item_head)
-        ImageView itemHeadView;
-        @Bind(R.id.list_item_name)
+        @Bind(R.id.list_item_moment_head)
+        SimpleDraweeView itemHeadView;
+        @Bind(R.id.list_item_moment_name)
         TextView itemNameView;
 
         public MomentsViewHolder(View itemView) {
@@ -143,15 +149,15 @@ public class CoolAdapter extends BaseRecyclerViewAdapter<CoolInfo.CoolListInfo> 
     }
 
     static class MicroFilmViewHolder extends RecyclerViewHolderBase {
-        @Bind(R.id.list_item_img)
-        ImageView itemImgView;
-        @Bind(R.id.list_item_title)
+        @Bind(R.id.list_item_film_img)
+        SimpleDraweeView itemImgView;
+        @Bind(R.id.list_item_film_title)
         TextView itemTitleView;
-        @Bind(R.id.list_item_zan_num)
+        @Bind(R.id.list_item_film_zan_num)
         TextView itemZanView;
-        @Bind(R.id.list_item_head)
-        ImageView itemHeadView;
-        @Bind(R.id.list_item_name)
+        @Bind(R.id.list_item_film_head)
+        SimpleDraweeView itemHeadView;
+        @Bind(R.id.list_item_film_name)
         TextView itemNameView;
 
         public MicroFilmViewHolder(View itemView) {

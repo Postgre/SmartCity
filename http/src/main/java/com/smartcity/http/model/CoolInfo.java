@@ -12,29 +12,28 @@ import java.util.List;
  */
 public class CoolInfo extends BaseModel {
 
-
     /**
-     * coolId : 5
-     * coolVideoTypeId : 2
-     * coolCoverPic : http://111.211.3.411/1.png
-     * coolFileAddress : http://225.226.7.8/2.mp4
-     * coolDecrip : NNN
-     * coolUserId : 21
+     * coolId : 36
+     * coolVideoTypeId : 1
+     * coolCoverPic : http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/1464248009050.jpg
+     * coolFileAddress : http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/1464248009356.mp4
+     * coolDecrip : hello123456789
+     * coolUserId : 60
      * coolPlayTimes : 0
      * coolMarkId : 1
-     * coolAreaNo : CCCD
+     * coolAreaNo : BJHD
      * coolJwd : 123,321
-     * coolRename : 重庆成都
+     * coolRename : æ¹åæ­¦æ±
      * coolMorefield1 : null
      * coolMorefield2 : null
      * coolMorefield3 : null
-     * coolTime : 2016-05-04 00:00:00
-     * sysUser : {"id":21,"usercode":null,"username":"%E6%A2%81%E9%95%BF%E6%98%A5","password":null,"userpic":"http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/sysImg/01.jpg","usersex":null,"userbirth":null,"residence":null,"signature":null,"salt":null,"locked":null,"isdel":null,"ismerchant":null,"isadmin":null,"createtime":null,"lasttime":null,"operation":null,"version":null}
+     * coolTime : 2016-05-26 15:30:22
+     * sysUser : {"id":60,"usercode":null,"username":"admin","password":null,"userpic":"http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/sysImg/01.jpg","usersex":null,"userbirth":null,"residence":null,"signature":null,"salt":null,"locked":null,"isdel":null,"ismerchant":null,"isadmin":null,"createtime":null,"createtimeStart":null,"createtimeEnd":null,"lasttime":null,"lasttimeStart":null,"lasttimeEnd":null,"operation":null,"version":null,"remark":null}
      * sStartpage : null
      * sPagerows : null
      * iIsATed : null
      * iCurrUserId : null
-     * mPlmap : {"hotCommentList":"","totalCount":0,"newestCommentList":"","totalLikeCount":0,"commentList":""}
+     * mPlmap : {"isClicked":0,"hotCommentList":[],"totalCount":0,"newestCommentList":[],"totalLikeCount":0,"commentList":[]}
      * scua : null
      * coolCoverWidth : null
      * coolCoverHeight : null
@@ -67,9 +66,9 @@ public class CoolInfo extends BaseModel {
         private Object coolMorefield3;
         private String coolTime;
         /**
-         * id : 21
+         * id : 60
          * usercode : null
-         * username : %E6%A2%81%E9%95%BF%E6%98%A5
+         * username : admin
          * password : null
          * userpic : http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/sysImg/01.jpg
          * usersex : null
@@ -82,9 +81,14 @@ public class CoolInfo extends BaseModel {
          * ismerchant : null
          * isadmin : null
          * createtime : null
+         * createtimeStart : null
+         * createtimeEnd : null
          * lasttime : null
+         * lasttimeStart : null
+         * lasttimeEnd : null
          * operation : null
          * version : null
+         * remark : null
          */
 
         private SysUserBean sysUser;
@@ -93,17 +97,18 @@ public class CoolInfo extends BaseModel {
         private Object iIsATed;
         private Object iCurrUserId;
         /**
-         * hotCommentList :
+         * isClicked : 0
+         * hotCommentList : []
          * totalCount : 0
-         * newestCommentList :
+         * newestCommentList : []
          * totalLikeCount : 0
-         * commentList :
+         * commentList : []
          */
 
         private MPlmapBean mPlmap;
         private Object scua;
-        private Object coolCoverWidth;
-        private Object coolCoverHeight;
+        private int coolCoverWidth;
+        private int coolCoverHeight;
 
         public int getCoolId() {
             return coolId;
@@ -281,19 +286,19 @@ public class CoolInfo extends BaseModel {
             this.scua = scua;
         }
 
-        public Object getCoolCoverWidth() {
+        public int getCoolCoverWidth() {
             return coolCoverWidth;
         }
 
-        public void setCoolCoverWidth(Object coolCoverWidth) {
+        public void setCoolCoverWidth(int coolCoverWidth) {
             this.coolCoverWidth = coolCoverWidth;
         }
 
-        public Object getCoolCoverHeight() {
+        public int getCoolCoverHeight() {
             return coolCoverHeight;
         }
 
-        public void setCoolCoverHeight(Object coolCoverHeight) {
+        public void setCoolCoverHeight(int coolCoverHeight) {
             this.coolCoverHeight = coolCoverHeight;
         }
 
@@ -313,9 +318,14 @@ public class CoolInfo extends BaseModel {
             private Object ismerchant;
             private Object isadmin;
             private Object createtime;
+            private Object createtimeStart;
+            private Object createtimeEnd;
             private Object lasttime;
+            private Object lasttimeStart;
+            private Object lasttimeEnd;
             private Object operation;
             private Object version;
+            private Object remark;
 
             public int getId() {
                 return id;
@@ -437,12 +447,44 @@ public class CoolInfo extends BaseModel {
                 this.createtime = createtime;
             }
 
+            public Object getCreatetimeStart() {
+                return createtimeStart;
+            }
+
+            public void setCreatetimeStart(Object createtimeStart) {
+                this.createtimeStart = createtimeStart;
+            }
+
+            public Object getCreatetimeEnd() {
+                return createtimeEnd;
+            }
+
+            public void setCreatetimeEnd(Object createtimeEnd) {
+                this.createtimeEnd = createtimeEnd;
+            }
+
             public Object getLasttime() {
                 return lasttime;
             }
 
             public void setLasttime(Object lasttime) {
                 this.lasttime = lasttime;
+            }
+
+            public Object getLasttimeStart() {
+                return lasttimeStart;
+            }
+
+            public void setLasttimeStart(Object lasttimeStart) {
+                this.lasttimeStart = lasttimeStart;
+            }
+
+            public Object getLasttimeEnd() {
+                return lasttimeEnd;
+            }
+
+            public void setLasttimeEnd(Object lasttimeEnd) {
+                this.lasttimeEnd = lasttimeEnd;
             }
 
             public Object getOperation() {
@@ -460,21 +502,30 @@ public class CoolInfo extends BaseModel {
             public void setVersion(Object version) {
                 this.version = version;
             }
+
+            public Object getRemark() {
+                return remark;
+            }
+
+            public void setRemark(Object remark) {
+                this.remark = remark;
+            }
         }
 
         public static class MPlmapBean {
-            private String hotCommentList;
+            private int isClicked;
             private int totalCount;
-            private String newestCommentList;
             private int totalLikeCount;
-            private String commentList;
+            private List<?> hotCommentList;
+            private List<?> newestCommentList;
+            private List<?> commentList;
 
-            public String getHotCommentList() {
-                return hotCommentList;
+            public int getIsClicked() {
+                return isClicked;
             }
 
-            public void setHotCommentList(String hotCommentList) {
-                this.hotCommentList = hotCommentList;
+            public void setIsClicked(int isClicked) {
+                this.isClicked = isClicked;
             }
 
             public int getTotalCount() {
@@ -485,14 +536,6 @@ public class CoolInfo extends BaseModel {
                 this.totalCount = totalCount;
             }
 
-            public String getNewestCommentList() {
-                return newestCommentList;
-            }
-
-            public void setNewestCommentList(String newestCommentList) {
-                this.newestCommentList = newestCommentList;
-            }
-
             public int getTotalLikeCount() {
                 return totalLikeCount;
             }
@@ -501,11 +544,27 @@ public class CoolInfo extends BaseModel {
                 this.totalLikeCount = totalLikeCount;
             }
 
-            public String getCommentList() {
+            public List<?> getHotCommentList() {
+                return hotCommentList;
+            }
+
+            public void setHotCommentList(List<?> hotCommentList) {
+                this.hotCommentList = hotCommentList;
+            }
+
+            public List<?> getNewestCommentList() {
+                return newestCommentList;
+            }
+
+            public void setNewestCommentList(List<?> newestCommentList) {
+                this.newestCommentList = newestCommentList;
+            }
+
+            public List<?> getCommentList() {
                 return commentList;
             }
 
-            public void setCommentList(String commentList) {
+            public void setCommentList(List<?> commentList) {
                 this.commentList = commentList;
             }
         }

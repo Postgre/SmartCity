@@ -379,4 +379,9 @@
     <dimen name="dp_450">450dp</dimen>
     <dimen name="dp_350">350dp</dimen>
     <dimen name="dp_260">260dp</dimen>
+
+    <!-- 间距 -->
+    <dimen name="normal_space">10dp</dimen>
+    <dimen name="little_sapce">5dp</dimen>
+    <dimen name="dp_303">303dp</dimen>
 </resources>

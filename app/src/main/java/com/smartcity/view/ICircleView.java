@@ -1,6 +1,7 @@
 package com.smartcity.view;
 
 import com.smartcity.http.model.CircleBean;
+import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.LabelBean;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public interface ICircleView extends BaseViews{
 
     void addCircles(List<CircleBean.CirDataEntity> circleList);
+    void addCirclesByLabel(List<CircleByLabel.DataEntity> circleList);
     void CircleGroup(List<CircleBean.CirDataEntity> circleList);
     void addLabels(List<LabelBean.DataEntity> labelList);
 }

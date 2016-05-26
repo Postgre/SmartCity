@@ -3,6 +3,7 @@ package com.smartcity.http.service;
 import com.smartcity.http.Constant;
 import com.smartcity.http.model.ActivityModel;
 import com.smartcity.http.model.CircleBean;
+import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.CircleDetailInfoModel;
 import com.smartcity.http.model.CircleGroup_bean;
 import com.smartcity.http.model.CircleNotice;
@@ -16,6 +17,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 
@@ -25,32 +27,32 @@ import retrofit2.http.POST;
 public interface CircleService {
 
     //所有圈子
-    String ALLCIRCLE = "circle/getCircleList";
+    String ALLCIRCLE = "circle/getCircleList" ;
     //加入圈子
-    String JOINCIRCLE = "circle/applyJoinCircle";
+    String JOINCIRCLE = "circle/applyJoinCircle" ;
     //我的圈子
-    String MYCIRCLE = "circle/getCircleListByUserID";
+    String MYCIRCLE = "circle/getCircleListByUserID" ;
     //圈子小组
-    String MYGROUP = "circle/getCcByEn";
+    String MYGROUP = "circle/getCcByEn" ;
     //圈子活动
-    String CIRCLEACTIVITY = "circle/getActivityListByCircleID";
+    String CIRCLEACTIVITY = "circle/getActivityListByCircleID" ;
     //圈子通知
-    String CIRCLENOTICE = "circle/getInformList";
+    String CIRCLENOTICE = "circle/getInformList" ;
     //圈子视频
-    String CIRCLEVIDEO = "circle/getVideoList";
+    String CIRCLEVIDEO = "circle/getVideoList" ;
     //圈子相册
-    String CIRCLEPHOTO = "circle/getAlbList";
+    String CIRCLEPHOTO = "circle/getAlbList" ;
     //圈子成员
-    String CIRCLEPEOPLE = "circle/getAllmembers";
+    String CIRCLEPEOPLE = "circle/getAllmembers" ;
     //退出圈子
-    String EDITCIRCLE = "circle/delPerson";
+    String EDITCIRCLE = "circle/delPerson" ;
     //根据圈子id查询圈子详情
-    String CIRCLEDETAIL = "circle/getCircleByID";
+    String CIRCLEDETAIL = "circle/getCircleByID" ;
     //根据标签查询圈子列表
-    String GETCIRCLELISTBYLABEL = "circle/getCcByEn";
+    String GETCIRCLELISTBYLABEL = "circle/getCcByEn" ;
 
     //根据标签
-    String GETLABELS = "circle/getML";
+    String GETLABELS = "circle/getML" ;
 
 
     // 圈子活动
@@ -121,12 +123,18 @@ public interface CircleService {
 
     /*查询全部标签*/
     @FormUrlEncoded
-    @POST(GETLABELS)
-    Call<LabelBean> getLabels(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    @POST(Constant.REST)
+    Call<LabelBean> getLabels(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
     /*-----------------------根据标签查对应圈子列表----------------------*/
     @FormUrlEncoded
-    @POST(GETCIRCLELISTBYLABEL)
-    Call<CircleBean> getCircleListByLabel(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    @Headers("Content-Type:application/x-www-form-urlencoded;charset=utf-8")
+    @POST(Constant.REST)
+    Call<CircleByLabel> getCircleListByLabel(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+
+    /*申请加入圈子*/
+    @FormUrlEncoded
+    @POST(Constant.REST)
+    Call<CircleBean> applyJoinCircle(@Header(Constant.API_KEY) String apikey, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
 }
