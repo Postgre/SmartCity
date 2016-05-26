@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    生活  订单详情
+    弹窗
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@drawable/life_dialog_cam_call_bg"
+        android:layout_width="@dimen/dp_303"
+        android:layout_height="@dimen/dp_260"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_17"
+            android:layout_marginTop="@dimen/dp_17"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:singleLine="true"
+            android:text="拨打电话联系商家"
+            android:textColor="#7F7F7F"
+            android:textSize="@dimen/ts_21" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_28"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_35"
+            android:orientation="horizontal">
+
+            <Button
+                android:textColor="@color/white"
+                android:textSize="@dimen/ts_15"
+                android:background="@drawable/rect_blue"
+                android:layout_marginLeft="@dimen/dp_50"
+                android:layout_width="@dimen/dp_85"
+                android:layout_height="@dimen/dp_35"
+                android:text="好" />
+            <Button
+                android:textColor="@color/white"
+                android:textSize="@dimen/ts_15"
+                android:background="@drawable/rect_blue"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:layout_width="@dimen/dp_85"
+                android:layout_height="@dimen/dp_35"
+                android:text="否" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

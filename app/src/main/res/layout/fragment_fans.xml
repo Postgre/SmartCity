@@ -1,0 +1,311 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"
+            android:background="@mipmap/fen_baiseyuan">
+
+            <FrameLayout
+                android:layout_width="@dimen/dp_110"
+                android:layout_height="@dimen/dp_110"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp_44">
+
+                <ImageView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/yuandi" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/fen_iv_touxiang"
+                    android:layout_width="@dimen/dp_92"
+                    android:layout_height="@dimen/dp_92"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/fen_touxiang"
+                    fresco:roundAsCircle="true" />
+
+            </FrameLayout>
+
+
+            <!--<ImageView
+                android:layout_width="15dp"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/fen_iv_touxiang"
+                android:src="@mipmap/icon_vip"
+                android:visibility="gone" />-->
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/fen_tv_username"
+            style="@style/style_tv_header"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="小夏"
+            android:textColor="@color/black1" />
+
+        <TextView
+
+            android:id="@+id/fen_tv_money"
+            style="@style/style_tv_header"
+            android:layout_marginTop="@dimen/dp_15"
+            android:text="￥ 200"
+            android:textColor="#FE9068" />
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_65"
+            android:layout_marginTop="@dimen/dp_15"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/fance_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_city_account"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="@dimen/dp_18">
+
+                    <ImageView
+                        android:id="@+id/iv_zhanghu"
+                        style="@style/fen_iv_l_style"
+                        android:src="@mipmap/fen_zhanghu" />
+
+                    <TextView
+                        style="@style/fen_tv_l"
+
+                        android:layout_toLeftOf="@+id/iv_zhanghu"
+
+                        android:text="城市账户" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_pay_order"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/iv_active"
+                        style="@style/fen_iv_l_style"
+                        android:src="@mipmap/fen_car" />
+
+                    <TextView
+                        style="@style/fen_tv_l"
+                        android:layout_toLeftOf="@+id/iv_active"
+                        android:text="@string/fen_pay_activies" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_order"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="12dp">
+
+                    <ImageView
+
+                        android:id="@+id/iv_order"
+                        style="@style/fen_iv_l_style"
+                        android:src="@mipmap/fen_dingdan" />
+
+                    <TextView
+                        android:id="@+id/fen_tv_order_notify"
+                        style="@style/fen_tv_l"
+                        android:layout_toLeftOf="@+id/iv_order"
+                        android:text="@string/fen_order" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/fen_tv_order_notify"
+                        android:background="@drawable/read_fill_color"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_cart"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/iv_car"
+                        style="@style/fen_iv_l_style"
+                        android:src="@mipmap/fen_car" />
+
+                    <TextView
+                        style="@style/fen_tv_l"
+                        android:layout_toLeftOf="@+id/iv_car"
+                        android:text="@string/fen_cart" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_shared"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/iv_shared"
+                        style="@style/fen_iv_l_style"
+                        android:src="@mipmap/fen_fenxiang" />
+
+                    <TextView
+
+                        style="@style/fen_tv_l"
+                        android:layout_toLeftOf="@+id/iv_shared"
+                        android:text="@string/fen_shared" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_setting"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="12dp">
+
+                    <ImageView
+                        android:id="@+id/iv_setting"
+                        style="@style/fen_iv_l_style"
+                        android:src="@mipmap/fen_zhanghu" />
+
+                    <TextView
+                        style="@style/fen_tv_l"
+                        android:layout_toLeftOf="@+id/iv_setting"
+                        android:text="@string/fen_setting" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/dp_2"
+                android:layout_height="match_parent"
+                android:background="#1C4F93" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_56">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/fen_shangjiafen" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_publish_activites"
+                    style="@style/fen_rl_style">
+
+                    <ImageView
+                        android:id="@+id/iv_publish_active"
+                        style="@style/fen_iv_r_style"
+                        android:src="@mipmap/fen_fabuhuodong" />
+
+                    <TextView
+                        style="@style/fen_tv_r"
+                        android:layout_toRightOf="@+id/iv_publish_active"
+                        android:text="@string/fen_send_publish_activites" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_manager_clicer"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <ImageView
+                        android:id="@+id/iv_zunxiang"
+                        style="@style/fen_iv_r_style"
+                        android:src="@mipmap/guanlizunxiangquan" />
+
+                    <TextView
+
+                        style="@style/fen_tv_r"
+                        android:layout_toRightOf="@+id/iv_zunxiang"
+                        android:text="@string/fen_manager_clicer" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_add_circle"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_add_quanzi"
+                        style="@style/fen_iv_r_style"
+                        android:src="@mipmap/fen_chuangjianquanzi" />
+
+                    <TextView
+                        style="@style/fen_tv_r"
+                        android:layout_toRightOf="@+id/iv_add_quanzi"
+                        android:text="@string/fen_create_circle" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_notify"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_notifi"
+                        style="@style/fen_iv_r_style"
+                        android:src="@mipmap/fen_tongzhi" />
+
+                    <TextView
+                        style="@style/fen_tv_r"
+                        android:layout_toRightOf="@+id/iv_notifi"
+                        android:text="@string/fen_notify" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fen_rl_enshrine"
+                    style="@style/fen_rl_style"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_shoucang"
+                        style="@style/fen_iv_r_style"
+                        android:src="@mipmap/fen_shoucang" />
+
+                    <TextView
+                        style="@style/fen_tv_r"
+                        android:layout_toRightOf="@+id/iv_shoucang"
+                        android:text="@string/fen_enshrine" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
