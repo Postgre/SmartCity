@@ -1,6 +1,7 @@
 package com.smartcity.model;
 
 import com.smartcity.http.model.CartInfo;
+import com.smartcity.http.model.ScShopCartVo;
 import com.smartcity.model.modelImpl.CartModelImpl;
 
 /**
@@ -24,7 +25,7 @@ public interface CartModel extends BaseModel {
      * @param goodsName 商品名称
      *  @param shopId 店铺id
      * */
-    void  addGoodTotCart(String customerId,String goodsId,String goodsName,String shopId,String apiKey,CartModelImpl.OnAddGoodResultListener listener);
+    void  addGoodTotCart(String customerId,int goodsId,String goodsName,int shopId,String apiKey,CartModelImpl.OnAddGoodResultListener listener);
 
     /**
      * 删除购物车  店铺下的商品
@@ -40,7 +41,7 @@ public interface CartModel extends BaseModel {
      * @param apiKey token
      * @param customerId 用户id
      * */
-    void  deleteGoodByShopIdAndUserId(String goodsId,String customerId,String apiKey,CartModelImpl.OnDeleteGoodListener listener);
+    void  deleteGoodByShopIdAndUserId(int goodsId,int customerId,String apiKey,CartModelImpl.OnDeleteGoodListener listener);
 
     /**
      * 删除购物车  店铺下的某一个商品
@@ -52,5 +53,5 @@ public interface CartModel extends BaseModel {
      * @param number 数量
      *@param stockId  规格id
      * */
-    void updateCartNum(String customerId,String goodsId,int number,String stockId,String apikey ,CartModelImpl.OnUpdateResultListener listener);
+    void updateCartNum(int customerId,int goodsId,int number,int stockId,String apikey ,CartModelImpl.OnUpdateResultListener listener);
 }

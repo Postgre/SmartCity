@@ -9,7 +9,16 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.smartcity.R;
+import com.smartcity.application.MyApplication;
 import com.smartcity.base.BaseActivity;
+import com.smartcity.http.model.CircleBean;
+import com.smartcity.http.model.CircleByLabel;
+import com.smartcity.http.model.LabelBean;
+import com.smartcity.presenter.ApplyJoinCirclePresenter;
+import com.smartcity.presenterImpl.ApplyJoinCirclePresenterImpl;
+import com.smartcity.view.ICircleView;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,7 +27,7 @@ import butterknife.OnClick;
 /**
  * Created by Administrator on 2016/5/6.
  */
-public class AllCircleDetailActivity extends BaseActivity {
+public class AllCircleDetailActivity extends BaseActivity implements ICircleView {
 
     @Bind(R.id.cr_detail)
     SimpleDraweeView crDetail;
@@ -43,19 +52,32 @@ public class AllCircleDetailActivity extends BaseActivity {
     ImageView back_img;
     @Bind(R.id.title_tv)
     TextView title_tv;
+    private int group;
+    private String groupId;
+    private String apikey;
+    private String groupName;
+    private ApplyJoinCirclePresenter joinCirclePresenter;
+    private String userId;
 
     @Override
     public void init() {
-        int group = getIntent().getIntExtra("group", 0);
-        if (group == 1){
-            llType.setVisibility(View.GONE);
-            crName.setText("春游小组");
-        }
+        group = getIntent().getIntExtra("group", 0);
+        groupId = getIntent().getStringExtra("groupId");
+        groupName = getIntent().getStringExtra("groupName");
+        apikey = MyApplication.getApikey();
+        userId = MyApplication.getId();
+        joinCirclePresenter = new ApplyJoinCirclePresenterImpl(this);
+
 
         back_img.setVisibility(View.VISIBLE);
         title_tv.setVisibility(View.VISIBLE);
-        title_tv.setText("资料详情");
-
+        if (group == 1) {
+            llType.setVisibility(View.GONE);
+            title_tv.setText(groupName);
+            crName.setText(groupName);
+        } else {
+            title_tv.setText("资料详情");
+        }
     }
 
     @Override
@@ -71,8 +93,32 @@ public class AllCircleDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_join:
-                Toast.makeText(this, "加入圈子成功", Toast.LENGTH_SHORT).show();
+                if (group == 1) {
+//                    joinCirclePresenter.joinCircle(apikey,groupId,userId);
+                    joinCirclePresenter.joinCircle(apikey, "5", userId);//temp
+                } else
+                    Toast.makeText(this, "加入圈子成功", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    public void addCircles(List<CircleBean.CirDataEntity> circleList) {
+
+    }
+
+    @Override
+    public void addCirclesByLabel(List<CircleByLabel.DataEntity> circleList) {
+
+    }
+
+    @Override
+    public void CircleGroup(List<CircleBean.CirDataEntity> circleList) {
+
+    }
+
+    @Override
+    public void addLabels(List<LabelBean.DataEntity> labelList) {
+
     }
 }

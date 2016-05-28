@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:fresco="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/imgLayout"
@@ -11,10 +11,12 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/list_item_moment_img"
-            fresco:actualImageScaleType="focusCrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@mipmap/circle_img"
+            fresco:placeholderImageScaleType="fitCenter" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -56,16 +58,17 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/list_item_moment_head"
-        fresco:actualImageScaleType="focusCrop"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/imgLayout"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="-20dp"
-        android:src="@mipmap/xiaoxiaozutouxiang1"
         app:roundAsCircle="true"
-        app:roundedCornerRadius="10dp" />
+        app:roundedCornerRadius="10dp"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:placeholderImage="@mipmap/xiaoxiaozutouxiang1"
+        fresco:placeholderImageScaleType="fitCenter" />
 
     <TextView
         android:id="@+id/list_item_moment_name"

@@ -5,56 +5,47 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/4/23.
  */
-public class ActivityModel {
-    /**
-     * total : 1
-     * code : 1
-     * msg : null
-     * data : [{"detailId":3,"detailCircleId":4,"detailUserId":2,"detailUserPhone":"13555555555","detailUserReward":60000,"detailJoinMoney":5000,"detailBudget":10000,"detailPlace":"wuhan","detailAssistPerson":"wangdada,lidada","detailAppliedPersonNumber":180,"detailRealJoinNumber":150,"detailMinTotal":100,"detailMaxTotal":200,"detailName":"制造美丽人生","detailDetail":"保密","detailProcess":"保密","detailTypeId":13,"detailAim":"beautiful","detailStatus":1,"detailQualification":null,"detailIsPrivate":0,"detailIsBossPay":1,"detailUserIdOrMerchantId":2,"detailAds":"create beautiful life","detailPicUrl":"http://122.2.2.2","detailPublishTime":"2016-04-05 14:05:14","detailCutOffTime":"2016-04-07 14:05:12","detailBeginTime":"2016-04-07 14:05:11","detailEndTime":"2016-04-07 16:40:35","detailMorefield1":null,"detailMorefield2":null,"detailMorefield3":null,"sStartpage":null,"sPagerows":null,"sIds":null,"sTotalApplyNumber":"5","sTotalCollectNumber":"0","detailDeposit":1000,"detailIsMerchantSupport":0,"lsca":[],"scSysUser":null,"sHavePublicActivity":null,"sSuccessActivity":null,"sBossPayActivity":null,"sOrderBy":null,"detailSettlementStatus":null},{"detailId":4,"detailCircleId":4,"detailUserId":3,"detailUserPhone":"16666666666","detailUserReward":600,"detailJoinMoney":50,"detailBudget":100,"detailPlace":"beijing","detailAssistPerson":"wangdada,lidada","detailAppliedPersonNumber":100,"detailRealJoinNumber":100,"detailMinTotal":50,"detailMaxTotal":150,"detailName":"你最美丽","detailDetail":"保密","detailProcess":"保密","detailTypeId":31,"detailAim":"beautiful","detailStatus":1,"detailQualification":"","detailIsPrivate":0,"detailIsBossPay":1,"detailUserIdOrMerchantId":2,"detailAds":"create beautiful life","detailPicUrl":"http://122.2.2.2","detailPublishTime":"2016-04-05 14:05:14","detailCutOffTime":"2016-04-07 14:05:12","detailBeginTime":"2016-04-07 14:05:11","detailEndTime":"2016-04-07 16:40:14","detailMorefield1":"","detailMorefield2":"","detailMorefield3":"","sStartpage":null,"sPagerows":null,"sIds":null,"sTotalApplyNumber":"0","sTotalCollectNumber":"2","detailDeposit":1000,"detailIsMerchantSupport":0,"lsca":[],"scSysUser":null,"sHavePublicActivity":null,"sSuccessActivity":null,"sBossPayActivity":null,"sOrderBy":null,"detailSettlementStatus":null},{"detailId":10,"detailCircleId":4,"detailUserId":2,"detailUserPhone":"12222222222","detailUserReward":20,"detailJoinMoney":200,"detailBudget":20,"detailPlace":"dalian","detailAssistPerson":"chendada,zhangdada","detailAppliedPersonNumber":20,"detailRealJoinNumber":10,"detailMinTotal":5,"detailMaxTotal":20,"detailName":"无极限1","detailDetail":"这个名字不好取","detailProcess":"secret","detailTypeId":12,"detailAim":"呵呵哒，学会这个","detailStatus":2,"detailQualification":null,"detailIsPrivate":1,"detailIsBossPay":1,"detailUserIdOrMerchantId":2,"detailAds":"ads11111111","detailPicUrl":"http://123.3.3.3","detailPublishTime":"2016-04-07 14:05:12","detailCutOffTime":"2016-04-07 14:05:12","detailBeginTime":"2016-04-07 14:05:12","detailEndTime":"2016-04-07 14:05:12","detailMorefield1":null,"detailMorefield2":null,"detailMorefield3":null,"sStartpage":null,"sPagerows":null,"sIds":null,"sTotalApplyNumber":"0","sTotalCollectNumber":"1","detailDeposit":1000,"detailIsMerchantSupport":0,"lsca":[],"scSysUser":null,"sHavePublicActivity":null,"sSuccessActivity":null,"sBossPayActivity":null,"sOrderBy":null,"detailSettlementStatus":null},{"detailId":24,"detailCircleId":4,"detailUserId":3,"detailUserPhone":"13344444444","detailUserReward":50,"detailJoinMoney":10,"detailBudget":500,"detailPlace":"nanjing","detailAssistPerson":"wuwang,liliu","detailAppliedPersonNumber":80,"detailRealJoinNumber":60,"detailMinTotal":50,"detailMaxTotal":100,"detailName":"这个活动66","detailDetail":"secret","detailProcess":"secret","detailTypeId":42,"detailAim":"超越极限1","detailStatus":2,"detailQualification":null,"detailIsPrivate":1,"detailIsBossPay":1,"detailUserIdOrMerchantId":4,"detailAds":"ads111","detailPicUrl":"http://123.1.1.1","detailPublishTime":"2016-04-12 00:00:00","detailCutOffTime":"2016-04-12 00:00:00","detailBeginTime":"2016-04-12 00:00:00","detailEndTime":"2016-04-12 00:00:00","detailMorefield1":null,"detailMorefield2":null,"detailMorefield3":null,"sStartpage":null,"sPagerows":null,"sIds":null,"sTotalApplyNumber":"0","sTotalCollectNumber":"0","detailDeposit":5000,"detailIsMerchantSupport":0,"lsca":[],"scSysUser":null,"sHavePublicActivity":null,"sSuccessActivity":null,"sBossPayActivity":null,"sOrderBy":null,"detailSettlementStatus":null},{"detailId":53,"detailCircleId":4,"detailUserId":4,"detailUserPhone":"1222","detailUserReward":20,"detailJoinMoney":200,"detailBudget":20,"detailPlace":"dalian","detailAssistPerson":"chendada,zhangdada","detailAppliedPersonNumber":0,"detailRealJoinNumber":0,"detailMinTotal":5,"detailMaxTotal":20,"detailName":"无极限","detailDetail":"这个名字不好取","detailProcess":"secret","detailTypeId":43,"detailAim":"呵呵哒","detailStatus":1,"detailQualification":null,"detailIsPrivate":1,"detailIsBossPay":1,"detailUserIdOrMerchantId":2,"detailAds":"ads11111111","detailPicUrl":"http://123.3.3.3","detailPublishTime":"2016-04-19 09:24:37","detailCutOffTime":"2016-04-07 14:05:12","detailBeginTime":"2016-04-07 14:05:12","detailEndTime":"2016-04-07 14:05:12","detailMorefield1":null,"detailMorefield2":null,"detailMorefield3":null,"sStartpage":null,"sPagerows":null,"sIds":null,"sTotalApplyNumber":"0","sTotalCollectNumber":"0","detailDeposit":5000,"detailIsMerchantSupport":0,"lsca":[],"scSysUser":null,"sHavePublicActivity":null,"sSuccessActivity":null,"sBossPayActivity":null,"sOrderBy":null,"detailSettlementStatus":null},{"detailId":67,"detailCircleId":4,"detailUserId":2,"detailUserPhone":"1222","detailUserReward":20,"detailJoinMoney":200,"detailBudget":20,"detailPlace":"dalian","detailAssistPerson":"chendada,zhangdada","detailAppliedPersonNumber":0,"detailRealJoinNumber":0,"detailMinTotal":5,"detailMaxTotal":20,"detailName":"无极限","detailDetail":"这个名字不好取","detailProcess":"secret","detailTypeId":43,"detailAim":"呵呵哒","detailStatus":1,"detailQualification":null,"detailIsPrivate":1,"detailIsBossPay":1,"detailUserIdOrMerchantId":2,"detailAds":"ads11111111","detailPicUrl":"http://123.3.3.3","detailPublishTime":"2016-04-19 10:22:04","detailCutOffTime":"1970-01-18 06:08:08","detailBeginTime":"1970-01-18 06:08:08","detailEndTime":null,"detailMorefield1":null,"detailMorefield2":null,"detailMorefield3":null,"sStartpage":null,"sPagerows":null,"sIds":null,"sTotalApplyNumber":"0","sTotalCollectNumber":"0","detailDeposit":5000,"detailIsMerchantSupport":0,"lsca":[],"scSysUser":null,"sHavePublicActivity":null,"sSuccessActivity":null,"sBossPayActivity":null,"sOrderBy":null,"detailSettlementStatus":null}]
-     */
+public class ActivityModel extends BaseModel {
 
-    private int total;
-    private int code;
-    private Object msg;
     /**
-     * detailId : 3
-     * detailCircleId : 4
-     * detailUserId : 2
-     * detailUserPhone : 13555555555
-     * detailUserReward : 60000
-     * detailJoinMoney : 5000
-     * detailBudget : 10000
-     * detailPlace : wuhan
-     * detailAssistPerson : wangdada,lidada
-     * detailAppliedPersonNumber : 180
-     * detailRealJoinNumber : 150
-     * detailMinTotal : 100
-     * detailMaxTotal : 200
-     * detailName : 制造美丽人生
-     * detailDetail : 保密
-     * detailProcess : 保密
+     * detailId : 25
+     * detailCircleId : 2
+     * detailUserId : 3
+     * detailUserPhone : 13355555555
+     * detailUserReward : 50
+     * detailJoinMoney : 10
+     * detailBudget : 500
+     * detailPlace : nanjing
+     * detailAssistPerson : wuwang,liliu
+     * detailAppliedPersonNumber : 80
+     * detailRealJoinNumber : 60
+     * detailMinTotal : 50
+     * detailMaxTotal : 100
+     * detailName : 这个活动66
+     * detailDetail : secret
+     * detailProcess : secret
      * detailTypeId : 13
-     * detailAim : beautiful
-     * detailStatus : 1
+     * detailAim : 超越极限1
+     * detailStatus : 2
      * detailQualification : null
-     * detailIsPrivate : 0
+     * detailIsPrivate : 1
      * detailIsBossPay : 1
-     * detailUserIdOrMerchantId : 2
-     * detailAds : create beautiful life
-     * detailPicUrl : http://122.2.2.2
-     * detailPublishTime : 2016-04-05 14:05:14
-     * detailCutOffTime : 2016-04-07 14:05:12
-     * detailBeginTime : 2016-04-07 14:05:11
-     * detailEndTime : 2016-04-07 16:40:35
+     * detailUserIdOrMerchantId : 4
+     * detailAds : ads111
+     * detailPicUrl : http://123.1.1.1
+     * detailPublishTime : 2016-04-12 00:00:00
+     * detailCutOffTime : 2016-04-12 00:00:00
+     * detailBeginTime : 2016-04-12 00:00:00
+     * detailEndTime : 2016-04-12 00:00:00
      * detailMorefield1 : null
      * detailMorefield2 : null
      * detailMorefield3 : null
      * sStartpage : null
      * sPagerows : null
      * sIds : null
-     * sTotalApplyNumber : 5
+     * sTotalApplyNumber : 0
      * sTotalCollectNumber : 0
-     * detailDeposit : 1000
+     * detailDeposit : 5000
      * detailIsMerchantSupport : 0
      * lsca : []
      * scSysUser : null
@@ -63,43 +54,24 @@ public class ActivityModel {
      * sBossPayActivity : null
      * sOrderBy : null
      * detailSettlementStatus : null
+     * detailMarkName : null
+     * sPbgtime : null
+     * sPedtime : null
+     * sDetailMerchantNo : null
+     * sSunOrderTimes : null
      */
 
-    private List<Activity> data;
+    private List<DataEntity> data;
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public Object getMsg() {
-        return msg;
-    }
-
-    public void setMsg(Object msg) {
-        this.msg = msg;
-    }
-
-    public List<Activity> getData() {
+    public List<DataEntity> getData() {
         return data;
     }
 
-    public void setData(List<Activity> data) {
+    public void setData(List<DataEntity> data) {
         this.data = data;
     }
 
-    public static class Activity {
+    public static class DataEntity {
         private int detailId;
         private int detailCircleId;
         private int detailUserId;
@@ -145,6 +117,11 @@ public class ActivityModel {
         private Object sBossPayActivity;
         private Object sOrderBy;
         private Object detailSettlementStatus;
+        private Object detailMarkName;
+        private Object sPbgtime;
+        private Object sPedtime;
+        private Object sDetailMerchantNo;
+        private Object sSunOrderTimes;
         private List<?> lsca;
 
         public int getDetailId() {
@@ -507,6 +484,46 @@ public class ActivityModel {
             this.detailSettlementStatus = detailSettlementStatus;
         }
 
+        public Object getDetailMarkName() {
+            return detailMarkName;
+        }
+
+        public void setDetailMarkName(Object detailMarkName) {
+            this.detailMarkName = detailMarkName;
+        }
+
+        public Object getSPbgtime() {
+            return sPbgtime;
+        }
+
+        public void setSPbgtime(Object sPbgtime) {
+            this.sPbgtime = sPbgtime;
+        }
+
+        public Object getSPedtime() {
+            return sPedtime;
+        }
+
+        public void setSPedtime(Object sPedtime) {
+            this.sPedtime = sPedtime;
+        }
+
+        public Object getSDetailMerchantNo() {
+            return sDetailMerchantNo;
+        }
+
+        public void setSDetailMerchantNo(Object sDetailMerchantNo) {
+            this.sDetailMerchantNo = sDetailMerchantNo;
+        }
+
+        public Object getSSunOrderTimes() {
+            return sSunOrderTimes;
+        }
+
+        public void setSSunOrderTimes(Object sSunOrderTimes) {
+            this.sSunOrderTimes = sSunOrderTimes;
+        }
+
         public List<?> getLsca() {
             return lsca;
         }
@@ -514,5 +531,69 @@ public class ActivityModel {
         public void setLsca(List<?> lsca) {
             this.lsca = lsca;
         }
+
+        @Override
+        public String toString() {
+            return "DataEntity{" +
+                    "detailId=" + detailId +
+                    ", detailCircleId=" + detailCircleId +
+                    ", detailUserId=" + detailUserId +
+                    ", detailUserPhone='" + detailUserPhone + '\'' +
+                    ", detailUserReward=" + detailUserReward +
+                    ", detailJoinMoney=" + detailJoinMoney +
+                    ", detailBudget=" + detailBudget +
+                    ", detailPlace='" + detailPlace + '\'' +
+                    ", detailAssistPerson='" + detailAssistPerson + '\'' +
+                    ", detailAppliedPersonNumber=" + detailAppliedPersonNumber +
+                    ", detailRealJoinNumber=" + detailRealJoinNumber +
+                    ", detailMinTotal=" + detailMinTotal +
+                    ", detailMaxTotal=" + detailMaxTotal +
+                    ", detailName='" + detailName + '\'' +
+                    ", detailDetail='" + detailDetail + '\'' +
+                    ", detailProcess='" + detailProcess + '\'' +
+                    ", detailTypeId=" + detailTypeId +
+                    ", detailAim='" + detailAim + '\'' +
+                    ", detailStatus=" + detailStatus +
+                    ", detailQualification=" + detailQualification +
+                    ", detailIsPrivate=" + detailIsPrivate +
+                    ", detailIsBossPay=" + detailIsBossPay +
+                    ", detailUserIdOrMerchantId=" + detailUserIdOrMerchantId +
+                    ", detailAds='" + detailAds + '\'' +
+                    ", detailPicUrl='" + detailPicUrl + '\'' +
+                    ", detailPublishTime='" + detailPublishTime + '\'' +
+                    ", detailCutOffTime='" + detailCutOffTime + '\'' +
+                    ", detailBeginTime='" + detailBeginTime + '\'' +
+                    ", detailEndTime='" + detailEndTime + '\'' +
+                    ", detailMorefield1=" + detailMorefield1 +
+                    ", detailMorefield2=" + detailMorefield2 +
+                    ", detailMorefield3=" + detailMorefield3 +
+                    ", sStartpage=" + sStartpage +
+                    ", sPagerows=" + sPagerows +
+                    ", sIds=" + sIds +
+                    ", sTotalApplyNumber='" + sTotalApplyNumber + '\'' +
+                    ", sTotalCollectNumber='" + sTotalCollectNumber + '\'' +
+                    ", detailDeposit=" + detailDeposit +
+                    ", detailIsMerchantSupport=" + detailIsMerchantSupport +
+                    ", scSysUser=" + scSysUser +
+                    ", sHavePublicActivity=" + sHavePublicActivity +
+                    ", sSuccessActivity=" + sSuccessActivity +
+                    ", sBossPayActivity=" + sBossPayActivity +
+                    ", sOrderBy=" + sOrderBy +
+                    ", detailSettlementStatus=" + detailSettlementStatus +
+                    ", detailMarkName=" + detailMarkName +
+                    ", sPbgtime=" + sPbgtime +
+                    ", sPedtime=" + sPedtime +
+                    ", sDetailMerchantNo=" + sDetailMerchantNo +
+                    ", sSunOrderTimes=" + sSunOrderTimes +
+                    ", lsca=" + lsca +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "ActivityModel{" +
+                "data=" + data +
+                '}';
     }
 }

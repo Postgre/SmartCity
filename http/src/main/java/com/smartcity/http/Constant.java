@@ -23,4 +23,6 @@ public class Constant {
 
     public static final String API_KEY = "apikey";
 
+    public static final String CONTENT_TYPE = "Content-Type:application/x-www-form-urlencoded;charset=utf-8";
+
 }

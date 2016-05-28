@@ -14,9 +14,13 @@ import android.widget.ListView;
 import com.smartcity.R;
 import com.smartcity.adapter.chw.service.HotServiceAdapter;
 import com.smartcity.adapter.chw.service.ServiceFenNeiAdapter;
+import com.smartcity.adapter.chw.service.WeNeedServiceAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 /**
@@ -25,15 +29,20 @@ import java.util.List;
 public class ServiceFirstPageActivity extends Activity {
     List<String> titles, titles3;
     GridView gridView;
+    @Bind(R.id.backBtn)
+    ImageView backBtn;
+
     private ListView lv, lv_need;
     private View header, footer;
     private LinearLayout ll_fennei;
     private LinearLayout ll_wecan;
+    private LinearLayout ll_fabu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_firstpage);
+        ButterKnife.bind(this);
         initView();
         initData();
     }
@@ -43,7 +52,7 @@ public class ServiceFirstPageActivity extends Activity {
         footer = View.inflate(this, R.layout.footer_listview_hot_service, null);
         lv_need = (ListView) footer.findViewById(R.id.lv_need);
         ll_fennei = (LinearLayout) header.findViewById(R.id.ll_fennei);
-        LinearLayout ll_fabu = (LinearLayout) header.findViewById(R.id.ll_fabu);
+        ll_fabu = (LinearLayout) header.findViewById(R.id.ll_fabu);
         ll_wecan = (LinearLayout) header.findViewById(R.id.ll_wecan);
         LinearLayout ll_weneed = (LinearLayout) header.findViewById(R.id.ll_weneed);
         EditText et_searchservice = (EditText) header.findViewById(R.id.et_searchservice);
@@ -78,7 +87,27 @@ public class ServiceFirstPageActivity extends Activity {
                 startActivity(intent);
             }
         });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        //发布
+        ll_fabu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceFirstPageActivity.this, FaBuServiceActivity.class);
+                startActivity(intent);
+            }
+        });
+        //分类
+        ll_fennei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
     }
 
 
@@ -104,10 +133,11 @@ public class ServiceFirstPageActivity extends Activity {
         gridView.setAdapter(neiAdapter);
 
         HotServiceAdapter serviceAdapter = new HotServiceAdapter(titles3, this);
+        WeNeedServiceAdapter needServiceAdapter = new WeNeedServiceAdapter(titles3, this);
         lv_need.setAdapter(serviceAdapter);
         lv.addHeaderView(header);
         lv.addFooterView(footer);
-        lv.setAdapter(serviceAdapter);
+        lv.setAdapter(needServiceAdapter);
 
     }
 

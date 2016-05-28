@@ -447,4 +447,8 @@
     <string name="str_new_jx">最新揭晓</string>
     <string name="str_sd_share">晒单分享</string>
     <string name="str_wj_money">玩家挣钱</string>
+    <string name="login_first">请先登录</string>
+    <string name="data_empty">没有信息</string>
+    <string name="load_data_error">加载数据失败!</string>
+    <string name="please_check_net">\"请检查网络连接!\"</string>
 </resources>

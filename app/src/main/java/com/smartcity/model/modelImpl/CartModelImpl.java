@@ -5,6 +5,7 @@ import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
 import com.smartcity.http.model.BaseModel;
 import com.smartcity.http.model.CartInfo;
+import com.smartcity.http.model.ScShopCartVo;
 import com.smartcity.http.service.CartService;
 import com.smartcity.model.CartModel;
 import com.smartcity.utils.GsonUtils;
@@ -65,7 +66,7 @@ public class CartModelImpl extends BaseModelImpl implements CartModel {
     }
 
     @Override
-    public void addGoodTotCart(String customerId, String goodsId, String goodsName, String shopId, String apiKey, final OnAddGoodResultListener listener) {
+    public void addGoodTotCart(String customerId, int goodsId, String goodsName, int shopId, String apiKey, final OnAddGoodResultListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("customerId", customerId);
         params.put("goodsId", goodsId);
@@ -131,7 +132,7 @@ public class CartModelImpl extends BaseModelImpl implements CartModel {
     }
 
     @Override
-    public void deleteGoodByShopIdAndUserId(String goodsId, String customerId, String apiKey,final OnDeleteGoodListener listener) {
+    public void deleteGoodByShopIdAndUserId(int goodsId, int customerId, String apiKey,final OnDeleteGoodListener listener) {
         HashMap<String ,Object> params = new HashMap<>();
 
         params.put("customerId",customerId);
@@ -165,7 +166,7 @@ public class CartModelImpl extends BaseModelImpl implements CartModel {
     }
 
     @Override
-    public void updateCartNum(String customerId, String goodsId, int number, String stockId, String apikey,final OnUpdateResultListener listener) {
+    public void updateCartNum(int customerId, int goodsId, int number, int stockId, String apikey,final OnUpdateResultListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("customerId", customerId);
         params.put("goodsId", goodsId);

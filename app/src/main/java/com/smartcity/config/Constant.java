@@ -36,6 +36,8 @@ public class Constant {
     public static final String LONGITUDE = "longitude";
     public static final String DISTRICT = "district";
 
+    public static final String COOLID = "coolId";
+
 
     //手机号正则
     public static String MATCHES_PHONE = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";

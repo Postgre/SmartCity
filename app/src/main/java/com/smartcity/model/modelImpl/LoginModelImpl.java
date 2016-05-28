@@ -45,12 +45,14 @@ public class LoginModelImpl extends BaseModelImpl implements LoginModel {
 
             @Override
             public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-                UserInfo userInfo = response.body();
-                if (null != userInfo) {
-                    if (userInfo.getCode() == ResCode.STATUS_SUCCESS_CODE) {
-                        callback.onSuccess(userInfo);
-                    } else {
-                        callback.onFailure(userInfo.getMsg());
+                if (response.isSuccessful()) {
+                    UserInfo userInfo = response.body();
+                    if (null != userInfo) {
+                        if (userInfo.getCode() == ResCode.STATUS_SUCCESS_CODE) {
+                            callback.onSuccess(userInfo);
+                        } else {
+                            callback.onFailure(userInfo.getMsg());
+                        }
                     }
                 }
             }

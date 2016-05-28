@@ -102,12 +102,17 @@ public abstract class BaseFragment extends Fragment implements BaseViews {
     }
 
     @Override
-    public void hideEmpey() {
+    public void hideEmpty() {
 
     }
 
     @Override
     public void showToast(String msg) {
+        ToastTool.showShort(getActivity(), msg);
+    }
+
+    @Override
+    public void showToast(int msg) {
         ToastTool.showShort(getActivity(), msg);
     }
 }

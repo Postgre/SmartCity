@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.desmond.squarecamera.CameraActivity;
@@ -21,7 +20,12 @@ import com.smartcity.adapter.chw.wyx.CoolDetailAdapter;
 import com.smartcity.base.BaseActivity;
 import com.smartcity.config.Constant;
 import com.smartcity.http.model.CommentInfo;
+import com.smartcity.http.model.CoolDetailInfo;
+import com.smartcity.http.model.CoolInfo;
+import com.smartcity.presenterImpl.CoolPresenterImpl;
 import com.smartcity.utils.LogTool;
+import com.smartcity.utils.ToastTool;
+import com.smartcity.view.ICoolView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +35,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class CoolDetailActivity extends BaseActivity {
+public class CoolDetailActivity extends BaseActivity implements ICoolView, CoolDetailAdapter.ItemCliclListener {
     private static final String TAG = CoolDetailActivity.class.getName();
 
     private static final int REQUEST_CAMERA = 0;
@@ -47,9 +51,6 @@ public class CoolDetailActivity extends BaseActivity {
     @Bind(R.id.cool_detail_listview)
     RecyclerView cool_detail_listview;
 
-    @Bind(R.id.bottom_info_layout)
-    LinearLayout bottom_info_layout;
-
     @Bind(R.id.dzLayout)
     RelativeLayout dzLayout;
 
@@ -62,8 +63,8 @@ public class CoolDetailActivity extends BaseActivity {
     @Bind(R.id.shareLayout)
     RelativeLayout shareLayout;
 
-    private static final int SCROLL_Y = 0;
-    private int mScrollY = 0;
+    private String usercode;
+    private int coolId;
 
     private List<Map<String, Object>> mylist = new ArrayList<>();
     private List<Map<String, Object>> splitList = new ArrayList<>();
@@ -72,53 +73,23 @@ public class CoolDetailActivity extends BaseActivity {
 
     private CoolDetailAdapter coolDetailAdapter;
 
+    private CoolPresenterImpl coolPresenterImpl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        coolPresenterImpl = new CoolPresenterImpl(this);
         Display display = getWindowManager().getDefaultDisplay();
         mSize = new Point();
         display.getSize(mSize);
         initView();
-        initData();
-        setData(hotComments, newComments);
+        coolPresenterImpl.getCoolDetail("36", "60");
     }
 
     private void initView() {
         cool_detail_listview.setLayoutManager(new LinearLayoutManager(this));
         cool_detail_listview.setHasFixedSize(true);
         cool_detail_listview.setItemAnimator(new DefaultItemAnimator());
-
-        coolDetailAdapter = new CoolDetailAdapter(CoolDetailActivity.this, mylist, splitList);
-        cool_detail_listview.setAdapter(coolDetailAdapter);
-        cool_detail_listview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                mScrollY += dy;
-                if (mScrollY > SCROLL_Y) {
-                    bottom_info_layout.setVisibility(View.VISIBLE);
-                } else {
-                    bottom_info_layout.setVisibility(View.GONE);
-                }
-            }
-        });
-    }
-
-    private void initData() {
-        for (int i = 0; i < 3; i++) {
-            CommentInfo info = new CommentInfo();
-            info.setTitle("吃货大王" + i);
-            info.setDate("04.22 14:34");
-            info.setContent("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
-            hotComments.add(info);
-        }
-        for (int i = 0; i < 4; i++) {
-            CommentInfo info = new CommentInfo();
-            info.setTitle("吃货大王" + i);
-            info.setDate("04.22 14:34");
-            info.setContent("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
-            newComments.add(info);
-        }
     }
 
     private void setData(List<CommentInfo> hotComments, List<CommentInfo> newComments) {
@@ -161,12 +132,20 @@ public class CoolDetailActivity extends BaseActivity {
                 startActivityForResult(startCustomCameraIntent, REQUEST_CAMERA);
                 break;
             case R.id.dzLayout:
+                if (dzLayout.isSelected()) {
+                    coolPresenterImpl.updateComment("0", "0");
+                } else {
+                    coolPresenterImpl.updateComment("1", "1");
+                }
                 break;
             case R.id.commentLayout:
+                coolPresenterImpl.addComment("2", "36", "60", "admin", "NB的人", "Hello World。", "1");
                 break;
             case R.id.zfLayout:
+                ToastTool.showShort(CoolDetailActivity.this, "转发");
                 break;
             case R.id.shareLayout:
+                ToastTool.showShort(CoolDetailActivity.this, "分享");
                 break;
         }
     }
@@ -187,7 +166,55 @@ public class CoolDetailActivity extends BaseActivity {
     }
 
     @Override
+    public void showSuccessMsg(String msg) {
+        ToastTool.showShort(CoolDetailActivity.this, msg);
+        if (dzLayout.isSelected()) {
+            dzLayout.setSelected(false);
+        } else {
+            dzLayout.setSelected(true);
+        }
+    }
+
+    @Override
+    public void showFailMsg(String msg) {
+        ToastTool.showShort(CoolDetailActivity.this, msg);
+    }
+
+    @Override
+    public void showList(List<CoolInfo.CoolListInfo> list) {
+
+    }
+
+    @Override
+    public void showInfo(CoolDetailInfo.CoolDetailItemInfo info) {
+        LogTool.d(TAG, "info============" + info);
+        LogTool.d(TAG, "info============" + info.getMPlmap().getHotCommentList());
+        LogTool.d(TAG, "info============" + info.getMPlmap().getNewestCommentList());
+        setData(info.getMPlmap().getHotCommentList(), info.getMPlmap().getNewestCommentList());
+        coolDetailAdapter = new CoolDetailAdapter(CoolDetailActivity.this, mylist, splitList, info);
+        cool_detail_listview.setAdapter(coolDetailAdapter);
+        coolDetailAdapter.setListener(this);
+    }
+
+    @Override
     public int getLayoutId() {
         return R.layout.activity_cool_detail;
+    }
+
+    @Override
+    public void onFocusClick() {
+        coolPresenterImpl.focusCool("12", "13");
+    }
+
+    @Override
+    public void onUnFocusClick() {
+        coolPresenterImpl.unFocusCool("1", "1");
+    }
+
+    @Override
+    public void onItemClick(String filePath) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.parse(filePath), "video/mp4");
+        startActivity(intent);
     }
 }

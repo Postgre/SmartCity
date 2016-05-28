@@ -65,7 +65,7 @@ public class CoolAdapter extends BaseRecyclerViewAdapter<CoolInfo.CoolListInfo> 
                 layoutParams.width = width;
                 layoutParams.height = height;
                 holder.itemImgView.setLayoutParams(layoutParams);
-                holder.itemImgView.setImageURI(Uri.parse(info.getCoolCoverPic()));
+                holder.itemImgView.setImageURI(Uri.parse("http://www.sinaimg.cn/dy/slidenews/5_img/2016_03/30939_1321862_155106.jpg"));
                 holder.itemHeadView.setImageURI(Uri.parse(info.getSysUser().getUserpic()));
                 holder.itemTitleView.setText(info.getCoolDecrip());
                 holder.itemNameView.setText(info.getSysUser().getUsername());
@@ -88,7 +88,7 @@ public class CoolAdapter extends BaseRecyclerViewAdapter<CoolInfo.CoolListInfo> 
                 params.width = mWidth;
                 params.height = mHeight;
                 mHolder.itemImgView.setLayoutParams(params);
-                mHolder.itemImgView.setImageURI(Uri.parse(info.getCoolCoverPic()));
+                mHolder.itemImgView.setImageURI(Uri.parse("http://www.sinaimg.cn/dy/slidenews/5_img/2016_03/30939_1321862_155106.jpg"));
                 mHolder.itemHeadView.setImageURI(Uri.parse(info.getSysUser().getUserpic()));
                 mHolder.itemTitleView.setText(info.getCoolDecrip());
                 mHolder.itemNameView.setText(info.getSysUser().getUsername());

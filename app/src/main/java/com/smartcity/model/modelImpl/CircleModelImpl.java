@@ -5,9 +5,11 @@ import android.util.Log;
 import com.smartcity.config.Constant;
 import com.smartcity.config.ResCode;
 import com.smartcity.http.HttpApi;
+import com.smartcity.http.model.ActivityModel;
 import com.smartcity.http.model.CircleBean;
 import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.CircleDetailInfoModel;
+import com.smartcity.http.model.CircleGroupInfo;
 import com.smartcity.http.model.LabelBean;
 import com.smartcity.http.service.CircleService;
 import com.smartcity.model.CircleModel;
@@ -43,12 +45,12 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
    /*-----------------------------查询全部圈子-------------------------------------------*/
 
     @Override
-    public void getCircles(String apikey, String sStartpage, String sPagerows, String sPersonUserId, final CircleModelImpl.onLoadCircleListListener listener) {
+    public void getCircles(String apikey, String sStartpage, String sPagerows, String sPersonUserId, final OnLoadCircleListListener listener) {
         Map<String, Object> parameter = new HashMap<>();
         parameter.put("sStartpage", sStartpage);
         parameter.put("sPagerows", sPagerows);
         parameter.put("sPersonUserId", sPersonUserId);
-        Call<CircleBean> call = circleService.getAllCircles(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(parameter));
+        Call<CircleBean> call = circleService.getAllCircles(apikey, circleService.ALLCIRCLE,Constant.VALUE_VERSION, GsonUtils.objectToJson(parameter));
         call.enqueue(new Callback<CircleBean>() {
 
             @Override
@@ -70,7 +72,7 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
         });
     }
 
-    public interface onLoadCircleListListener {
+    public interface OnLoadCircleListListener {
         void onGetCirclesSuccess(List<CircleBean.CirDataEntity> list);
 
         void onGetCirclesFailure(String msg);
@@ -82,7 +84,7 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
     public void getDetail(String key, int detailId, final CircleDetailCallback callback) {
         Map<String, Object> pams = new HashMap<>();
         pams.put("detailId", detailId);
-        circleService.getCircleDetail(key, Constant.VALUE_VERSION, GsonUtils.objectToJson(pams)).enqueue(new Callback<CircleDetailInfoModel>() {
+        circleService.getCircleDetail(key, circleService.CIRCLEDETAIL,Constant.VALUE_VERSION, GsonUtils.objectToJson(pams)).enqueue(new Callback<CircleDetailInfoModel>() {
 
             @Override
             public void onResponse(Call<CircleDetailInfoModel> call, Response<CircleDetailInfoModel> response) {
@@ -116,7 +118,7 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
 
     /*--------------------------------获取标签列表----------------------------------------*/
     @Override
-    public void getHotLabels(String apikey, String sStartpage, String sPagerows, final onLoadHotLabelsListener listener) {
+    public void getHotLabels(String apikey, String sStartpage, String sPagerows, final OnLoadHotLabelsListener listener) {
         Map<String, Object> pam = new HashMap<>();
         pam.put("sStartpage", sStartpage);
         pam.put("sPagerows", sPagerows);
@@ -141,7 +143,7 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
         });
     }
 
-    public interface onLoadHotLabelsListener {
+    public interface OnLoadHotLabelsListener {
         void onSuccess(List<LabelBean.DataEntity> result);
 
         void onError(String msg);
@@ -150,7 +152,7 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
     /*--------------------------根据标签查询对应圈子列表数据------------------------------------------------*/
 
     @Override
-    public void getCirclesByLabelContent(String apikey, String detailMarkName, String sStartpage, String sPagerows, final onLoadCirclesByLabel listener) {
+    public void getCirclesByLabelContent(String apikey, String detailMarkName, String sStartpage, String sPagerows, final OnLoadCirclesByLabel listener) {
         Map<String, Object> pam = new HashMap<>();
         pam.put("detailMarkName", detailMarkName);
         pam.put("sStartpage", sStartpage);
@@ -179,7 +181,7 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
         });
     }
 
-    public interface onLoadCirclesByLabel {
+    public interface OnLoadCirclesByLabel {
         void onLoadCirclesListSuccess(List<CircleByLabel.DataEntity> result);
 
         void onLoadCirclesListError(String msg);
@@ -188,13 +190,13 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
     /*--------------------------我的圈子------------------------------------------------*/
 
     @Override
-    public void getMyCircle(String apikey, String personUserId, String sStartpage, String sPagerows, final onLoadMyCircle listener) {
+    public void getMyCircle(String apikey, String personUserId, String sStartpage, String sPagerows, final OnLoadMyCircle listener) {
         Map<String, Object> pam = new HashMap<>();
         pam.put("personUserId", personUserId);
         pam.put("sStartpage", sStartpage);
         pam.put("sPagerows", sPagerows);
         LogTool.d(TAG, "params:" + GsonUtils.objectToJson(pam));
-        circleService.getMyCircle(apikey, Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleBean>() {
+        circleService.getMyCircle(apikey, circleService.MYCIRCLE,Constant.VALUE_VERSION, GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleBean>() {
 
             @Override
             public void onResponse(Call<CircleBean> call, Response<CircleBean> response) {
@@ -216,27 +218,89 @@ public class CircleModelImpl extends BaseModelImpl implements CircleModel {
         });
     }
 
-    public interface onLoadMyCircle {
+    public interface OnLoadMyCircle {
         void onLoadMyCirclesSuccess(List<CircleBean.CirDataEntity> result);
 
         void onLoadMyCirclesError(String msg);
     }
 
-     /*--------------------------圈子小组------------------------------------------------*/
+     /*--------------------------查询圈子小组------------------------------------------------*/
 
     @Override
-    public void getMyGroup(String apikey, String detailPid, String sStartpage, String sPagerows, onLoadMyCircle listener) {
+    public void getGroupsListByPid(String apikey, String detailPid, String sStartpage, String sPagerows, final OnGetGroupsForCircleListener listener) {
         Map<String, Object> pam = new HashMap<>();
         pam.put("detailPid", detailPid);
         pam.put("sStartpage", sStartpage);
         pam.put("sPagerows", sPagerows);
 
+        LogTool.d("CircleModelImpl", "params:" + GsonUtils.objectToJson(pam));
+        circleService.getGroupsForCircle(apikey,circleService.GETCIRLCELISTBYPID,Constant.VALUE_VERSION,GsonUtils.objectToJson(pam)).enqueue(new Callback<CircleGroupInfo>() {
+            @Override
+            public void onResponse(Call<CircleGroupInfo> call, Response<CircleGroupInfo> response) {
+                CircleGroupInfo groupInfo = response.body();
+                if (null != groupInfo){
+                    Log.d("CircleModelImpl", groupInfo.toString());
+                    if (ResCode.STATUS_SUCCESS_CODE == groupInfo.getCode()){
+                        listener.onGetGroupsSuccess(groupInfo.getData());
+                    }else {
+                        listener.onGetGroupFaliure(groupInfo.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CircleGroupInfo> call, Throwable t) {
+                listener.onGetGroupFaliure(t.getMessage());
+            }
+        });
+
 
     }
 
-    public interface onLoadMyGroup {
-        void onLoadMyGroupSuccess(List<CircleBean> result);
+    public interface OnGetGroupsForCircleListener {
 
-        void onLoadMyGroupError(String msg);
+        void onGetGroupsSuccess(List<CircleGroupInfo.DataEntity> list);
+        void onGetGroupFaliure(String msg);
     }
+
+
+    /*---------------------获取圈子活动列表-------------------------------*/
+    @Override
+    public void getActivityList(String apikey, String detailCircleId, String sStartpage, String sPagerows, final OnGetActivitiesListener listener) {
+        Map<String, Object> pam = new HashMap<>();
+        pam.put("detailCircleId", detailCircleId);
+        pam.put("sStartpage", sStartpage);
+        pam.put("sPagerows", sPagerows);
+
+        LogTool.d("CircleModelImpl", "getActivityList+params:" + GsonUtils.objectToJson(pam));
+
+        circleService.getActivityListById(apikey,circleService.CIRCLEACTIVITY,Constant.VALUE_VERSION,GsonUtils.objectToJson(pam)).enqueue(new Callback<ActivityModel>() {
+            @Override
+            public void onResponse(Call<ActivityModel> call, Response<ActivityModel> response) {
+                ActivityModel activityModel = response.body();
+                if (null != activityModel){
+                    Log.d(TAG, "getActivityList:"+activityModel.toString());
+
+                    if (ResCode.STATUS_SUCCESS_CODE == activityModel.getCode()){
+                        listener.onGetActivitySuccess(activityModel.getData());
+                    }else{
+                        listener.onGetActivityFaliure(activityModel.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ActivityModel> call, Throwable t) {
+                listener.onGetActivityFaliure(t.getMessage());
+            }
+        });
+
+    }
+
+
+    public interface OnGetActivitiesListener {
+        void onGetActivitySuccess(List<ActivityModel.DataEntity> list);
+        void onGetActivityFaliure(String msg);
+    }
+
 }

@@ -107,7 +107,7 @@ public class Circle_VideoActivity extends BaseActivity implements
         maps.put("videoAlbumCircleId", detailPid);
         maps.put("sStartpage", "0");
         maps.put("sPagerows", "10");
-        service.getCircleVideo(MyApplication.getApikey(), Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<CircleVideo>() {
+        service.getCircleVideo(MyApplication.getApikey(), CircleService.CIRCLEVIDEO,Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<CircleVideo>() {
 
             @Override
             public void onResponse(Call<CircleVideo> call, Response<CircleVideo> response) {

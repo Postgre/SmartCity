@@ -111,7 +111,7 @@ public class Circle_Activity extends BaseActivity implements View.OnClickListene
         maps.put("detailCircleId", detailPid);
         maps.put("sStartpage", "1");
         maps.put("sPagerows", "10");
-        service.getMyCircleList(MyApplication.getApikey(), Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<NewCircleListInfo>() {
+        service.getMyCircleList(MyApplication.getApikey(), CircleService.CIRCLEACTIVITY,Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<NewCircleListInfo>() {
             @Override
             public void onResponse(Call<NewCircleListInfo> call, Response<NewCircleListInfo> response) {
                 LogTool.e("log", response.body() + "retrofit");

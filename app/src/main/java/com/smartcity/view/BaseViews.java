@@ -11,8 +11,10 @@ public interface BaseViews {
 
     void showEmpty();
 
-    void hideEmpey();
+    void hideEmpty();
 
     void showToast(String msg);
+
+    void showToast(int msg);
 
 }

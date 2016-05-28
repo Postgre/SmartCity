@@ -1,26 +1,43 @@
 package com.smartcity.presenterImpl;
 
+import com.smartcity.http.model.ActivityModel;
 import com.smartcity.http.model.CircleBean;
 import com.smartcity.http.model.CircleByLabel;
+import com.smartcity.http.model.CircleGroupInfo;
 import com.smartcity.http.model.LabelBean;
 import com.smartcity.model.CircleModel;
 import com.smartcity.model.modelImpl.CircleModelImpl;
 import com.smartcity.presenter.CirclePresenter;
+import com.smartcity.view.IActivityView;
 import com.smartcity.view.ICircleView;
+import com.smartcity.view.IGroupView;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/5/13.
  */
-public class CirclePresenterImpl implements CirclePresenter, CircleModelImpl.onLoadHotLabelsListener, CircleModelImpl.onLoadCircleListListener,
-        CircleModelImpl.onLoadCirclesByLabel, CircleModelImpl.onLoadMyCircle {
+public class CirclePresenterImpl implements CirclePresenter, CircleModelImpl.OnLoadHotLabelsListener, CircleModelImpl.OnLoadCircleListListener,
+        CircleModelImpl.OnLoadCirclesByLabel, CircleModelImpl.OnLoadMyCircle, CircleModelImpl.OnGetGroupsForCircleListener, CircleModelImpl.OnGetActivitiesListener {
 
     private ICircleView iCircleView;
     private CircleModel circleModel;
+    private IActivityView iActivityView;
+
+    private IGroupView iGroupView;
 
     public CirclePresenterImpl(ICircleView iCircleView) {
         this.iCircleView = iCircleView;
+        this.circleModel = new CircleModelImpl();
+    }
+
+    public CirclePresenterImpl(IGroupView iGroupView, String flag) {
+        this.iGroupView = iGroupView;
+        this.circleModel = new CircleModelImpl();
+    }
+
+    public CirclePresenterImpl(IActivityView iActivityView, String flag, String flag2) {
+        this.iActivityView = iActivityView;
         this.circleModel = new CircleModelImpl();
     }
 
@@ -59,6 +76,26 @@ public class CirclePresenterImpl implements CirclePresenter, CircleModelImpl.onL
             return;
         }
         circleModel.getCirclesByLabelContent(apikey, detailMarkName, sStartpage, sPagerows, this);
+    }
+
+    @Override
+    public void getGroupsListByPid(String apikey, String detailPid, String sStartpage, String sPagerows) {
+        if (!circleModel.isNetState()) {
+            iCircleView.showToast("请检查网络连接!");
+            return;
+        }
+
+        circleModel.getGroupsListByPid(apikey, detailPid, sStartpage, sPagerows, this);
+    }
+
+    @Override
+    public void getActivityList(String apikey, String detailCircleId, String sStartpage, String sPagerows) {
+        if (!circleModel.isNetState()) {
+            iCircleView.showToast("请检查网络连接!");
+            return;
+        }
+
+        circleModel.getActivityList(apikey, detailCircleId, sStartpage, sPagerows, this);
     }
 
     @Override
@@ -116,5 +153,29 @@ public class CirclePresenterImpl implements CirclePresenter, CircleModelImpl.onL
     public void onLoadMyCirclesError(String msg) {
         iCircleView.hideLoading();
         iCircleView.showToast(msg);
+    }
+
+    @Override
+    public void onGetGroupsSuccess(List<CircleGroupInfo.DataEntity> list) {
+        iGroupView.hideLoading();
+        iGroupView.addGroups(list);
+    }
+
+    @Override
+    public void onGetGroupFaliure(String msg) {
+        iGroupView.hideLoading();
+        iGroupView.showToast("请求圈子小组列表数据失败");
+    }
+
+    @Override
+    public void onGetActivitySuccess(List<ActivityModel.DataEntity> list) {
+        iActivityView.addActivityData(list);
+        iActivityView.hideLoading();
+    }
+
+    @Override
+    public void onGetActivityFaliure(String msg) {
+        iActivityView.hideLoading();
+        iActivityView.showToast(msg);
     }
 }

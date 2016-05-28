@@ -50,7 +50,6 @@ public class UploadManager {
         MyApplication.oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
             @Override
             public void onSuccess(final PutObjectRequest request, PutObjectResult result) {
-                Log.i(TAG, "-------UploadSuccess");
                 Log.i(TAG, result.getETag());
                 Log.i(TAG, result.getRequestId());
                 Log.i(TAG, "request.getObjectKey():" + request.getObjectKey());
@@ -102,7 +101,6 @@ public class UploadManager {
         MyApplication.oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
             @Override
             public void onSuccess(final PutObjectRequest request, PutObjectResult result) {
-                Log.i(TAG, "-------UploadSuccess");
                 Log.i(TAG, result.getETag());
                 Log.i(TAG, result.getRequestId());
                 Log.i(TAG, "request.getObjectKey()=" + request.getObjectKey());
@@ -138,7 +136,6 @@ public class UploadManager {
         MyApplication.oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
             @Override
             public void onSuccess(final PutObjectRequest request, PutObjectResult result) {
-                Log.i(TAG, "-------UploadSuccess");
                 Log.i(TAG, result.getETag());
                 Log.i(TAG, result.getRequestId());
                 Log.i(TAG, "request.getObjectKey():" + request.getObjectKey());
@@ -169,12 +166,6 @@ public class UploadManager {
             }
         });
     }
-
-//    private String getObjectKey(String strUserCode) {
-//        Date date = new Date();
-//        return new SimpleDateFormat("yyyy/M/d").format(date) + "/" + strUserCode + new SimpleDateFormat("yyyyMMddssSSS").format(date) + ".jpg";
-//
-//    }
 
     public void setUpLoadListener(UpLoadListener upLoadListener) {
         this.upLoadListener = upLoadListener;

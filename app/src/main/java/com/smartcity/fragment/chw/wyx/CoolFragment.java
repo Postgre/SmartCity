@@ -13,7 +13,9 @@ import com.smartcity.R;
 import com.smartcity.activity.chw.wyx.CoolDetailActivity;
 import com.smartcity.adapter.chw.wyx.CoolAdapter;
 import com.smartcity.base.BaseFragment;
+import com.smartcity.config.Constant;
 import com.smartcity.customview.SpacesItemDecoration;
+import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
 import com.smartcity.presenterImpl.CoolPresenterImpl;
 import com.smartcity.pulltofresh.PullToRefreshBase;
@@ -46,6 +48,10 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private boolean isPrepared = false;
     private boolean mHasLoadedOnce = false;
 
+    private int startPage = 0;
+    private boolean isDown = false;//下拉
+    private boolean isUp = false;//上拉
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -74,7 +80,6 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
         }
         LogTool.d(TAG, "mParam1======================" + mParam1);
         coolPresenterImpl = new CoolPresenterImpl(this);
-
     }
 
     @Override
@@ -107,6 +112,9 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
         SpacesItemDecoration decoration = new SpacesItemDecoration(5);
         cool_listview.addItemDecoration(decoration);
         cool_listview.setOnRefreshListener(this);
+        coolAdapter = new CoolAdapter(getActivity(), coolList);
+        coolAdapter.setListener(this);
+        cool_listview.setAdapter(coolAdapter);
     }
 
     @Override
@@ -131,17 +139,25 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
         if (!isPrepared || !isVisible || mHasLoadedOnce) {
             return;
         }
-        coolPresenterImpl.getAllCool("1", "HBWH", "50", "1", "35", "10");
+        coolPresenterImpl.getAllCool("1", "HBWH", "60", "1", startPage, 10);
     }
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
-        cool_listview.onRefreshComplete();
+        isDown = true;
+        startPage = 0;
+        coolPresenterImpl.getAllCool("1", "HBWH", "60", "1", startPage, 10);
     }
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
-        cool_listview.onRefreshComplete();
+        isUp = true;
+        coolPresenterImpl.getAllCool("1", "HBWH", "60", "1", startPage, 10);
+    }
+
+
+    private void loadMoreData(int page) {
+        coolPresenterImpl.getAllCool("1", "HBWH", "60", "1", page, 10);
     }
 
     @Override
@@ -152,26 +168,38 @@ public class CoolFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void showFailMsg(String msg) {
         ToastTool.showShort(getActivity(), msg);
+        cool_listview.onRefreshComplete();
     }
 
     @Override
     public void showList(List<CoolInfo.CoolListInfo> list) {
+        cool_listview.onRefreshComplete();
         LogTool.d(TAG, "list=====" + list.size());
-        coolAdapter = new CoolAdapter(getActivity(), list);
-        coolAdapter.setListener(this);
-        cool_listview.setAdapter(coolAdapter);
+        coolList.addAll(list);
+        LogTool.d(TAG, "coolList=====" + coolList.size());
+        startPage = coolList.size();
+        LogTool.d(TAG, "startPage=====" + startPage);
+        coolAdapter.notifyDataSetChanged();
         mHasLoadedOnce = true;
     }
 
     @Override
     public void onItemClick(int positon) {
         LogTool.d(TAG, " positon===========================" + positon);
-        Intent intent = new Intent(getActivity(), CoolDetailActivity.class);
-        startActivity(intent);
+        CoolInfo.CoolListInfo coolListInfo = coolList.get(positon);
+        Intent detailIntent = new Intent(getActivity(), CoolDetailActivity.class);
+        detailIntent.putExtra(Constant.USER_CODE, (String) coolListInfo.getSysUser().getUsercode());
+        detailIntent.putExtra(Constant.COOLID, coolListInfo.getCoolId());
+        startActivity(detailIntent);
     }
 
     @Override
     public void showToast(String msg) {
+
+    }
+
+    @Override
+    public void showInfo(CoolDetailInfo.CoolDetailItemInfo info) {
 
     }
 

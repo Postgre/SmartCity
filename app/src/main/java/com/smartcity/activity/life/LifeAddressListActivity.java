@@ -20,6 +20,9 @@ import com.smartcity.utils.LogTool;
 import com.smartcity.utils.UIUtils;
 import com.smartcity.view.IAddressView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.Bind;
 
 public class LifeAddressListActivity extends LifeBaseActivity implements IAddressView, LifeAddressListAdapter.DeleteDialogCallback {
@@ -29,17 +32,42 @@ public class LifeAddressListActivity extends LifeBaseActivity implements IAddres
     @Bind(R.id.address_list_container)
     RecyclerView addressContainer;
     private AddressPresenter presenter;
-    private com.zhy.base.adapter.abslistview.CommonAdapter<AddressList.LifeAddressModel> addressAdapter;
+
     private LifeAddressListAdapter adapter;
 
-    public static final int EDITE_MODE =0x001;
+    public static final int EDITE_MODE = 0x001;
 
     public static final String PARAMS = "params";
     public static final String PARAMS_TYPE = "type";
+    private List<AddressList.LifeAddressModel> datas = new ArrayList<>();
 
     @Override
     protected void initViews() {
         lifeBg.setBackgroundColor(Color.WHITE);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        addressContainer.setLayoutManager(layoutManager);
+        addressContainer.addItemDecoration(new SpaceItemDecoration(20));
+        addressContainer.setHasFixedSize(true);
+
+        adapter = new LifeAddressListAdapter(this, datas);
+        adapter.setCallback(this);
+        adapter.setEditeCallback(new LifeAddressListAdapter.EditeAddressCallback() {
+            @Override
+            public void eciteAddress(AddressList.LifeAddressModel model, int postion) {
+
+                Intent intent = new Intent(LifeAddressListActivity.this, LifeAddRessActivity.class);
+                intent.putExtra(PARAMS, model);
+                intent.putExtra(POSTION, postion);
+                intent.putExtra(PARAMS_TYPE, EDITE_MODE);
+                startActivityForResult(intent, REQUESRT_CODE);
+            }
+        });
+
+        addressContainer.setAdapter(adapter);
+
         presenter = new AddressPresenter(this);
     }
 
@@ -56,13 +84,13 @@ public class LifeAddressListActivity extends LifeBaseActivity implements IAddres
     @Override
     protected View getRightView() {
         ImageView ivAdd = new ImageView(this);
-        ivAdd.setLayoutParams(new FrameLayout.LayoutParams(UIUtils.px2dip(50),FrameLayout.LayoutParams.MATCH_PARENT));
+        ivAdd.setLayoutParams(new FrameLayout.LayoutParams(UIUtils.px2dip(50), FrameLayout.LayoutParams.MATCH_PARENT));
         ivAdd.setImageResource(R.mipmap.icon_zenjia);
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LifeAddressListActivity.this, LifeAddRessActivity.class);
-                startActivityForResult(intent,REQUESRT_CODE);
+                startActivityForResult(intent, REQUESRT_CODE);
             }
         });
         return ivAdd;
@@ -75,27 +103,9 @@ public class LifeAddressListActivity extends LifeBaseActivity implements IAddres
 
     @Override
     public void setListData(AddressList addressList) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        addressContainer.setLayoutManager(layoutManager);
-        addressContainer.addItemDecoration(new SpaceItemDecoration(20));
-        addressContainer.setHasFixedSize(true);
-
-        adapter = new LifeAddressListAdapter(this,addressList.getData());
-        adapter.setCallback(this);
-        adapter.setEditeCallback(new LifeAddressListAdapter.EditeAddressCallback() {
-            @Override
-            public void eciteAddress(AddressList.LifeAddressModel model, int postion) {
-
-                Intent intent = new Intent(LifeAddressListActivity.this,LifeAddRessActivity.class);
-                intent.putExtra(PARAMS,model);
-                intent.putExtra(POSTION,postion);
-                intent.putExtra(PARAMS_TYPE,EDITE_MODE);
-                startActivityForResult(intent,REQUESRT_CODE);
-            }
-        });
-        addressContainer.setAdapter(adapter);
+        datas = addressList.getData();
+        adapter.getDatas().addAll(datas);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -105,11 +115,10 @@ public class LifeAddressListActivity extends LifeBaseActivity implements IAddres
 
     @Override
     public void showDelete(final int postion) {
-         AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle("删除收货地址").setMessage("确认删除?").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle("删除收货地址").setMessage("确认删除?").setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(final DialogInterface dialog, int which) {
-                if(null != adapter)
-                {
+                if (null != adapter) {
                     AddressList.LifeAddressModel addressModel = adapter.getDatas().get(postion);
                     presenter.deleteAddress(postion, addressModel.getId(), new AddressPresenter.DeleteAddressCallback() {
                         @Override
@@ -132,15 +141,14 @@ public class LifeAddressListActivity extends LifeBaseActivity implements IAddres
     }
 
 
-    private class SpaceItemDecoration extends RecyclerView.ItemDecoration
-    {
+    private class SpaceItemDecoration extends RecyclerView.ItemDecoration {
 
-        private  int offset;
+        private int offset;
 
-        public  SpaceItemDecoration(int offset)
-        {
+        public SpaceItemDecoration(int offset) {
             this.offset = offset;
         }
+
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
             outRect.top = offset;
@@ -150,18 +158,19 @@ public class LifeAddressListActivity extends LifeBaseActivity implements IAddres
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(REQUESRT_CODE == requestCode && LifeAddRessActivity.RESULT_CODE == resultCode)
-        {
-           AddressList.LifeAddressModel model = (AddressList.LifeAddressModel) data.getSerializableExtra(PARAMS);
+        if (REQUESRT_CODE == requestCode && LifeAddRessActivity.RESULT_CODE == resultCode) {
+            AddressList.LifeAddressModel model = (AddressList.LifeAddressModel) data.getSerializableExtra(PARAMS);
             int postion = data.getIntExtra(POSTION, -1);
-            LogTool.e("test",String.valueOf(postion));
-            if(postion>0)
-            {
+            LogTool.e("test", String.valueOf(postion));
+            if (postion > 0) {
                 adapter.remove(postion);
             }
 
-            adapter.add(model);
-            adapter.notifyDataSetChanged();
+            if (null != model) {
+                adapter.add(model);
+                adapter.notifyDataSetChanged();
+            }
+
         }
     }
 }

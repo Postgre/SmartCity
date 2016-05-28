@@ -12,7 +12,7 @@ public interface CoolPresenter {
 
     void addCool(String coolVideoTypeId, String coolCoverPic, String coolFileAddress, String coolDecrip, String coolUserId, String coolMarkId, String coolAreaNo, String coolJwd, String coolRename);
 
-    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows);
+    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, int sStartpage, int sPagerows);
 
     void getCoolDetail(String coolId, String iCurrUserId);
 
@@ -23,4 +23,8 @@ public interface CoolPresenter {
     void focusCool(String userAttentionIng, String userAttentionEd);
 
     void unFocusCool(String userAttentionId, String userAttentionStatus);
+
+    void addComment(String sType, String sCoolId, String sUserId, String sUserCode, String sCommentTitle, String sCommentContent, String sIsLike);
+
+    void updateComment(String sIsLike, String sLikeCount);
 }

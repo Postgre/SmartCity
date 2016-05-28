@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.rollviewpager.RollPagerView;
+import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 import com.smartcity.R;
@@ -86,14 +88,15 @@ public class NewAllcircle_Activity extends BaseActivity implements ICircleView {
 //        rl_viewpager.setHintView(new IconHintView(this,R.mipmap.tab_focus,R.mipmap.tab_nomal));
 //        rl_viewpager.setHintView(new TextHintView(this));
         rl_viewpager.setHintView(new ColorPointHintView(this, Color.RED, Color.WHITE));
-
-        rl_viewpager.setAdapter(new VAdapter());
+        MyLoopAdapter myLoopAdapter = new MyLoopAdapter(rl_viewpager);
+        rl_viewpager.setAdapter(myLoopAdapter);
 
         //title tab
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         ViewPager vp = (ViewPager) findViewById(R.id.vp);
         adapter = new TabPageIndicatorAdapter(getSupportFragmentManager());
+
         vp.setOffscreenPageLimit(0);
 
         vp.setAdapter(adapter);
@@ -146,22 +149,18 @@ public class NewAllcircle_Activity extends BaseActivity implements ICircleView {
         }
     }
 
-    private class VAdapter extends StaticPagerAdapter {
-
-        int[] imgs = {R.mipmap.circle_header_img, R.mipmap.circle_header_img, R.mipmap.circle_header_img, R.mipmap.circle_header_img};
-
+    private class MyLoopAdapter extends LoopPagerAdapter {
+        public MyLoopAdapter(RollPagerView viewPager) {
+            super(viewPager);
+        }
         @Override
         public View getView(ViewGroup container, int position) {
-            SimpleDraweeView simpleDraweeView = new SimpleDraweeView(NewAllcircle_Activity.this);
-            simpleDraweeView.setScaleType(SimpleDraweeView.ScaleType.CENTER);
-            simpleDraweeView.setImageResource(imgs[position]);
-            simpleDraweeView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            return simpleDraweeView;
+            View vp_view = LayoutInflater.from(NewAllcircle_Activity.this).inflate(R.layout.vp_layout, null);
+            return vp_view;
         }
-
         @Override
-        public int getCount() {
-            return imgs.length;
+        public int getRealCount() {
+            return 5;
         }
     }
 
@@ -176,7 +175,6 @@ public class NewAllcircle_Activity extends BaseActivity implements ICircleView {
             Bundle args = new Bundle();
 //            args.putString("arg", TITLE[position]);
             args.putString("arg", stringList.get(position));
-            Toast.makeText(NewAllcircle_Activity.this, stringList.get(position), Toast.LENGTH_SHORT).show();
             fragment.setArguments(args);
             return fragment;
         }

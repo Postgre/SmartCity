@@ -17,7 +17,9 @@ import com.smartcity.base.BaseFragment;
 import com.smartcity.http.model.CircleBean;
 import com.smartcity.http.model.CircleByLabel;
 import com.smartcity.http.model.LabelBean;
+import com.smartcity.presenter.ApplyJoinCirclePresenter;
 import com.smartcity.presenter.CirclePresenter;
+import com.smartcity.presenterImpl.ApplyJoinCirclePresenterImpl;
 import com.smartcity.presenterImpl.CirclePresenterImpl;
 import com.smartcity.view.ICircleView;
 import com.zhy.base.adapter.ViewHolder;
@@ -40,6 +42,9 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
     private String arg;
     private CirclePresenter circlePresenter;
     private List<CircleBean.CirDataEntity> temList = new ArrayList<>();
+    private ApplyJoinCirclePresenter applyJoinCirclePresenter;
+    private String apikey;
+    private String userId;
 
     @Override
     protected void initAllMembersView(Bundle savedInstanceState) {
@@ -49,14 +54,16 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
     @Override
     protected void initViews() {
         arg = getArguments().getString("arg");
-//        Log.i("NewItemFragment", arg);
     }
 
     @Override
     protected void init() {
         circlePresenter = new CirclePresenterImpl(this);
 
-        String apikey = MyApplication.getApikey();
+        applyJoinCirclePresenter = new ApplyJoinCirclePresenterImpl(this);
+
+        apikey = MyApplication.getApikey();
+        userId = MyApplication.getId();
 
         circlePresenter.getCircleListByLabel(apikey, arg, "0", "10");
 //        circlePresenter.getLabels(apikey, "1", "10");
@@ -132,7 +139,7 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
 
 
             @Override
-            public void convert(ViewHolder viewHolder, CircleByLabel.DataEntity dataEntity) {
+            public void convert(ViewHolder viewHolder, final CircleByLabel.DataEntity dataEntity) {
                 viewHolder.setImageUrl(R.id.header_img, "https://ss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=7f74bb149745d688bc02b5a494c37dab/f703738da97739120f92f746fd198618367ae265.jpg");
                 viewHolder.setText(R.id.cir_name, dataEntity.getDetailName());
                 viewHolder.setText(R.id.tv_cr_name, dataEntity.getSUserName());
@@ -140,8 +147,9 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
                 viewHolder.setOnClickListener(R.id.join3, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(mContext, "加入圈子成功", Toast.LENGTH_SHORT).show();
-
+                        String str_detailId = String.valueOf(dataEntity.getDetailId());
+//                        applyJoinCirclePresenter.applyJoinCircle(apikey, str_detailId,userId);
+                        applyJoinCirclePresenter.joinCircle(apikey, str_detailId, userId);
 
                     }
                 });
@@ -150,8 +158,13 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
         crRecycleview.setAdapter(adapter);
         adapter.setOnItemClickListener(new OnItemClickListener<CircleByLabel.DataEntity>() {
             @Override
-            public void onItemClick(ViewGroup viewGroup, View view, CircleByLabel.DataEntity cirDataEntity, int i) {
+            public void onItemClick(ViewGroup viewGroup, View view, CircleByLabel.DataEntity dataEntity, int i) {
                 Intent intent = new Intent(getActivity(), CircleInfoDetailActivity.class);
+                intent.putExtra("circlrId", String.valueOf(dataEntity.getDetailId()));
+                intent.putExtra("circlrName", dataEntity.getDetailName());
+                intent.putExtra("circlrPeopleNum", dataEntity.getDetailCreatePeople());
+                intent.putExtra("circlrtype", dataEntity.getDetailIsFansteam());
+                intent.putExtra("circlrVideoUrl", dataEntity.getDetailVideoUrl());
                 getActivity().startActivity(intent);
             }
 
@@ -169,6 +182,5 @@ public class NewItemFragment extends BaseFragment implements ICircleView {
 
     @Override
     public void addLabels(List<LabelBean.DataEntity> labelList) {
-        Log.d("NewItemFragmentii", "labelList.size():" + labelList.size());
     }
 }

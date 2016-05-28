@@ -9,7 +9,6 @@
     <include layout="@layout/life_head"/>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="@dimen/dp_10"
         android:id="@+id/address_list_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

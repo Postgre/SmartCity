@@ -39,6 +39,8 @@ public class WecanDetialActivity extends Activity {
     Button btLikeyuyue;
     @Bind(R.id.bt_dianlian)
     Button btDianlian;
+    @Bind(R.id.rl_comment)
+    RelativeLayout rlComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +56,25 @@ public class WecanDetialActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //进入个人资料页面
-                Intent intent = new Intent(WecanDetialActivity.this,PersonalZiLiaoActivity.class);
+                Intent intent = new Intent(WecanDetialActivity.this, PersonalZiLiaoActivity.class);
                 startActivity(intent);
+            }
+        });
+        rlComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WecanDetialActivity.this, CommentActivity.class);
+                startActivity(intent);
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
     }
-
 
 
     private void initData() {

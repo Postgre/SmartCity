@@ -20,7 +20,7 @@ import java.util.Map;
  * @author: fengliang
  * @date: 2016-05-04 16:46
  */
-public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCallBack, CoolModelImpl.GetAllCoolCallBack, CoolModelImpl.GetCoolDetailCallBack, CoolModelImpl.GetCoolByMeCallBack, CoolModelImpl.EditCoolCallBack, CoolModelImpl.FocusCallBack {
+public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCallBack, CoolModelImpl.GetAllCoolCallBack, CoolModelImpl.GetCoolDetailCallBack, CoolModelImpl.GetCoolByMeCallBack, CoolModelImpl.EditCoolCallBack, CoolModelImpl.FocusCallBack, CoolModelImpl.CommentCallBack {
     private static final String TAG = "CoolPresenterImpl";
     private ICoolView coolView;
     private CoolModel coolModel;
@@ -52,7 +52,7 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
 
     //-----------------------------查询炫-------------------------------------
     @Override
-    public void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows) {
+    public void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, int sStartpage, int sPagerows) {
         if (!coolModel.isNetState()) {
             coolView.showToast("请检查网络连接!");
             return;
@@ -83,13 +83,13 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
     }
 
     @Override
-    public void onGetCoolDetailSuccess(CoolDetailInfo coolDetailInfo) {
-
+    public void onGetCoolDetailSuccess(CoolDetailInfo.CoolDetailItemInfo coolDetailItemInfo) {
+        coolView.showInfo(coolDetailItemInfo);
     }
 
     @Override
     public void onGetCoolDetailFailure(String msg) {
-
+        coolView.showFailMsg(msg);
     }
 
     //-----------------------------我炫的-------------------------------------
@@ -159,11 +159,43 @@ public class CoolPresenterImpl implements CoolPresenter, CoolModelImpl.AddCoolCa
 
     @Override
     public void onFocusSuccess(String msg) {
-
+        coolView.showSuccessMsg(msg);
     }
 
     @Override
     public void onFocusFailure(String msg) {
-
+        coolView.showFailMsg(msg);
     }
+
+    //------------------------------添加评论---------------------------------------
+    @Override
+    public void addComment(String sType, String sCoolId, String sUserId, String sUserCode, String sCommentTitle, String sCommentContent, String sIsLike) {
+        if (!coolModel.isNetState()) {
+            coolView.showToast("请检查网络连接!");
+            return;
+        }
+        coolModel.addComment(sType, sCoolId, sUserId, sUserCode, sCommentTitle, sCommentContent, sIsLike, this);
+    }
+
+    @Override
+    public void onCommentSuccess(String msg) {
+        coolView.showSuccessMsg(msg);
+    }
+
+    @Override
+    public void onCommentFailure(String msg) {
+        coolView.showSuccessMsg(msg);
+    }
+
+    //------------------------------点赞---------------------------------------
+    @Override
+    public void updateComment(String sIsLike, String sLikeCount) {
+        if (!coolModel.isNetState()) {
+            coolView.showToast("请检查网络连接!");
+            return;
+        }
+        coolModel.updateComment(sIsLike, sLikeCount, this);
+    }
+
+
 }

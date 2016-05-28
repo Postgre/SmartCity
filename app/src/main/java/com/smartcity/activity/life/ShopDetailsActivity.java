@@ -8,7 +8,9 @@ import android.widget.ScrollView;
 import com.cpoopc.scrollablelayoutlib.ScrollableHelper;
 import com.cpoopc.scrollablelayoutlib.ScrollableLayout;
 import com.smartcity.R;
+import com.smartcity.presenterImpl.CartPresenter;
 import com.smartcity.presenterImpl.GoodsDetailPresenter;
+import com.smartcity.view.cittlist.GoodsDetailsView;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -16,7 +18,7 @@ import butterknife.OnClick;
 /**
  * Created by Yancy on 2016/5/12.
  */
-public class ShopDetailsActivity  extends LifeBaseActivity implements ScrollableHelper.ScrollableContainer{
+public class ShopDetailsActivity  extends LifeBaseActivity implements ScrollableHelper.ScrollableContainer,GoodsDetailsView{
 
 
     public static final String GOODS_ID ="goodsId";
@@ -37,7 +39,7 @@ public class ShopDetailsActivity  extends LifeBaseActivity implements Scrollable
 
         scrollableLayout.getHelper().setCurrentScrollableContainer(this);
 
-        goodsDetailPresenter = new GoodsDetailPresenter();
+        goodsDetailPresenter = new GoodsDetailPresenter(this);
         Intent intent = getIntent();
         String goodsId = intent.getStringExtra(GOODS_ID);
         if(!TextUtils.isEmpty(goodsId))
@@ -45,6 +47,7 @@ public class ShopDetailsActivity  extends LifeBaseActivity implements Scrollable
            // goodsDetailPresenter.getDetailByGoodsId(goodsId);
             goodsDetailPresenter.getDetailByGoodsId(String.valueOf(1));
         }
+
     }
 
     @Override

@@ -12,7 +12,12 @@ import com.smartcity.fragment.life.CommodityFragment;
 
 import butterknife.Bind;
 
+/**
+* 生活评论列表
+* **/
 public class CommodityReviewListActivity extends LifeBaseActivity {
+
+
 
     @Bind(R.id.commodity_tab)
     TabLayout tab;
@@ -61,8 +66,7 @@ public class CommodityReviewListActivity extends LifeBaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            //return CommodityFragment.newInstance(position);
-            return new CommodityFragment();
+            return CommodityFragment.newInstance(position);
         }
 
         @Override

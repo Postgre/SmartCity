@@ -46,13 +46,15 @@ public class RegistModelImpl extends BaseModelImpl implements RegistModel {
 
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
-                if (null != response && null != response.body()) {
-                    if (null != callback) {
-                        callback.success(response.body().toString());
-                    }
-                } else {
-                    if (null != callback) {
-                        callback.errorEmpty();
+                if (response.isSuccessful()) {
+                    if (null != response && null != response.body()) {
+                        if (null != callback) {
+                            callback.success(response.body().toString());
+                        }
+                    } else {
+                        if (null != callback) {
+                            callback.errorEmpty();
+                        }
                     }
                 }
             }
@@ -76,15 +78,16 @@ public class RegistModelImpl extends BaseModelImpl implements RegistModel {
 
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
-                if (null != response && null != response.body()) {
-                    if (null != callBack) {
-                        callBack.registSuccess(response.body());
+                if (response.isSuccessful()) {
+                    if (null != response && null != response.body()) {
+                        if (null != callBack) {
+                            callBack.registSuccess(response.body());
+                        }
+                    } else {
+                        if (null != callBack) {
+                            callBack.registError(null);
+                        }
                     }
-                } else {
-                    if (null != callBack) {
-                        callBack.registError(null);
-                    }
-
                 }
             }
 

@@ -13,7 +13,7 @@ import com.smartcity.model.modelImpl.CoolModelImpl;
 public interface CoolModel extends BaseModel {
     void addCool(String coolVideoTypeId, String coolCoverPic, String coolFileAddress, String coolDecrip, String coolUserId, String coolMarkId, String coolAreaNo, String coolJwd, String coolRename, CoolModelImpl.AddCoolCallBack callBack);
 
-    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, String sStartpage, String sPagerows, CoolModelImpl.GetAllCoolCallBack callBack);
+    void getAllCool(String coolMarkId, String coolAreaNo, String coolUserId, String coolVideoTypeId, int sStartpage, int sPagerows, CoolModelImpl.GetAllCoolCallBack callBack);
 
     void getCoolDetail(String coolId, String iCurrUserId, CoolModelImpl.GetCoolDetailCallBack callBack);
 
@@ -24,4 +24,8 @@ public interface CoolModel extends BaseModel {
     void focusCool(String userAttentionIng, String userAttentionEd, CoolModelImpl.FocusCallBack callBack);
 
     void unFocusCool(String userAttentionId, String userAttentionStatus, CoolModelImpl.FocusCallBack callBack);
+
+    void addComment(String sType, String sCoolId, String sUserId, String sUserCode, String sCommentTitle, String sCommentContent, String sIsLike, CoolModelImpl.CommentCallBack callback);
+
+    void updateComment(String sIsLike, String sLikeCount, CoolModelImpl.CommentCallBack callback);
 }

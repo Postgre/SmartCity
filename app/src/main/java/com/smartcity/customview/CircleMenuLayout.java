@@ -25,6 +25,8 @@ import com.smartcity.R;
 import com.smartcity.utils.ToastTool;
 
 public class CircleMenuLayout extends ViewGroup {
+
+
     private float mRadius;
     /**
      * 该容器内child item的默认尺寸
@@ -143,6 +145,8 @@ public class CircleMenuLayout extends ViewGroup {
             // Needed for the ViewGroup to be drawn
             setWillNotDraw(false);
         }
+
+
     }
 
     /**
@@ -283,6 +287,7 @@ public class CircleMenuLayout extends ViewGroup {
         canvas.drawBitmap(inner_circle, mRadius / 2 - inner_circle.getWidth() / 2,
                 mRadius / 2 - inner_circle.getHeight() / 2, inner_circle_paint);
 //
+
 
     }
 
@@ -801,4 +806,6 @@ public class CircleMenuLayout extends ViewGroup {
             }
         }
     }
+
+
 }

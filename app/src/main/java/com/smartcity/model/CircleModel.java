@@ -7,7 +7,7 @@ import com.smartcity.model.modelImpl.CircleModelImpl;
  */
 public interface CircleModel extends BaseModel {
 
-    void getCircles(String apikey, String sStartpage, String sPagerows, String sPersonUserId, CircleModelImpl.onLoadCircleListListener listener);
+    void getCircles(String apikey, String sStartpage, String sPagerows, String sPersonUserId, CircleModelImpl.OnLoadCircleListListener listener);
 
     /*
      圈子详情
@@ -15,14 +15,17 @@ public interface CircleModel extends BaseModel {
     void getDetail(String key, int detailId, CircleModelImpl.CircleDetailCallback callback);
 
     /*获取热门标签*/
-    void getHotLabels(String apikey, String sStartpage, String sPagerows, CircleModelImpl.onLoadHotLabelsListener listener);
+    void getHotLabels(String apikey, String sStartpage, String sPagerows, CircleModelImpl.OnLoadHotLabelsListener listener);
 
     /*根据标签名称获取对应圈子列表数据*/
-    void getCirclesByLabelContent(String apikey, String detailMarkName, String sStartpage, String sPagerows, CircleModelImpl.onLoadCirclesByLabel listener);
+    void getCirclesByLabelContent(String apikey, String detailMarkName, String sStartpage, String sPagerows, CircleModelImpl.OnLoadCirclesByLabel listener);
 
     /*我的圈子*/
-    void getMyCircle(String apikey, String personUserId, String sStartpage, String sPagerows, CircleModelImpl.onLoadMyCircle listener);
+    void getMyCircle(String apikey, String personUserId, String sStartpage, String sPagerows, CircleModelImpl.OnLoadMyCircle listener);
 
-    /*我的圈子*/
-    void getMyGroup(String apikey, String detailPid, String sStartpage, String sPagerows, CircleModelImpl.onLoadMyCircle listener);
+    /*查询圈子小组*/
+    void getGroupsListByPid(String apikey, String detailPid, String sStartpage, String sPagerows, CircleModelImpl.OnGetGroupsForCircleListener listener);
+
+    /*查询圈子的所有活动列表*/
+    void getActivityList(String apikey, String detailCircleId, String sStartpage,String sPagerows, CircleModelImpl.OnGetActivitiesListener listener );
 }

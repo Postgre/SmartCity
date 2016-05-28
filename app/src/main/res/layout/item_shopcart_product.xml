@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_110"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <CheckBox
@@ -12,15 +13,16 @@
         android:layout_marginLeft="@dimen/dp_12"
         android:button="@drawable/cart_check_box_bg" />
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/cart_product_iv"
         android:layout_width="@dimen/dp_110"
         android:layout_height="@dimen/dp_100"
         android:layout_centerVertical="true"
+        fresco:placeholderImageScaleType="fitXY"
         android:layout_marginLeft="@dimen/dp_15"
         android:layout_toRightOf="@+id/cart_product_box"
-        android:scaleType="fitXY"
-        android:src="@mipmap/tp_kafei2" />
+
+         />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -28,9 +30,11 @@
         android:layout_toRightOf="@+id/cart_product_iv">
 
         <RelativeLayout
+            android:id="@+id/cart_product_rl_edite_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="invisible"
+            >
 
             <LinearLayout
                 android:id="@+id/cart_product_ll_count_container"
@@ -74,6 +78,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/cart_product_rl_guige"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cart_product_ll_count_container"
@@ -85,6 +90,7 @@
                 android:textSize="@dimen/ts_14" />
 
             <ImageView
+                android:id="@+id/cart_product_rl_iv_delete"
                 android:layout_width="@dimen/dp_25"
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
@@ -94,6 +100,8 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/cart_product_ll_info_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#041949"
-    android:orientation="vertical">
+    android:background="#041949">
 
     <RelativeLayout
+        android:id="@+id/topLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="@mipmap/meili_navigation">
 
         <ImageView
@@ -38,17 +38,15 @@
 
     </RelativeLayout>
 
-    <FrameLayout
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cool_detail_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_info_layout"
+        android:layout_below="@+id/topLayout"
+        android:fadingEdge="none"
+        android:scrollbars="none" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/cool_detail_listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fadingEdge="none"
-            android:scrollbars="none" />
-
-        <include layout="@layout/bottom_menu_layout" />
-    </FrameLayout>
-</LinearLayout>
+    <include layout="@layout/bottom_menu_layout" />
+</RelativeLayout>

@@ -893,4 +893,15 @@
     <!--
      评价    RatingBar
  -->
+
+    <style name="service_roomRatingBar" parent="@android:style/Widget.RatingBar">
+        <!--【Android】RatingBar 不可点击，只做显示及与listview冲突
+    -->
+        <!--如果去掉下面android:isIndicator这一行就变成可点击的啦  在listview item xml中 头布局中加上：android:descendantFocusability="blocksDescendants"
+        -->
+        <item name="android:isIndicator">true</item>
+        <item name="android:progressDrawable">@drawable/room_rating_bar</item>
+        <item name="android:minHeight">9dp</item>
+        <item name="android:maxHeight">9dp</item>
+    </style>
 </resources>

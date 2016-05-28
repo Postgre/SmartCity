@@ -102,7 +102,7 @@ public class Circle_NoticeActivity extends BaseActivity implements OnClickListen
 //		maps.put("detailCircleId", "4");
         maps.put("sStartpage", "1");
         maps.put("sPagerows", "10");
-        service.getCircleNotice(MyApplication.getApikey(), Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<CircleNotice>() {
+        service.getCircleNotice(MyApplication.getApikey(),CircleService.CIRCLENOTICE, Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<CircleNotice>() {
 
             @Override
             public void onResponse(Call<CircleNotice> call, Response<CircleNotice> response) {

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,12 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/list_item_head_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
             android:layout_margin="@dimen/dp_10"
-            android:src="@mipmap/xiaoxiaozutouxiang1" />
+            app:roundAsCircle="true"
+            app:roundedCornerRadius="10dp"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@mipmap/xiaoxiaozutouxiang1"
+            fresco:placeholderImageScaleType="fitCenter" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -22,7 +29,7 @@
             android:layout_toRightOf="@+id/list_item_head_img">
 
             <TextView
-                android:id="@+id/list_item_content_text"
+                android:id="@+id/list_item_name_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="大熊"
@@ -32,7 +39,7 @@
                 android:id="@+id/list_item_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/list_item_content_text">
+                android:layout_below="@+id/list_item_name_text">
 
                 <TextView
                     android:id="@+id/list_item_date_text"
@@ -75,19 +82,21 @@
             android:src="@drawable/gz_bg" />
     </RelativeLayout>
 
-
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/list_item_head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/circle_details_bg" />
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:placeholderImage="@mipmap/circle_img"
+        fresco:placeholderImageScaleType="fitCenter" />
 
     <TextView
         android:id="@+id/list_item_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
-        android:text="影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事影视故事"
+        android:text="影视故事影视故事影视故事影视故事影视故事影视故事"
         android:textColor="@color/white" />
 
     <LinearLayout
@@ -191,7 +200,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:layout_toRightOf="@+id/shareImg"
-                    android:text="2000"
+                    android:text="分享"
                     android:textColor="@color/color_grey_999999" />
             </RelativeLayout>
         </RelativeLayout>

@@ -12,14 +12,13 @@ import com.smartcity.model.AddressListModel;
 import com.smartcity.model.modelImpl.AddressListModelImpl;
 import com.smartcity.presenter.BasePresenter;
 import com.smartcity.utils.LogTool;
-import com.smartcity.utils.ToastTool;
 import com.smartcity.view.IAddAddressView;
 import com.smartcity.view.IAddressView;
 
 /**
  * Created by Yancy on 2016/5/16.
  */
-public class AddressPresenter implements BasePresenter, AddressListModelImpl.GetAllAddressListener<AddressList>{
+public class AddressPresenter implements BasePresenter, AddressListModelImpl.GetAllAddressListener<AddressList> {
 
     private IAddAddressView addAddressView;
     private IAddressView iAddressView;
@@ -167,8 +166,7 @@ public class AddressPresenter implements BasePresenter, AddressListModelImpl.Get
         });
     }
 
-    public void deleteAddress(final int postion, int addresId, final DeleteAddressCallback callback)
-    {
+    public void deleteAddress(final int postion, int addresId, final DeleteAddressCallback callback) {
         String apikey = MyApplication.getApikey();
         if (TextUtils.isEmpty(apikey)) {
             iAddressView.startLogin();
@@ -194,10 +192,9 @@ public class AddressPresenter implements BasePresenter, AddressListModelImpl.Get
     }
 
 
+    public interface DeleteAddressCallback {
+        void deleteSuccess(int postion);
 
-    public interface  DeleteAddressCallback
-    {
-        void  deleteSuccess(int postion);
         void deleteError();
     }
 }

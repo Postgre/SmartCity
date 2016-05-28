@@ -137,7 +137,7 @@ public class NewChatMainActivity extends BaseActivity {
             ft.show(recentContactsFragment);
         } else {
             recentContactsFragment = new RecentContactsFragment();
-            ft.add(R.id.fragment_container, recentContactsFragment);
+            ft.replace(R.id.fragment_container, recentContactsFragment);
         }
         ft.commit();
 

@@ -99,12 +99,17 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     @Override
-    public void hideEmpey() {
+    public void hideEmpty() {
 
     }
 
     @Override
     public void showToast(String msg) {
+        ToastTool.showShort(this, msg);
+    }
+
+    @Override
+    public void showToast(int msg) {
         ToastTool.showShort(this, msg);
     }
 }

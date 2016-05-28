@@ -255,7 +255,6 @@
             android:name=".activity.life.ShopClassifyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <!-- 商品详情 -->
         <activity
             android:name=".activity.life.ShopDetailsActivity"
@@ -272,7 +271,7 @@
 
         <!-- 购物车 -->
         <activity
-            android:name=".activity.life.LifeCratActivity"
+            android:name=".activity.life.LifeCartActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <!-- 商品评论列表 -->
@@ -496,6 +495,14 @@
         <activity android:name=".activity.chw.service.WecanListActivity"></activity>
         <!--个人资料界面-->
         <activity android:name=".activity.chw.service.PersonalZiLiaoActivity"></activity>
+        <!--发布的服务-->
+        <activity android:name=".activity.chw.service.PublicServiceActivity"></activity>
+        <!--评论页-->
+        <activity android:name=".activity.chw.service.CommentActivity"></activity>
+        <!--评论页-->
+        <activity android:name=".activity.chw.service.LiuYanActivity"></activity>
+        <!--评论页-->
+        <activity android:name=".activity.chw.service.FaBuServiceActivity"></activity>
     </application>
 
 </manifest>

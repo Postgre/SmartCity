@@ -20,6 +20,7 @@ import com.smartcity.customview.CircleMenuLayout;
 import butterknife.Bind;
 
 public class ChwFragment extends BaseFragment {
+
     private static final String TAG = ChwFragment.class.getName();
     private static final String[] mItemTexts = {"我要炫", "呼叫服务", "白送白玩", "泡圈聊天", "粉旗帜", "粉账号"};
     private static final int[] mItemImgs = new int[]{R.mipmap.woyaoxuan, R.mipmap.huhuanfuwu, R.mipmap.baisongbaiwan, R.mipmap.paoquanliaotian, R.mipmap.fenqizhi, R.mipmap.fenzhanghu};

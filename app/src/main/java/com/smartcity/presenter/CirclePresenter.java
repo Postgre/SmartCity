@@ -12,7 +12,10 @@ public interface CirclePresenter {
 
     void getCircles(String apikey,String sStartpage,String sPagerows,String sPersonUserId);
     void getCircleListByLabel(String apikey, String detailMarkName, String sStartpage, String sPagerows);
-//    void getCircleListByLabel(String apikey, String sStartpage, String sPagerows);
+
+    void getGroupsListByPid(String apikey, String detailPid, String sStartpage, String sPagerows);
+
+    void getActivityList(String apikey, String detailCircleId, String sStartpage, String sPagerows);
 
     void getMyCircle(String apikey,String personUserId,String sPagerows,String sPersonUserId);
 //    void getMyGroup(String apikey,String detailPid,String sPagerows,String sPersonUserId);

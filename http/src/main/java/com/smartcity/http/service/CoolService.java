@@ -2,13 +2,16 @@ package com.smartcity.http.service;
 
 import com.smartcity.http.Constant;
 import com.smartcity.http.model.AddCoolInfo;
+import com.smartcity.http.model.CommentInfo;
 import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
+import com.smartcity.http.model.FocusInfo;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 
@@ -35,9 +38,14 @@ public interface CoolService {
     String FOCUS_COOL = "circle/addUA";
     //我要炫 取消关注
     String UNFOCUS_COOL = "circle/uptUA";
+    //评论 点赞
+    String ADD_COMMENT = "circle/addComment";
+    //修改评论 点赞
+    String UPDATE_COMMENT = "circle/uptComment";
 
     //发布炫
     @FormUrlEncoded
+    @Headers(Constant.CONTENT_TYPE)
     @POST(Constant.REST)
     Call<AddCoolInfo> addCool(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
@@ -64,10 +72,22 @@ public interface CoolService {
     //关注炫
     @FormUrlEncoded
     @POST(Constant.REST)
-    Call<String> focusCool(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    Call<FocusInfo> focusCool(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
 
     //取消关注炫
     @FormUrlEncoded
     @POST(Constant.REST)
-    Call<String> unFocusCool(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+    Call<FocusInfo> unFocusCool(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+
+    //添加评论
+    @FormUrlEncoded
+    @Headers(Constant.CONTENT_TYPE)
+    @POST(Constant.REST)
+    Call<CommentInfo> addComment(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+
+    //点赞
+    @FormUrlEncoded
+    @POST(Constant.REST)
+    Call<CommentInfo> updateComment(@Header(Constant.API_KEY) String apikey, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_VERSION) String version, @Field(Constant.KEY_DATA) String data);
+
 }

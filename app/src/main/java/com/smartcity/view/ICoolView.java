@@ -1,5 +1,6 @@
 package com.smartcity.view;
 
+import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface ICoolView extends BaseViews {
     void showFailMsg(String msg);
 
     void showList(List<CoolInfo.CoolListInfo> list);
+
+    void showInfo(CoolDetailInfo.CoolDetailItemInfo info);
 }

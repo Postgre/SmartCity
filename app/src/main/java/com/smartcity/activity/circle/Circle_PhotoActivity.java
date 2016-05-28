@@ -128,7 +128,7 @@ public class Circle_PhotoActivity extends BaseActivity implements OnClickListene
         maps.put("videoAlbumCircleId", "4");
         maps.put("sStartpage", "1");
         maps.put("sPagerows", "10");
-        service.getCircleVideo(MyApplication.getApikey(), Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<CircleVideo>() {
+        service.getCircleVideo(MyApplication.getApikey(), CircleService.CIRCLEPHOTO,Constant.VALUE_VERSION, GsonUtils.objectToJson(maps)).enqueue(new Callback<CircleVideo>() {
             @Override
             public void onResponse(Call<CircleVideo> call, Response<CircleVideo> response) {
                 LogTool.e("log", detailPid + "retrofit");

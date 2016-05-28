@@ -5,8 +5,9 @@ import android.os.Bundle;
 
 import com.smartcity.R;
 import com.smartcity.activity.LoginActivity;
+import com.smartcity.activity.life.CommodityReviewListActivity;
 import com.smartcity.activity.life.LifeAddressListActivity;
-import com.smartcity.activity.life.LifeCratActivity;
+import com.smartcity.activity.life.LifeCartActivity;
 import com.smartcity.base.BaseFragment;
 
 import butterknife.OnClick;
@@ -56,7 +57,12 @@ public class MyFragment extends BaseFragment {
     @OnClick(R.id.fen_rl_pay_order)
     public void startLifeCart()
     {
-        startActivity(new Intent(getActivity(), LifeCratActivity.class));
+        startActivity(new Intent(getActivity(), LifeCartActivity.class));
     }
 
+    @OnClick(R.id.fen_rl_order)
+    public void startCommd()
+    {
+        startActivity(new Intent(getActivity(), CommodityReviewListActivity.class));
+    }
 }

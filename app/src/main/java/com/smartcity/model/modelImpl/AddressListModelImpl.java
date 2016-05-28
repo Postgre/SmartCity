@@ -22,7 +22,6 @@ import retrofit2.Response;
  */
 public class AddressListModelImpl extends BaseModelImpl implements AddressListModel {
 
-
     private AddressService addressService;
 
     public AddressListModelImpl() {
@@ -36,19 +35,21 @@ public class AddressListModelImpl extends BaseModelImpl implements AddressListMo
 
     @Override
     public void getAllAddress(String
-                                          userId, String apiKey, final GetAllAddressListener listener) {
+                                      userId, String apiKey, final GetAllAddressListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("customerId", userId);
-        addressService.getAllList(Constant.VALUE_VERSION, AddressService.ALL_LIST_ADDRESS,GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList>() {
+        addressService.getAllList(Constant.VALUE_VERSION, AddressService.ALL_LIST_ADDRESS, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<AddressList>() {
 
             @Override
             public void onResponse(Call<AddressList> call, Response<AddressList> response) {
-                AddressList addressList = response.body();
-                if (null != addressList) {
-                    if (ResCode.STATUS_SUCCESS_CODE == addressList.getCode()) {
-                        listener.getAllSuccess(addressList);
-                    } else {
-                        listener.getAllListError(null);
+                if (response.isSuccessful()) {
+                    AddressList addressList = response.body();
+                    if (null != addressList) {
+                        if (ResCode.STATUS_SUCCESS_CODE == addressList.getCode()) {
+                            listener.getAllSuccess(addressList);
+                        } else {
+                            listener.getAllListError(null);
+                        }
                     }
                 }
             }
@@ -74,15 +75,17 @@ public class AddressListModelImpl extends BaseModelImpl implements AddressListMo
         params.put("isDefault", address.getIsDefault());
         params.put("createTime", address.getCreateTime());
         params.put("modifyTime", address.getModifyTime());
-        addressService.updateOrAddAddress(Constant.VALUE_VERSION,AddressService.UPDATE_ADD_ADDRESS, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<BaseModel>() {
+        addressService.updateOrAddAddress(Constant.VALUE_VERSION, AddressService.UPDATE_ADD_ADDRESS, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<BaseModel>() {
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
-                BaseModel body = response.body();
-                if (null != body) {
-                    if (ResCode.STATUS_SUCCESS_CODE == body.getCode()) {
-                        listener.updateOrAddAddressSuccess(body);
-                    } else {
-                        listener.updateOrAddAddressError(body.getMsg());
+                if (response.isSuccessful()) {
+                    BaseModel body = response.body();
+                    if (null != body) {
+                        if (ResCode.STATUS_SUCCESS_CODE == body.getCode()) {
+                            listener.updateOrAddAddressSuccess(body);
+                        } else {
+                            listener.updateOrAddAddressError(body.getMsg());
+                        }
                     }
                 }
             }
@@ -100,15 +103,17 @@ public class AddressListModelImpl extends BaseModelImpl implements AddressListMo
     public void deteleAddress(final int addressId, String apiKey, final DeleteAddressListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put("id", addressId);
-        addressService.deleteAddAddressById(AddressService.DELETE_ADDRESS,Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<BaseModel>() {
+        addressService.deleteAddAddressById(AddressService.DELETE_ADDRESS, Constant.VALUE_VERSION, GsonUtils.objectToJson(params), apiKey).enqueue(new Callback<BaseModel>() {
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
-                BaseModel  addressList = response.body();
-                if (null != addressList) {
-                    if (ResCode.STATUS_SUCCESS_CODE == addressList.getCode()) {
-                        listener.deleteAddressSuccess(addressList);
-                    } else {
-                        listener.deleteAddressError(null);
+                if (response.isSuccessful()) {
+                    BaseModel addressList = response.body();
+                    if (null != addressList) {
+                        if (ResCode.STATUS_SUCCESS_CODE == addressList.getCode()) {
+                            listener.deleteAddressSuccess(addressList);
+                        } else {
+                            listener.deleteAddressError(null);
+                        }
                     }
                 }
             }

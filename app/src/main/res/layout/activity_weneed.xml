@@ -276,6 +276,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl_liuyan"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -291,12 +292,12 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_margin="16dp"
-                            android:text="14人评价" />
+                            android:text="14人留言" />
 
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/b_back_right" />
+                            android:background="@mipmap/b_back_right" />
                     </LinearLayout>
 
                 </RelativeLayout>

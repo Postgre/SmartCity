@@ -4,12 +4,17 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+
     defaultConfig {
         applicationId "com.smartcity"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+
+
+
     }
 
     //签名
@@ -44,17 +49,21 @@ android {
     lintOptions {
         abortOnError false
     }
-
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+
     compile project(path: ':http')
     compile project(path: ':pulltorefresh')
+    compile project(path: ':squarecamera')
+    compile project(':uikit')
+    compile project(path: ':share')
+
     compile(name: 'base-adapter-library-release', ext: 'aar')
     compile(name: 'multi-image-selector-release', ext: 'aar')
-    compile project(path: ':squarecamera')
+
     compile 'com.jude:rollviewpager:1.2.9'
     //    compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:appcompat-v7:23.0.3'
@@ -63,16 +72,18 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.8.1'
     compile 'com.android.support:design:23.4.0'
     compile 'com.jude:rollviewpager:1.2.9'
+    compile 'fm.jiecao:jiecaovideoplayer:3.1'
+    compile 'com.android.support:support-v4:23.4.0'
     //    compile 'com.android.support:support-v4:23.3.0'
     //    compile files('libs/uil.jar')
     compile 'com.zhy:flowlayout-lib:1.0.3'
     compile 'com.github.cpoopc:scrollablelayoutlib:1.0.0'
+
     compile files('libs/cosinesdk.jar')
-    compile project(':uikit')
-    compile project(path: ':share')
+
     //    compile project(path: ':pay')
-    compile 'fm.jiecao:jiecaovideoplayer:3.1'
-    compile 'com.android.support:support-v4:23.4.0'
+
     compile files('libs/aliyun-oss-sdk-android-2.2.0.jar')
     compile files('libs/AMap_Location_V2.4.0_20160308.jar')
+
 }

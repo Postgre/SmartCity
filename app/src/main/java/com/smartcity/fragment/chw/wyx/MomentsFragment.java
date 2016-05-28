@@ -14,6 +14,7 @@ import com.smartcity.activity.chw.wyx.CoolDetailActivity;
 import com.smartcity.adapter.chw.wyx.MomentsAdapter;
 import com.smartcity.base.BaseFragment;
 import com.smartcity.customview.SpacesItemDecoration;
+import com.smartcity.http.model.CoolDetailInfo;
 import com.smartcity.http.model.CoolInfo;
 import com.smartcity.presenterImpl.CoolPresenterImpl;
 import com.smartcity.pulltofresh.PullToRefreshBase;
@@ -77,7 +78,7 @@ public class MomentsFragment extends BaseFragment implements ICoolView, PullToRe
         momentListView.addItemDecoration(decoration);
         momentListView.setOnRefreshListener(this);
         coolPresenterImpl = new CoolPresenterImpl(this);
-        coolPresenterImpl.getAllCool("1", "HBWH", "50", "1","0", "10");
+        coolPresenterImpl.getAllCool("1", "HBWH", "50", "1", 0, 10);
         momentsAdapter = new MomentsAdapter(getActivity(), coolList);
         momentsAdapter.setListener(this);
         momentListView.setAdapter(momentsAdapter);
@@ -131,6 +132,11 @@ public class MomentsFragment extends BaseFragment implements ICoolView, PullToRe
     @Override
     public void showList(List<CoolInfo.CoolListInfo> list) {
         LogTool.d(TAG, "list=====" + list.size());
+    }
+
+    @Override
+    public void showInfo(CoolDetailInfo.CoolDetailItemInfo info) {
+
     }
 
     @Override

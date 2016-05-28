@@ -1,7 +1,6 @@
 package com.smartcity.activity.chw.wyx;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,8 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.desmond.squarecamera.CameraActivity;
-import com.desmond.squarecamera.ImageUtility;
 import com.smartcity.R;
 import com.smartcity.adapter.chw.wyx.MarkAdapter;
 import com.smartcity.adapter.chw.wyx.MyFragmentPagerAdapter;
@@ -26,8 +23,14 @@ import com.smartcity.bean.SelectItem;
 import com.smartcity.config.Constant;
 import com.smartcity.customview.MarkPopWindow;
 import com.smartcity.fragment.chw.wyx.CoolFragment;
+import com.smartcity.http.model.CoolDetailInfo;
+import com.smartcity.http.model.CoolInfo;
+import com.smartcity.inter.UpLoadListener;
+import com.smartcity.presenterImpl.CoolPresenterImpl;
 import com.smartcity.utils.LogTool;
 import com.smartcity.utils.ToastTool;
+import com.smartcity.utils.UploadManager;
+import com.smartcity.view.ICoolView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +39,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import butterknife.OnPageChange;
 
-public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCallBack, MarkAdapter.ItemClickCallBack {
+public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCallBack, MarkAdapter.ItemClickCallBack, ICoolView {
     private static final String TAG = CoolActivity.class.getName();
 
     private static final int REQUEST_CAMERA = 0;
@@ -72,12 +75,16 @@ public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCall
 
     private MarkPopWindow window = null;
 
+    private CoolPresenterImpl coolPresenterImpl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Display display = getWindowManager().getDefaultDisplay();
         mSize = new Point();
         display.getSize(mSize);
+
+        coolPresenterImpl = new CoolPresenterImpl(this);
         initView();
     }
 
@@ -125,8 +132,18 @@ public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCall
                 finish();
                 break;
             case R.id.addBtn:
-                Intent startCustomCameraIntent = new Intent(this, CameraActivity.class);
-                startActivityForResult(startCustomCameraIntent, REQUEST_CAMERA);
+//                Intent startCustomCameraIntent = new Intent(this, CameraActivity.class);
+//                startActivityForResult(startCustomCameraIntent, REQUEST_CAMERA);
+
+
+//                Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+//                //设置视频大小
+//                intent.putExtra(android.provider.MediaStore.EXTRA_SIZE_LIMIT, 768000);
+//                //设置视频时间  毫秒单位
+//                intent.putExtra(android.provider.MediaStore.EXTRA_DURATION_LIMIT, 45000);
+//                startActivityForResult(intent, REQUEST_CAMERA);
+
+                upload();
                 break;
             case R.id.edittext_search:
                 break;
@@ -149,6 +166,32 @@ public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCall
 
     }
 
+    private void upload() {
+        UploadManager.getInstance().uploadVideo("/storage/emulated/0/Movies/QQ1982.mp4");
+        UploadManager.getInstance().setUpLoadListener(new UpLoadListener() {
+            @Override
+            public void upLoading(long currentSize, long totalSize) {
+
+            }
+
+            @Override
+            public void upLoadSuccess(Object result, String uploadPath) {
+
+            }
+
+            @Override
+            public void upLoadSuccess(Object result, String thumbnailPath, String uploadPath) {
+                LogTool.d(TAG, "thumbnailPath:" + thumbnailPath + "   uploadPath:" + uploadPath);
+                coolPresenterImpl.addCool("1", thumbnailPath, uploadPath, "NB之人啊", "60", "1", "BJHD", "123,321", "湖北武汉");
+            }
+
+            @Override
+            public void upLoadError(String msg) {
+
+            }
+        });
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != RESULT_OK) return;
@@ -156,9 +199,10 @@ public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCall
         if (requestCode == REQUEST_CAMERA) {
             Uri photoUri = data.getData();
             LogTool.d(TAG, "photoUri--------------" + photoUri);
+            LogTool.d(TAG, "===============" + photoUri.getPath());
             // Get the bitmap in according to the width of the device
-            Bitmap bitmap = ImageUtility.decodeSampledBitmapFromPath(photoUri.getPath(), mSize.x, mSize.x);
-            LogTool.d(TAG, "bitmap======================" + bitmap);
+//            Bitmap bitmap = ImageUtility.decodeSampledBitmapFromPath(photoUri.getPath(), mSize.x, mSize.x);
+//            LogTool.d(TAG, "bitmap======================" + bitmap);
 //            ((ImageView) findViewById(R.id.image)).setImageBitmap(bitmap);
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -196,5 +240,25 @@ public class CoolActivity extends BaseActivity implements MarkPopWindow.ItemCall
     @Override
     public void onItemClick(int positon) {
         markAdapter.setSelectedPos(positon);
+    }
+
+    @Override
+    public void showSuccessMsg(String msg) {
+        ToastTool.showShort(CoolActivity.this, msg);
+    }
+
+    @Override
+    public void showFailMsg(String msg) {
+        ToastTool.showShort(CoolActivity.this, msg);
+    }
+
+    @Override
+    public void showList(List<CoolInfo.CoolListInfo> list) {
+
+    }
+
+    @Override
+    public void showInfo(CoolDetailInfo.CoolDetailItemInfo info) {
+
     }
 }

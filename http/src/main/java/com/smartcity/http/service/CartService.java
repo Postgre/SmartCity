@@ -3,11 +3,13 @@ package com.smartcity.http.service;
 import com.smartcity.http.Constant;
 import com.smartcity.http.model.BaseModel;
 import com.smartcity.http.model.CartInfo;
+import com.smartcity.http.model.ScShopCartVo;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
@@ -36,13 +38,14 @@ public interface CartService {
      */
     @POST(Constant.REST)
     @FormUrlEncoded
-    Call<CartInfo> getAllProduct(@Field(Constant.KEY_VERSION) String version,@Field(Constant.CMD) String cmd, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
+    Call<CartInfo> getAllProduct(@Field(Constant.KEY_VERSION) String version, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_DATA) String data, @Header(Constant.API_KEY) String apikey);
 
     /**
      *添加到购物车
      */
     @POST(Constant.REST)
     @FormUrlEncoded
+    @Headers("Content-Type:application/x-www-form-urlencoded;charset=utf-8")
     Call<BaseModel> addGoodsToCart(@Field(Constant.KEY_VERSION) String version, @Field(Constant.CMD) String cmd, @Field(Constant.KEY_DATA) String data,
                                    @Header(Constant.API_KEY) String apikey);
 
